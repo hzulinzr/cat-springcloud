@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cat-provider-comment-api" />
+        <module name="cat-provider-aggregation-book" />
+        <module name="cat-provider-user" />
+        <module name="cat-gateway" />
+        <module name="cat-provider-book" />
+        <module name="cat-provider-book-api" />
+        <module name="cat-common" />
+        <module name="cat-provider-aggregation-user" />
+        <module name="cat-provider-aggregation-comment" />
+        <module name="cat-provider-user-api" />
+        <module name="cat-provider-comment" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cat-auth" target="1.8" />
+      <module name="cat-book" target="1.8" />
+      <module name="cat-nacos-consumer" target="1.8" />
+      <module name="cat-nacos-provider" target="1.8" />
+      <module name="cat-user" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cat-auth" options="-parameters" />
+      <module name="cat-book" options="-parameters" />
+      <module name="cat-common" options="-parameters" />
+      <module name="cat-gateway" options="-parameters" />
+      <module name="cat-nacos-consumer" options="-parameters" />
+      <module name="cat-nacos-provider" options="-parameters" />
+      <module name="cat-provider" options="" />
+      <module name="cat-provider-aggregation" options="" />
+      <module name="cat-provider-aggregation-book" options="-parameters" />
+      <module name="cat-provider-aggregation-comment" options="-parameters" />
+      <module name="cat-provider-aggregation-user" options="-parameters" />
+      <module name="cat-provider-api" options="" />
+      <module name="cat-provider-book" options="-parameters" />
+      <module name="cat-provider-book-api" options="-parameters" />
+      <module name="cat-provider-comment" options="-parameters" />
+      <module name="cat-provider-comment-api" options="-parameters" />
+      <module name="cat-provider-user" options="-parameters" />
+      <module name="cat-provider-user-api" options="-parameters" />
+      <module name="cat-user" options="-parameters" />
+    </option>
+  </component>
+</project>

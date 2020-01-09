@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.UserMapper" >
+    <select id="login" resultType="com.lin.model.User">
+        select id, uuid, user_info_id userInfoId, username, password, uuid, register_time registerTime from user where username = #{username} and password = #{password}
+    </select>
+    <select id="findByUuid" resultType="com.lin.model.User">
+        select id, uuid, username, password, is_login isLogin from user where uuid = #{uuid}
+    </select>
+    <select id="getUser" resultType="com.lin.config.security.AuthDetails">
+        select id, uuid, username, password, is_login isLogin from user where username = #{username}
+    </select>
+</mapper>

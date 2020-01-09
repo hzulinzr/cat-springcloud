@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.security.oauth2.client.clientId",
+      "type": "java.lang.String",
+      "description": "Description for spring.security.oauth2.client.clientId."
+    },
+    {
+      "name": "spring.security.oauth2.client.clientId",
+      "type": "java.lang.String",
+      "description": "Description for spring.security.oauth2.client.clientId."
+    }
+  ] }

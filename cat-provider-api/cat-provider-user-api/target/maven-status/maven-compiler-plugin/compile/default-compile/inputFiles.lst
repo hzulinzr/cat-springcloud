@@ -1,0 +1,7 @@
+/Users/lzr/Project/cat-springcloud/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/dto/UserDTO.java
+/Users/lzr/Project/cat-springcloud/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/AuthUser.java
+/Users/lzr/Project/cat-springcloud/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/fallback/UserServiceFallback.java
+/Users/lzr/Project/cat-springcloud/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/User.java
+/Users/lzr/Project/cat-springcloud/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/ClientUser.java
+/Users/lzr/Project/cat-springcloud/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/feign/UserServiceFeign.java
+/Users/lzr/Project/cat-springcloud/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/UserInfo.java

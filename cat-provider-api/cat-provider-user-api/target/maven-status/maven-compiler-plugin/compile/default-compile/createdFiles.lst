@@ -1,0 +1,10 @@
+com/lin/dto/UserDTO$Logout.class
+com/lin/model/AuthUser$UserRole.class
+com/lin/dto/UserDTO$Install.class
+com/lin/model/UserInfo.class
+com/lin/fallback/UserServiceFallback.class
+com/lin/dto/UserDTO.class
+com/lin/model/AuthUser.class
+com/lin/model/User.class
+com/lin/feign/UserServiceFeign.class
+com/lin/model/ClientUser.class

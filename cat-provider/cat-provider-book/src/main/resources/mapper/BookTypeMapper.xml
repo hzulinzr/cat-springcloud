@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.BookTypeMapper" >
+    <resultMap id="BaseResultMap" type="com.lin.model.BookType" >
+        <!--  自动生成 2019年11月25日 表与实体类字段对应 -->
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="book_type_name" property="bookTypeName" jdbcType="VARCHAR" />
+        <result column="book_content" property="bookContent" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        <!--  自动生成 2019年11月25日 表字段名称 -->
+        id, book_type_name, book_content
+    </sql>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--  自动生成 2019年11月25日 根据ID查询 -->
+        select 
+        <include refid="Base_Column_List" />
+        from book_type
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    
+    <update id="update" parameterType="com.lin.model.BookType" >
+        <!--  自动生成 2019年11月25日 更新数据 -->
+        update book_type
+        <set >
+            <if test="bookTypeName != null" >
+                book_type_name = #{bookTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="bookContent != null" >
+                book_content = #{bookContent,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    
+    <insert id="insert" parameterType="com.lin.model.BookType" >
+        <!--  自动生成 2019年11月25日 添加数据 -->
+        insert into book_type
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="bookTypeName != null" >
+                book_type_name,
+            </if>
+            <if test="bookContent != null" >
+                book_content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="bookTypeName != null" >
+                #{bookTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="bookContent != null" >
+                #{bookContent,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    
+    <insert id="inserts" parameterType="java.util.List" >
+        <!-- WARNING -  自动生成 2019-11-25 添加多条数据 -->
+        insert into book_type (id, book_type_name, book_content)
+        values
+        <foreach collection="list" item="item" separator="," >
+            (#{item.id,jdbcType=BIGINT}, #{item.bookTypeName,jdbcType=VARCHAR}, #{item.bookContent,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+    
+    <delete id="delete" parameterType="java.lang.Long" >
+        <!--  自动生成 2019年11月25日 删除数据 -->
+        delete from book_type
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>

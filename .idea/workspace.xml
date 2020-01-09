@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4aed140b-37fb-4adc-a8a4-21650c268cdc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/dao/BaseMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/feignConfig/FeignCustomRequestInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/feignConfig/HttpPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/jwt/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/model/BaseModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/response/PageData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/response/ResponseCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/response/Wrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/response/WrapperFail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/response/WrapperSuccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/tools/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/tools/ShortUUID.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/tools/SnowFlake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/cat-common-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/dao/BaseMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/feignConfig/FeignCustomRequestInterceptor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/jwt/JwtUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/model/BaseModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/response/PageData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/response/ResponseCode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/response/Wrapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/response/WrapperFail.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/response/WrapperSuccess.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/tools/Page.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/tools/ShortUUID.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/tools/SnowFlake.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/src/main/java/com/lin/GatewayRoutes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/src/main/java/com/lin/filter/AuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/src/main/java/com/lin/filter/AuthorizeFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/cat-gateway-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/cat-gateway-1.0-SNAPSHOT.jar.original" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/classes/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/classes/com/lin/GatewayRoutes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/classes/com/lin/filter/AuthorizeFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-gateway/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/cat-provider-aggregation-book.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/java/com/lin/BookAggregationApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/java/com/lin/controller/BookAggregationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/java/com/lin/service/BookAggregationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/java/com/lin/service/impl/BookAggregationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/cat-provider-aggregation-book-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/com/lin/BookAggregationApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/com/lin/controller/BookAggregationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/com/lin/service/BookAggregationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/com/lin/service/impl/BookAggregationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-comment/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-comment/target/cat-provider-aggregation-comment-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-comment/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-comment/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-comment/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/cat-provider-aggregation-user.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/target/cat-provider-aggregation-user-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/target/classes/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/dto/BaseBookDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/dto/BookAddDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/dto/BookListDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/dto/BookUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/fallback/BookServiceFallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/feign/BookServiceFeign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/model/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/model/BookType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/vo/BookListVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/vo/BookUrlVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/cat-provider-book-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/dto/BaseBookDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/dto/BookAddDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/dto/BookListDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/dto/BookUpdateDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/fallback/BookServiceFallback.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/feign/BookServiceFeign.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/model/Book.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/model/BookType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/vo/BookListVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/vo/BookUrlVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-comment-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-comment-api/target/cat-provider-comment-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-comment-api/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-comment-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-comment-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/fallback/UserServiceFallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/feign/UserServiceFeign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/UserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/cat-provider-user-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/META-INF/cat-provider-user-api.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/dto/UserDTO$Install.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/dto/UserDTO$Logout.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/dto/UserDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/fallback/UserServiceFallback.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/feign/UserServiceFeign.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/model/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/model/UserInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/BookApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/config/JacksonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/controller/BookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/dao/BookMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/dao/BookTypeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/service/BookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/service/impl/BookServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources/mapper/BookMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources/mapper/BookTypeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources/mapper/extend/BookMapperExtend.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/cat-provider-book-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/BookApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/config/JacksonConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/config/SwaggerConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/controller/BookController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/dao/BookMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/dao/BookTypeMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/service/BookService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/service/impl/BookServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/mapper/BookMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/mapper/BookTypeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/mapper/extend/BookMapperExtend.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-comment/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-comment/target/cat-provider-comment-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-comment/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-comment/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-comment/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/UserApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/AuthAuthorizationServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/AuthResourceServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/AuthDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/AuthDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/UserInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/UserInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/extend/UserMapperExtend.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/cat-provider-user-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/META-INF/cat-provider-user.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/UserApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/config/AuthAuthorizationServerConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/config/AuthResourceServerConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/config/WebSecurityConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/config/security/AuthDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/config/security/AuthDetailsServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/controller/UserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/dao/UserInfoMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/dao/UserMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/mapper/UserInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/mapper/extend/UserMapperExtend.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="$USER_HOME$/Tools/repo" />
+        <option name="mavenHome" value="$USER_HOME$/Tools/apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="$USER_HOME$/Tools/apache-maven-3.6.0/conf/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1SBngrTs0voBflF5YWzF1tydLtD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/cat-common/src/main/java/com/lin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.ignored.files" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java" />
+      <recent name="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lin.model" />
+      <recent name="com.lin.dao" />
+      <recent name="com.lin.tools" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/resources" />
+      <recent name="$PROJECT_DIR$/cat-common/src/main/java/com/lin" />
+      <recent name="$PROJECT_DIR$/cat-common/src/main/java/com/lin/response" />
+      <recent name="$PROJECT_DIR$/cat-user/src/main/resources" />
+      <recent name="$PROJECT_DIR$/cat-book/src/main/resources/mapper" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.UserApplication">
+    <configuration name="BookAggregationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="cat-provider-aggregation-book" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lin.BookAggregationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="cat-provider-book" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lin.BookApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayRoutes" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cat-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lin.GatewayRoutes" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="cat-provider-user" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lin.UserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.UserApplication" />
+        <item itemvalue="Spring Boot.BookApplication" />
+        <item itemvalue="Spring Boot.BookAggregationApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4aed140b-37fb-4adc-a8a4-21650c268cdc" name="Default Changelist" comment="" />
+      <created>1571045970468</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571045970468</updated>
+      <workItem from="1571045973826" duration="1312000" />
+      <workItem from="1571157009088" duration="155000" />
+      <workItem from="1571195560959" duration="646000" />
+      <workItem from="1571242607481" duration="1022000" />
+      <workItem from="1571413266765" duration="5572000" />
+      <workItem from="1571745099890" duration="3268000" />
+      <workItem from="1571795541174" duration="5116000" />
+      <workItem from="1571887774811" duration="298000" />
+      <workItem from="1571934720879" duration="1175000" />
+      <workItem from="1571936196004" duration="492000" />
+      <workItem from="1571936694349" duration="3555000" />
+      <workItem from="1571978299935" duration="582000" />
+      <workItem from="1571978910230" duration="182000" />
+      <workItem from="1571979109218" duration="1486000" />
+      <workItem from="1571981656957" duration="36000" />
+      <workItem from="1572015338196" duration="67000" />
+      <workItem from="1572129166816" duration="373000" />
+      <workItem from="1572166927831" duration="1927000" />
+      <workItem from="1572252178985" duration="797000" />
+      <workItem from="1572625192715" duration="86000" />
+      <workItem from="1572630663365" duration="3762000" />
+      <workItem from="1572705498825" duration="1608000" />
+      <workItem from="1572756885877" duration="1437000" />
+      <workItem from="1572834594754" duration="4112000" />
+      <workItem from="1572918012419" duration="2691000" />
+      <workItem from="1572968323896" duration="1613000" />
+      <workItem from="1573205812126" duration="780000" />
+      <workItem from="1573208348711" duration="3286000" />
+      <workItem from="1573459048246" duration="3657000" />
+      <workItem from="1573487273737" duration="4669000" />
+      <workItem from="1573561025727" duration="532000" />
+      <workItem from="1573609883237" duration="565000" />
+      <workItem from="1574179290026" duration="627000" />
+      <workItem from="1574410041838" duration="10079000" />
+      <workItem from="1574512225716" duration="258000" />
+      <workItem from="1574615118967" duration="639000" />
+      <workItem from="1574646136880" duration="899000" />
+      <workItem from="1574651920192" duration="4814000" />
+      <workItem from="1574665009210" duration="3534000" />
+      <workItem from="1574672893375" duration="695000" />
+      <workItem from="1574774672080" duration="5350000" />
+      <workItem from="1574836596420" duration="3594000" />
+      <workItem from="1574854860127" duration="864000" />
+      <workItem from="1574906498896" duration="2393000" />
+      <workItem from="1575300957486" duration="383000" />
+      <workItem from="1575343795754" duration="14752000" />
+      <workItem from="1575529524107" duration="6584000" />
+      <workItem from="1575701768696" duration="9117000" />
+      <workItem from="1575901534770" duration="647000" />
+      <workItem from="1576422147649" duration="803000" />
+      <workItem from="1576459604849" duration="347000" />
+      <workItem from="1576834123395" duration="5199000" />
+      <workItem from="1577067886975" duration="19000" />
+      <workItem from="1577110845768" duration="414000" />
+      <workItem from="1577155216433" duration="6789000" />
+      <workItem from="1577173707148" duration="350000" />
+      <workItem from="1577201107105" duration="2920000" />
+      <workItem from="1577583655425" duration="37000" />
+      <workItem from="1577670195550" duration="22000" />
+      <workItem from="1577721820850" duration="1308000" />
+      <workItem from="1578118810400" duration="2740000" />
+      <workItem from="1578125948090" duration="16167000" />
+      <workItem from="1578276391725" duration="825000" />
+      <workItem from="1578279408592" duration="581000" />
+      <workItem from="1578280064039" duration="134000" />
+      <workItem from="1578287969136" duration="22402000" />
+      <workItem from="1578415681070" duration="13925000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="440" y="190" key="#Inspections" timestamp="1578120981947">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="190" key="#Inspections/0.0.1680.1050@0.0.1680.1050" timestamp="1578120981947" />
+    <state x="440" y="190" key="#Project_Structure" timestamp="1578466523545">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="190" key="#Project_Structure/0.0.1680.1050@0.0.1680.1050" timestamp="1578466523545" />
+    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1578541618334">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1578541618334" />
+    <state x="473" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578371638119">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="473" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578371638119" />
+    <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578410508825">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578410508825" />
+    <state width="1638" height="389" key="GridCell.Tab.0.bottom" timestamp="1578551210192">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210192" />
+    <state width="1638" height="363" key="GridCell.Tab.0.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493721" />
+    <state width="1638" height="32" key="GridCell.Tab.0.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578549550586" />
+    <state width="1638" height="363" key="GridCell.Tab.0.bottom/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909601" />
+    <state width="1638" height="363" key="GridCell.Tab.0.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194403" />
+    <state width="1638" height="389" key="GridCell.Tab.0.center" timestamp="1578551210190">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210190" />
+    <state width="1638" height="363" key="GridCell.Tab.0.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493720" />
+    <state width="1638" height="32" key="GridCell.Tab.0.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578549550585" />
+    <state width="1638" height="363" key="GridCell.Tab.0.center/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909600" />
+    <state width="1638" height="363" key="GridCell.Tab.0.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194402" />
+    <state width="1638" height="389" key="GridCell.Tab.0.left" timestamp="1578551210189">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210189" />
+    <state width="1638" height="363" key="GridCell.Tab.0.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493720" />
+    <state width="1638" height="32" key="GridCell.Tab.0.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578549550584" />
+    <state width="1638" height="363" key="GridCell.Tab.0.left/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909599" />
+    <state width="1638" height="363" key="GridCell.Tab.0.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194401" />
+    <state width="1638" height="389" key="GridCell.Tab.0.right" timestamp="1578551210191">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210191" />
+    <state width="1638" height="363" key="GridCell.Tab.0.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493721" />
+    <state width="1638" height="32" key="GridCell.Tab.0.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578549550585" />
+    <state width="1638" height="363" key="GridCell.Tab.0.right/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909601" />
+    <state width="1638" height="363" key="GridCell.Tab.0.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194402" />
+    <state width="1638" height="389" key="GridCell.Tab.1.bottom" timestamp="1578551210061">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210061" />
+    <state width="1638" height="363" key="GridCell.Tab.1.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493744" />
+    <state width="1638" height="389" key="GridCell.Tab.1.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578550747959" />
+    <state width="1638" height="363" key="GridCell.Tab.1.bottom/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909485" />
+    <state width="1638" height="363" key="GridCell.Tab.1.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194310" />
+    <state width="1638" height="389" key="GridCell.Tab.1.center" timestamp="1578551210060">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210060" />
+    <state width="1638" height="363" key="GridCell.Tab.1.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493743" />
+    <state width="1638" height="389" key="GridCell.Tab.1.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578550747958" />
+    <state width="1638" height="363" key="GridCell.Tab.1.center/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909483" />
+    <state width="1638" height="363" key="GridCell.Tab.1.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194309" />
+    <state width="1638" height="389" key="GridCell.Tab.1.left" timestamp="1578551210059">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210059" />
+    <state width="1638" height="363" key="GridCell.Tab.1.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493743" />
+    <state width="1638" height="389" key="GridCell.Tab.1.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578550747957" />
+    <state width="1638" height="363" key="GridCell.Tab.1.left/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909482" />
+    <state width="1638" height="363" key="GridCell.Tab.1.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194308" />
+    <state width="1638" height="389" key="GridCell.Tab.1.right" timestamp="1578551210060">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210060" />
+    <state width="1638" height="363" key="GridCell.Tab.1.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493744" />
+    <state width="1638" height="389" key="GridCell.Tab.1.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578550747959" />
+    <state width="1638" height="363" key="GridCell.Tab.1.right/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909484" />
+    <state width="1638" height="363" key="GridCell.Tab.1.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194309" />
+    <state width="1638" height="389" key="GridCell.Tab.2.bottom" timestamp="1578551210064">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.2.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210064" />
+    <state width="1638" height="363" key="GridCell.Tab.2.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493725" />
+    <state width="1638" height="32" key="GridCell.Tab.2.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578549550476" />
+    <state width="1638" height="363" key="GridCell.Tab.2.bottom/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909489" />
+    <state width="1638" height="363" key="GridCell.Tab.2.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194312" />
+    <state width="1638" height="389" key="GridCell.Tab.2.center" timestamp="1578551210063">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.2.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210063" />
+    <state width="1638" height="363" key="GridCell.Tab.2.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493724" />
+    <state width="1638" height="32" key="GridCell.Tab.2.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578549550474" />
+    <state width="1638" height="363" key="GridCell.Tab.2.center/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909486" />
+    <state width="1638" height="363" key="GridCell.Tab.2.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194311" />
+    <state width="1638" height="389" key="GridCell.Tab.2.left" timestamp="1578551210062">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.2.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210062" />
+    <state width="1638" height="363" key="GridCell.Tab.2.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493724" />
+    <state width="1638" height="32" key="GridCell.Tab.2.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578549550473" />
+    <state width="1638" height="363" key="GridCell.Tab.2.left/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909486" />
+    <state width="1638" height="363" key="GridCell.Tab.2.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194310" />
+    <state width="1638" height="389" key="GridCell.Tab.2.right" timestamp="1578551210064">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="389" key="GridCell.Tab.2.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578551210064" />
+    <state width="1638" height="363" key="GridCell.Tab.2.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578483493724" />
+    <state width="1638" height="32" key="GridCell.Tab.2.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578549550476" />
+    <state width="1638" height="363" key="GridCell.Tab.2.right/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909488" />
+    <state width="1638" height="363" key="GridCell.Tab.2.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194312" />
+    <state x="378" y="187" key="Maven.ArtifactSearchDialog" timestamp="1578376068295">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="378" y="187" key="Maven.ArtifactSearchDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578376068295" />
+    <state x="177" y="164" key="SettingsEditor" timestamp="1578395283027">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="177" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1578395283027" />
+    <state x="619" y="259" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1578417570943">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="619" y="259" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578417570943" />
+    <state x="505" y="233" key="search.everywhere.popup" timestamp="1578279773353">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1578279773353" />
+  </component>
+</project>

@@ -1,0 +1,14 @@
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/config/OAuthServerConfig.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/controller/UserController.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/dao/UserInfoMapper.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/config/OAuth2AuthorizationServerConfig.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/AuthUserDetails.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/service/UserService.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/dao/UserMapper.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/config/SecurityConfiguration.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/AuthUserDetailsServiceImpl.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/UserServiceImpl.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/config/OAuth2ResourceServerConfig.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/UserDetailsServiceImpl.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/controller/AuthController.java
+/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-user/src/main/java/com/lin/UserApplication.java

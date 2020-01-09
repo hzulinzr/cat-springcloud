@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.BookMapper" >
+    <resultMap id="BaseResultMap" type="com.lin.model.Book" >
+        <!--  自动生成 2019年12月24日 表与实体类字段对应 -->
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="book_type_id" property="bookTypeId" jdbcType="BIGINT" />
+        <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+        <result column="book_author" property="bookAuthor" jdbcType="VARCHAR" />
+        <result column="amount" property="amount" jdbcType="DOUBLE" />
+        <result column="upload_time" property="uploadTime" jdbcType="VARCHAR" />
+        <result column="upload_user_id" property="uploadUserId" jdbcType="BIGINT" />
+        <result column="remove_time" property="removeTime" jdbcType="VARCHAR" />
+        <result column="book_quantity" property="bookQuantity" jdbcType="INTEGER" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+        <result column="book_url" property="bookUrl" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        <!--  自动生成 2019年12月24日 表字段名称 -->
+        id, book_type_id, book_name, book_author, amount, upload_time, upload_user_id, remove_time, 
+        book_quantity, state, book_url
+    </sql>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--  自动生成 2019年12月24日 根据ID查询 -->
+        select 
+        <include refid="Base_Column_List" />
+        from book
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    
+    <update id="update" parameterType="com.lin.model.Book" >
+        <!--  自动生成 2019年12月24日 更新数据 -->
+        update book
+        <set >
+            <if test="bookTypeId != null" >
+                book_type_id = #{bookTypeId,jdbcType=BIGINT},
+            </if>
+            <if test="bookName != null" >
+                book_name = #{bookName,jdbcType=VARCHAR},
+            </if>
+            <if test="bookAuthor != null" >
+                book_author = #{bookAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null" >
+                amount = #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="uploadTime != null" >
+                upload_time = #{uploadTime,jdbcType=VARCHAR},
+            </if>
+            <if test="uploadUserId != null" >
+                upload_user_id = #{uploadUserId,jdbcType=BIGINT},
+            </if>
+            <if test="removeTime != null" >
+                remove_time = #{removeTime,jdbcType=VARCHAR},
+            </if>
+            <if test="bookQuantity != null" >
+                book_quantity = #{bookQuantity,jdbcType=INTEGER},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="bookUrl != null" >
+                book_url = #{bookUrl,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    
+    <insert id="insert" parameterType="com.lin.model.Book" >
+        <!--  自动生成 2019年12月24日 添加数据 -->
+        insert into book
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="bookTypeId != null" >
+                book_type_id,
+            </if>
+            <if test="bookName != null" >
+                book_name,
+            </if>
+            <if test="bookAuthor != null" >
+                book_author,
+            </if>
+            <if test="amount != null" >
+                amount,
+            </if>
+            <if test="uploadTime != null" >
+                upload_time,
+            </if>
+            <if test="uploadUserId != null" >
+                upload_user_id,
+            </if>
+            <if test="removeTime != null" >
+                remove_time,
+            </if>
+            <if test="bookQuantity != null" >
+                book_quantity,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+            <if test="bookUrl != null" >
+                book_url,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="bookTypeId != null" >
+                #{bookTypeId,jdbcType=BIGINT},
+            </if>
+            <if test="bookName != null" >
+                #{bookName,jdbcType=VARCHAR},
+            </if>
+            <if test="bookAuthor != null" >
+                #{bookAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null" >
+                #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="uploadTime != null" >
+                #{uploadTime,jdbcType=VARCHAR},
+            </if>
+            <if test="uploadUserId != null" >
+                #{uploadUserId,jdbcType=BIGINT},
+            </if>
+            <if test="removeTime != null" >
+                #{removeTime,jdbcType=VARCHAR},
+            </if>
+            <if test="bookQuantity != null" >
+                #{bookQuantity,jdbcType=INTEGER},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=INTEGER},
+            </if>
+            <if test="bookUrl != null" >
+                #{bookUrl,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    
+    <insert id="inserts" parameterType="java.util.List" >
+        <!-- WARNING -  自动生成 2019-12-24 添加多条数据 -->
+        insert into book (id, book_type_id, book_name, book_author, amount, upload_time, upload_user_id, remove_time, book_quantity, state, book_url)
+        values
+        <foreach collection="list" item="item" separator="," >
+            (#{item.id,jdbcType=BIGINT}, #{item.bookTypeId,jdbcType=BIGINT}, #{item.bookName,jdbcType=VARCHAR}, #{item.bookAuthor,jdbcType=VARCHAR}, #{item.amount,jdbcType=DOUBLE}, #{item.uploadTime,jdbcType=VARCHAR}, #{item.uploadUserId,jdbcType=BIGINT}, #{item.removeTime,jdbcType=VARCHAR}, #{item.bookQuantity,jdbcType=INTEGER}, #{item.state,jdbcType=INTEGER}, #{item.bookUrl,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+    
+    <delete id="delete" parameterType="java.lang.Long" >
+        <!--  自动生成 2019年12月24日 删除数据 -->
+        delete from book
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>

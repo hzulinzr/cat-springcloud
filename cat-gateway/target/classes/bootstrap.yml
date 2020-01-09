@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: cat-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+        - id: cat-provider-user
+          #uri: "http://127.0.0.1:8091/"
+          uri: lb://cat-provider-user
+          predicates:
+            - Path=/cat/user/**
+          filters:
+            - StripPrefix=1
+        - id: cat-provider-book
+          #uri: "http://127.0.0.1:8090/"
+          uri: lb://cat-provider-book
+          predicates:
+            - Path=/cat/book/**
+          filters:
+            - StripPrefix=1
+#    gateway:
+#      routes:
+#        - id: cat1
+#          predicates:
+#            - Path=/cat/user/**
+#          filters:
+#            - StripPrefix=1
+#          uri: "http://127.0.0.1:8091/"
+#        - id: cat2
+#          predicates:
+#            - Path=/cat/book/**
+#          filters:
+#            - StripPrefix=1
+#          uri: "http://127.0.0.1:8090/"
+
+server:
+  port: 5001
+
+
