@@ -8,13 +8,14 @@ import com.lin.model.User;
 import com.lin.model.UserInfo;
 import com.lin.response.Wrapper;
 import com.lin.service.UserService;
+import com.lin.tools.MD5Util;
 import com.lin.tools.ShortUUID;
 import com.lin.tools.SnowFlake;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeUnit;
 
 
@@ -64,18 +65,18 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Wrapper<User> register(UserDTO userDTO) {
-        //必须是6-10位字母、数字、下划线（这里字母、数字、下划线是指任意组合，没有必须三类均包含）且不能以数字开头
-        String nameCheck = "^[^0-9][\\w_]{5,9}$";
-
-        //必须是6-20位的字母、数字、下划线（这里字母、数字、下划线是指任意组合，没有必须三类均包含）
-        String passwordCheck = "^[\\w_]{6,20}$";
-
-        if(!userDTO.getUsername().matches(nameCheck)){
-            return Wrapper.fail("用户名格式不对");
-        }
-        if(!userDTO.getPassword().matches(passwordCheck)){
-            return Wrapper.fail("密码格式不对");
-        }
+//        //必须是6-10位字母、数字、下划线（这里字母、数字、下划线是指任意组合，没有必须三类均包含）且不能以数字开头
+//        String nameCheck = "^[^0-9][\\w_]{5,9}$";
+//
+//        //必须是6-20位的字母、数字、下划线（这里字母、数字、下划线是指任意组合，没有必须三类均包含）
+//        String passwordCheck = "^[\\w_]{6,20}$";
+//
+//        if(!userDTO.getUsername().matches(nameCheck)){
+//            return Wrapper.fail("用户名格式不对");
+//        }
+//        if(!userDTO.getPassword().matches(passwordCheck)){
+//            return Wrapper.fail("密码格式不对");
+//        }
         String uuid = ShortUUID.randomShortUUID().replace("-", "");
         User user = new User();
         Long userInfoId = new SnowFlake(0 , 0).nextId();
@@ -83,7 +84,7 @@ public class UserServiceImpl implements UserService {
         user.setUuid(uuid);
         user.setUserInfoId(userInfoId);
         user.setUsername(userDTO.getUsername());
-        user.setPassword(userDTO.getPassword());
+        user.setPassword(user.getPassword());
         user.setRegisterTime(System.currentTimeMillis());
         userMapper.insert(user);
 

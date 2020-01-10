@@ -28,21 +28,12 @@ spring:
             - Path=/cat/book/**
           filters:
             - StripPrefix=1
-#    gateway:
-#      routes:
-#        - id: cat1
-#          predicates:
-#            - Path=/cat/user/**
-#          filters:
-#            - StripPrefix=1
-#          uri: "http://127.0.0.1:8091/"
-#        - id: cat2
-#          predicates:
-#            - Path=/cat/book/**
-#          filters:
-#            - StripPrefix=1
-#          uri: "http://127.0.0.1:8090/"
-
+        - id: auth-user
+          uri: "http://127.0.0.1:8071/"
+          predicates:
+            - Path=/cat/oauth/**
+          filters:
+            - StripPrefix=1
 server:
   port: 5001
 

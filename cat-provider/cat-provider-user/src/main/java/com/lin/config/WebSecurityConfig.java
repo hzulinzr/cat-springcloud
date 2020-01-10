@@ -1,11 +1,10 @@
 package com.lin.config;
 
-import com.lin.config.security.AuthDetailsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.lin.config.security.CustomPasswordEncoder;
+import org.aspectj.weaver.ast.And;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -20,23 +19,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private AuthDetailsServiceImpl authDetailsService;
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
-    }
-
-
-    /**
-     *  配置用户签名服务
-     * @param auth 签名管理器构造器
-     */
-    @Override
-    public void configure (AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(authDetailsService).passwordEncoder(passwordEncoder());
-
     }
 
     /**
@@ -61,6 +47,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new CustomPasswordEncoder();
     }
 }

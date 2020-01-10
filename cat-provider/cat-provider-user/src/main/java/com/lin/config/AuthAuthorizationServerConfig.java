@@ -1,6 +1,6 @@
 package com.lin.config;
 
-import com.lin.config.security.AuthDetailsServiceImpl;
+import com.lin.config.security.AuthClientDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,14 +8,12 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 /**
@@ -26,32 +24,28 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 @Configuration
 @EnableAuthorizationServer
 public class AuthAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-    private final AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
+    private AuthClientDetailsService authClientDetailsService;
+    private RedisConnectionFactory redisConnectionFactory;
 
-    private final RedisConnectionFactory redisConnectionFactory;
-
-    private final AuthDetailsServiceImpl authDetailsService;
-
-    public AuthAuthorizationServerConfig(AuthenticationManager authenticationManager, RedisConnectionFactory redisConnectionFactory, AuthDetailsServiceImpl authDetailsService) {
+    public AuthAuthorizationServerConfig(AuthenticationManager authenticationManager, AuthClientDetailsService authClientDetailsService, RedisConnectionFactory redisConnectionFactory) {
         this.authenticationManager = authenticationManager;
+        this.authClientDetailsService = authClientDetailsService;
         this.redisConnectionFactory = redisConnectionFactory;
-        this.authDetailsService = authDetailsService;
     }
-
 
     @Bean
     public RedisTokenStore tokenStore() {
         return new RedisTokenStore(redisConnectionFactory);
     }
 
-
+    /**客户端模式
+     * @param clients
+     * @throws Exception
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        //配置两个客户端,一个用于password认证一个用于client认证
-        clients.inMemory().withClient("client_1")
-                .authorizedGrantTypes("password")
-                .scopes("select")
-                .secret(new BCryptPasswordEncoder().encode("123456"));
+        clients.withClientDetails(authClientDetailsService);
     }
 
     @Override
@@ -63,32 +57,27 @@ public class AuthAuthorizationServerConfig extends AuthorizationServerConfigurer
     }
 
 
+    /**
+     * 认证服务端点配置
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-
-        endpoints.tokenStore(tokenStore())
-                //.accessTokenConverter(accessTokenConverter())
-                .authenticationManager(authenticationManager).reuseRefreshTokens(true)
-                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
-                .userDetailsService(authDetailsService);
-
+        endpoints
+                //token存到redis
+                .tokenStore(new RedisTokenStore(redisConnectionFactory))
+                //启用oauth2管理
+                .authenticationManager(authenticationManager)
+                //接收GET和POST
+                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
     }
-
-    @Bean
-    public JwtAccessTokenConverter accessTokenConverter () {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("secret");
-        return converter;
-    }
-
     @Primary
     @Bean
     public DefaultTokenServices defaultTokenServices() {
         DefaultTokenServices tokenServices = new DefaultTokenServices();
         tokenServices.setTokenStore(tokenStore());
         tokenServices.setSupportRefreshToken(true);
-        tokenServices.setAccessTokenValiditySeconds(60 * 60 * 24);
-        tokenServices.setRefreshTokenValiditySeconds(60 * 60 * 24 * 7);
+        tokenServices.setAccessTokenValiditySeconds(60 * 60 * 2);
+        tokenServices.setRefreshTokenValiditySeconds(60 * 60 * 2);
         return tokenServices;
     }
 }

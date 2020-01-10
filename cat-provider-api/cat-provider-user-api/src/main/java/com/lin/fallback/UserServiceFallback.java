@@ -2,10 +2,14 @@ package com.lin.fallback;
 
 import com.lin.dto.UserDTO;
 import com.lin.feign.UserServiceFeign;
+import com.lin.model.AuthClient;
 import com.lin.model.User;
 import com.lin.model.UserInfo;
+import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
 import org.springframework.stereotype.Component;
+
+import java.security.Principal;
 
 /**
  * @author lzr
@@ -54,4 +58,6 @@ public class UserServiceFallback implements UserServiceFeign {
     public Wrapper<UserInfo> userInfoUpdate(UserInfo userInfo) {
         return Wrapper.success(new UserInfo());
     }
+
+
 }

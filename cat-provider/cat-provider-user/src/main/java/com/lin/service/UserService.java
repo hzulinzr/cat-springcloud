@@ -5,6 +5,9 @@ import com.lin.model.User;
 import com.lin.model.UserInfo;
 import com.lin.response.Wrapper;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * @author lzr
  * @date 2019/11/11 11:57 下午

@@ -2,6 +2,7 @@ package com.lin.feign;
 
 import com.lin.dto.UserDTO;
 import com.lin.fallback.UserServiceFallback;
+import com.lin.model.AuthClient;
 import com.lin.model.User;
 import com.lin.model.UserInfo;
 import com.lin.response.Wrapper;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.security.Principal;
 
 /**
  * @author lzr
@@ -24,7 +27,7 @@ public interface UserServiceFeign {
      * @param password
      * @return
      */
-    @GetMapping("user/login")
+    @GetMapping("/user/login")
     Wrapper<User> login(@RequestParam String username, @RequestParam String password);
 
     /**
@@ -32,7 +35,7 @@ public interface UserServiceFeign {
      * @param userDTO
      * @return
      */
-    @PostMapping("user/register")
+    @PostMapping("/user/register")
     Wrapper<User> register(@RequestBody UserDTO userDTO);
 
     /**
@@ -40,7 +43,7 @@ public interface UserServiceFeign {
      * @param userDTO
      * @return
      */
-    @PostMapping("user/logout")
+    @PostMapping("/user/logout")
     Wrapper<User> logout(@RequestBody UserDTO userDTO);
 
     /**
@@ -48,6 +51,7 @@ public interface UserServiceFeign {
      * @param userInfo
      * @return
      */
-    @PostMapping("user/info/update")
+    @PostMapping("/user/info/update")
     Wrapper<UserInfo> userInfoUpdate(@RequestBody UserInfo userInfo);
+
 }

@@ -7,7 +7,20 @@
     <select id="findByUuid" resultType="com.lin.model.User">
         select id, uuid, username, password, is_login isLogin from user where uuid = #{uuid}
     </select>
-    <select id="getUser" resultType="com.lin.config.security.AuthDetails">
-        select id, uuid, username, password, is_login isLogin from user where username = #{username}
+    <select id="getUser" resultType="com.lin.model.AuthUser">
+        select client_id clientId, secret, resource_id resourceId from auth_user where client_id = #{clientId}
+    </select>
+    <select id="getResourceByRelevanceId" resultType="com.lin.model.Resource">
+        SELECT
+            r.id,
+            r.name,
+            r.url,
+            r.details,
+            r.create_time as 'createTime',
+            r.create_user_id as 'createUserId',
+               r.scope
+        FROM
+            resource r LEFT JOIN auth_resource ar ON r.id=ar.resource_id
+        WHERE ar.client_id= #{clientId}
     </select>
 </mapper>

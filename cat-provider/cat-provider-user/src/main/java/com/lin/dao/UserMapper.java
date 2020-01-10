@@ -1,11 +1,13 @@
 package com.lin.dao;
 
-import com.lin.config.security.AuthDetails;
+import com.lin.model.AuthUser;
+import com.lin.model.Resource;
 import com.lin.model.User;
-import com.lin.response.Wrapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 数据操作接口
@@ -29,5 +31,7 @@ public interface UserMapper extends BaseMapper<User, Long> {
      */
     User findByUuid(@Param("uuid") String uuid);
 
-    AuthDetails getUser(String username);
+    AuthUser getUser(String clientId);
+
+    List<Resource> getResourceByRelevanceId(@Param("clientId") String clientId);
 }
