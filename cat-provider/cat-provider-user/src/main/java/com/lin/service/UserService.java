@@ -14,13 +14,6 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public interface UserService {
-    /**
-     * 登录生成token
-     * @param username
-     * @param password
-     * @return
-     */
-    Wrapper<User> login(String username, String password);
 
     /**
      * 注册

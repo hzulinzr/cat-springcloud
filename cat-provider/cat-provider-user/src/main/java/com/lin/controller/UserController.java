@@ -1,19 +1,15 @@
 package com.lin.controller;
 
 import com.lin.dto.UserDTO;
-import com.lin.model.AuthClient;
 import com.lin.model.User;
 import com.lin.model.UserInfo;
 import com.lin.response.Wrapper;
 import com.lin.service.UserService;
-import com.lin.service.impl.AuthClientServiceImpl;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author lzr
@@ -23,22 +19,9 @@ import java.security.Principal;
 public class UserController {
 
     private final UserService userService;
-    private final AuthClientServiceImpl authClientService;
 
-    public UserController(UserService userService, AuthClientServiceImpl authClientService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.authClientService = authClientService;
-    }
-
-    /**
-     * 登录生成token
-     * @param username
-     * @param password
-     * @return
-     */
-    @GetMapping("/user/login")
-    public Wrapper<User> login(String username, String password){
-        return userService.login(username, password);
     }
 
     /**
@@ -71,19 +54,5 @@ public class UserController {
         return userService.userInfoUpdate(userInfo);
     }
 
-    @GetMapping("/user")
-    public Principal currentUser(Principal principal) {
-        return principal;
-    }
-
-    /**
-     * 根据token获取用户信息 权限等等信息
-     */
-    @ApiOperation(value = "根据token获取用户信息 权限等等信息")
-    @GetMapping("/user/info")
-    public AuthClient getUserInfo() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authClientService.getAuthClient(authentication);
-    }
 
 }

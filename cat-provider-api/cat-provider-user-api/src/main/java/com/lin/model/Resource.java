@@ -16,10 +16,6 @@ public class Resource extends BaseModel {
      */
     private Long id;
     /**
-     * 表字段：resource.name 注释：资源名字
-     */
-    private String name;
-    /**
      * 表字段：resource.url 注释：资源url
      */
     private String url;

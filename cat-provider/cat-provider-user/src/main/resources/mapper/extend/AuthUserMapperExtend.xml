@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.AuthUserMapper" >
+<!--    获取用户信息-->
+    <select id="getUser" resultType="com.lin.model.AuthUser">
+        select client_id clientId, state, secret from auth_user where client_id = #{clientId}
+    </select>
+
+    <select id="login" resultType="com.lin.model.AuthUser">
+        select client_id clientId, state, secret from auth_user where client_id = #{username} and secret = #{password}
+    </select>
+</mapper>

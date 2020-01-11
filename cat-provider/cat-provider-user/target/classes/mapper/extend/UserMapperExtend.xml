@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lin.dao.UserMapper" >
-    <select id="login" resultType="com.lin.model.User">
-        select id, uuid, user_info_id userInfoId, username, password, uuid, register_time registerTime from user where username = #{username} and password = #{password}
-    </select>
     <select id="findByUuid" resultType="com.lin.model.User">
         select id, uuid, username, password, is_login isLogin from user where uuid = #{uuid}
     </select>
-    <select id="getUser" resultType="com.lin.model.AuthUser">
-        select client_id clientId, secret, resource_id resourceId from auth_user where client_id = #{clientId}
-    </select>
-    <select id="getResourceByRelevanceId" resultType="com.lin.model.Resource">
-        SELECT
-            r.id,
-            r.name,
-            r.url,
-            r.details,
-            r.create_time as 'createTime',
-            r.create_user_id as 'createUserId',
-               r.scope
-        FROM
-            resource r LEFT JOIN auth_resource ar ON r.id=ar.resource_id
-        WHERE ar.client_id= #{clientId}
-    </select>
+
 </mapper>

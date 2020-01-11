@@ -36,28 +36,6 @@ public class UserServiceImpl implements UserService {
         this.stringRedisTemplate = stringRedisTemplate;
     }
 
-    @Override
-    public Wrapper<User> login(String username, String password) {
-        User user = userMapper.login(username, password);
-        if(null == user){
-            return Wrapper.fail("user not null");
-        }
-        if(username.equals(user.getUsername()) && password.equals(user.getPassword())){
-            // 生成token
-            String token = JwtUtil.generateToken(username);
-            // 把token放入Redis中
-            stringRedisTemplate.opsForValue().set(user.getUuid(), token);
-            stringRedisTemplate.expire(token, JwtUtil.TOKEN_EXPIRE_TIME, TimeUnit.SECONDS);
-            user.setToken(token);
-            user.setIsLogin(1);
-            user.setLastLoginTime(System.currentTimeMillis());
-            userMapper.update(user);
-            return Wrapper.success(user);
-        }else{
-            return Wrapper.fail("username or password error");
-        }
-    }
-
     /**
      * 注册
      * @param userDTO

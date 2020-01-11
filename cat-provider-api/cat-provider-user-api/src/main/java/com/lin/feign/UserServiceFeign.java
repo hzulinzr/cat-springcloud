@@ -2,17 +2,12 @@ package com.lin.feign;
 
 import com.lin.dto.UserDTO;
 import com.lin.fallback.UserServiceFallback;
-import com.lin.model.AuthClient;
 import com.lin.model.User;
 import com.lin.model.UserInfo;
 import com.lin.response.Wrapper;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.security.Principal;
 
 /**
  * @author lzr
@@ -20,15 +15,6 @@ import java.security.Principal;
  */
 @FeignClient(name = "cat-provider-user", fallback = UserServiceFallback.class)
 public interface UserServiceFeign {
-
-    /**
-     * 登录生成token
-     * @param username
-     * @param password
-     * @return
-     */
-    @GetMapping("/user/login")
-    Wrapper<User> login(@RequestParam String username, @RequestParam String password);
 
     /**
      * 注册

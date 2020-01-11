@@ -1,9 +1,7 @@
 package com.lin.filter;
 
-import com.lin.feign.UserServiceFeign;
 import com.lin.model.AuthClient;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Configuration;
@@ -72,7 +70,6 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         }
 
         //获取用户信息
-//        AuthClient authClient = userServiceFeign.getUserInfo();
         HttpHeaders headers = new HttpHeaders();
         headers.set(AUTHORIZATION, authorization.get(0));
         HttpEntity<MultiValueMap<String, Object>> requests = new HttpEntity(null, headers);
@@ -87,17 +84,6 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             log.error("用户权限不足");
             throw new RuntimeException("用户权限不足");
         }
-//
-//        //获取用户权限
-//        if(null == authClient || null == authClient.getAuthorities() || 0 == authClient.getAuthorities().size()){
-//            log.error("获取用户信息异常");
-//            throw new RuntimeException("获取用户信息异常");
-//        }
-//        //是否有权限
-//        if(authClient.getAuthorities().contains(requestPath)){
-//            log.error("用户权限不足");
-//            throw new RuntimeException("用户权限不足");
-//        }
     }
 
     @Override

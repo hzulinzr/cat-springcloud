@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.AuthUserMapper" >
+    <resultMap id="BaseResultMap" type="com.lin.model.AuthUser" >
+        <!--  自动生成 2020年01月11日 表与实体类字段对应 -->
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="client_id" property="clientId" jdbcType="VARCHAR" />
+        <result column="secret" property="secret" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        <!--  自动生成 2020年01月11日 表字段名称 -->
+        id, create_time, update_time, state, name, address, phone_number, client_id, secret
+    </sql>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--  自动生成 2020年01月11日 根据ID查询 -->
+        select 
+        <include refid="Base_Column_List" />
+        from auth_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    
+    <update id="update" parameterType="com.lin.model.AuthUser" >
+        <!--  自动生成 2020年01月11日 更新数据 -->
+        update auth_user
+        <set >
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="updateTime != null" >
+                update_time = #{updateTime,jdbcType=BIGINT},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null" >
+                phone_number = #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="clientId != null" >
+                client_id = #{clientId,jdbcType=VARCHAR},
+            </if>
+            <if test="secret != null" >
+                secret = #{secret,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    
+    <insert id="insert" parameterType="com.lin.model.AuthUser" >
+        <!--  自动生成 2020年01月11日 添加数据 -->
+        insert into auth_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="phoneNumber != null" >
+                phone_number,
+            </if>
+            <if test="clientId != null" >
+                client_id,
+            </if>
+            <if test="secret != null" >
+                secret,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=BIGINT},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=INTEGER},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null" >
+                #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="clientId != null" >
+                #{clientId,jdbcType=VARCHAR},
+            </if>
+            <if test="secret != null" >
+                #{secret,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    
+    <insert id="inserts" parameterType="java.util.List" >
+        <!-- WARNING -  自动生成 2020-01-11 添加多条数据 -->
+        insert into auth_user (id, create_time, update_time, state, name, address, phone_number, client_id, secret)
+        values
+        <foreach collection="list" item="item" separator="," >
+            (#{item.id,jdbcType=BIGINT}, #{item.createTime,jdbcType=BIGINT}, #{item.updateTime,jdbcType=BIGINT}, #{item.state,jdbcType=INTEGER}, #{item.name,jdbcType=VARCHAR}, #{item.address,jdbcType=VARCHAR}, #{item.phoneNumber,jdbcType=VARCHAR}, #{item.clientId,jdbcType=VARCHAR}, #{item.secret,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+    
+    <delete id="delete" parameterType="java.lang.Long" >
+        <!--  自动生成 2020年01月11日 删除数据 -->
+        delete from auth_user
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>

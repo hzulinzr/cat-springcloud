@@ -2,14 +2,10 @@ package com.lin.fallback;
 
 import com.lin.dto.UserDTO;
 import com.lin.feign.UserServiceFeign;
-import com.lin.model.AuthClient;
 import com.lin.model.User;
 import com.lin.model.UserInfo;
-import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
 import org.springframework.stereotype.Component;
-
-import java.security.Principal;
 
 /**
  * @author lzr
@@ -18,16 +14,6 @@ import java.security.Principal;
 @Component
 public class UserServiceFallback implements UserServiceFeign {
 
-    /**
-     * 登录生成token
-     * @param username
-     * @param password
-     * @return
-     */
-    @Override
-    public Wrapper<User> login(String username, String password) {
-        return Wrapper.success(new User());
-    }
 
     /**
      * 注册

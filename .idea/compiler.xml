@@ -9,15 +9,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="cat-provider-comment-api" />
         <module name="cat-provider-aggregation-book" />
+        <module name="cat-provider-aggregation-comment" />
         <module name="cat-provider-user" />
         <module name="cat-gateway" />
         <module name="cat-provider-book" />
-        <module name="cat-provider-book-api" />
         <module name="cat-common" />
-        <module name="cat-provider-aggregation-user" />
-        <module name="cat-provider-aggregation-comment" />
-        <module name="cat-provider-user-api" />
+        <module name="cat-provider-book-api" />
         <module name="cat-provider-comment" />
+        <module name="cat-provider-user-api" />
+        <module name="cat-provider-aggregation-user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

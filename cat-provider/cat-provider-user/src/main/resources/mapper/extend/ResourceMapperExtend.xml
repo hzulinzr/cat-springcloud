@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.ResourceMapper" >
+    <select id="getResource" resultType="com.lin.model.Resource">
+        SELECT
+            r.id,
+            r.url,
+            r.details,
+            r.create_time as createTime,
+            r.scope
+        FROM
+            resource r LEFT JOIN auth_resource ar ON r.id=ar.resource_id
+        WHERE ar.client_id= #{clientId}
+    </select>
+</mapper>

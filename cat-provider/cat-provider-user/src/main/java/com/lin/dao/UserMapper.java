@@ -16,13 +16,6 @@ import java.util.List;
 @Mapper
 @Repository
 public interface UserMapper extends BaseMapper<User, Long> {
-    /**
-     * 登录
-     * @param username
-     * @param password
-     * @return
-     */
-    User login(@Param("username") String username, @Param("password") String password);
 
     /**
      * 通过uuid查询用户
@@ -30,8 +23,4 @@ public interface UserMapper extends BaseMapper<User, Long> {
      * @return 返回用户
      */
     User findByUuid(@Param("uuid") String uuid);
-
-    AuthUser getUser(String clientId);
-
-    List<Resource> getResourceByRelevanceId(@Param("clientId") String clientId);
 }

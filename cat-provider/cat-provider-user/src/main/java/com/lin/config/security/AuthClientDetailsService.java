@@ -1,6 +1,7 @@
 package com.lin.config.security;
 
-import com.lin.dao.UserMapper;
+import com.lin.dao.AuthUserMapper;
+import com.lin.dao.ResourceMapper;
 import com.lin.model.AuthClient;
 import com.lin.model.AuthUser;
 import com.lin.model.Resource;
@@ -24,21 +25,24 @@ import java.util.Set;
 @Service
 public class AuthClientDetailsService implements ClientDetailsService {
 
-    private UserMapper userMapper;
+    private AuthUserMapper authUserMapper;
+    private ResourceMapper resourceMapper;
 
-    public AuthClientDetailsService(UserMapper userMapper) {
-        this.userMapper = userMapper;
+    public AuthClientDetailsService(AuthUserMapper authUserMapper, ResourceMapper resourceMapper) {
+        this.authUserMapper = authUserMapper;
+        this.resourceMapper = resourceMapper;
     }
+
 
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         AuthClient authClient = new AuthClient();
         //查用户信息
-        AuthUser authUser = userMapper.getUser(clientId);
+        AuthUser authUser = authUserMapper.getUser(clientId);
         authClient.setClientId(authUser.getClientId());
         authClient.setSecret(authUser.getSecret());
         //查询数据库用户的权限
-        List<Resource> resourceByRelevanceId = userMapper.getResourceByRelevanceId(clientId);
+        List<Resource> resourceByRelevanceId = resourceMapper.getResource(clientId);
         List<String> authorities =new ArrayList();
         Set<String> scope=new HashSet<>();
         resourceByRelevanceId.forEach((resource)->{
