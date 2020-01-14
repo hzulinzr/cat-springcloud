@@ -14,12 +14,12 @@
         <module name="cat-provider-order" />
         <module name="cat-gateway" />
         <module name="cat-provider-comment-api" />
+        <module name="cat-provider-comment" />
         <module name="cat-provider-user-api" />
         <module name="cat-provider-aggregation-order" />
         <module name="cat-provider-aggregation-user" />
         <module name="cat-provider-order-api" />
         <module name="cat-common" />
-        <module name="cat-provider-comment" />
         <module name="cat-provider-book" />
       </profile>
     </annotationProcessing>

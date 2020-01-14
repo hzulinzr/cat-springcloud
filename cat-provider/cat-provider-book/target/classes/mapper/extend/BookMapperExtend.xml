@@ -34,4 +34,22 @@
         LIMIT #{page}, #{rows}
     </select>
 
+    <select id="searchBookInfoList" resultType="com.lin.vo.BookInfoVo">
+        select
+            b.book_name AS bookName,
+            b.book_author AS bookAuthor,
+            b.amount AS amount,
+            b.book_quantity AS bookQuantity,
+            bt.book_type_name AS bookTypeName,
+            b.upload_time uploadTime,
+            b.book_url bookUrl,
+            bt.book_type_name bookTypeName,
+            bt.book_content bookContent
+        from
+        book b
+        left join book_type bt on b.book_type_id = bt.id
+        WHERE
+        b.id in (#{ids})
+    </select>
+
 </mapper>

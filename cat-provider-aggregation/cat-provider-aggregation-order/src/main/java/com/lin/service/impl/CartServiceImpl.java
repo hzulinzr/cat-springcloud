@@ -2,7 +2,6 @@ package com.lin.service.impl;
 
 import com.lin.feign.BookServiceFeign;
 import com.lin.feign.CartServiceFeign;
-import com.lin.model.Cart;
 import com.lin.response.PageData;
 import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
@@ -55,7 +54,7 @@ public class CartServiceImpl implements CartService {
             List<String> ids = cartList.stream().map(CartVo::getBookId).collect(Collectors.toList());
             //将list转换成以逗号隔开的字符串
             String bookIds = String.join(",", ids);
-            //todo feign调用书籍详情接口
+            // 根据书籍id列表获取书籍详情列表
             Wrapper<List<BookInfoVo>> bookInfoListWrapper = bookServiceFeign.bookInfoList(bookIds);
             if(ResponseCode.SUCCESS.getCode() != bookInfoListWrapper.getCode()){
                 return Wrapper.fail(bookInfoListWrapper.getMessage());
