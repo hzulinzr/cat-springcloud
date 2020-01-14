@@ -51,11 +51,11 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     private void authToken(ServerWebExchange exchange) {
         //不验证的地址
         List<String> urls = new ArrayList<>();
-        urls.add("/cat/user");
-        urls.add("/cat/oauth/token");
         urls.add("/cat/user/login");
         urls.add("/cat/user/logout");
         urls.add("/cat/user/register");
+        urls.add("/cat/book/list");
+        urls.add("/cat/book/info");
         String requestPath = exchange.getRequest().getPath().value();
         //特殊url不验证
         if (urls.contains(requestPath)) {

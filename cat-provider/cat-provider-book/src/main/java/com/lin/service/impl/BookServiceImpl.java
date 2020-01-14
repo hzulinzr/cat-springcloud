@@ -13,11 +13,13 @@ import com.lin.response.Wrapper;
 import com.lin.service.BookService;
 import com.lin.tools.Page;
 import com.lin.tools.SnowFlake;
+import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import com.lin.vo.BookUrlVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -77,6 +79,7 @@ public class BookServiceImpl implements BookService {
      * @return 返回新增书籍信息
      */
     @Override
+    @Transactional(rollbackFor = RuntimeException.class)
     public Wrapper bookAdd(BookAddDTO bookAddDTO) {
         Book book = new Book();
         BeanUtils.copyProperties(bookAddDTO, book);
@@ -98,6 +101,7 @@ public class BookServiceImpl implements BookService {
      * @return 返回更新书籍信息
      */
     @Override
+    @Transactional(rollbackFor = RuntimeException.class)
     public Wrapper bookUpdate(BookUpdateDTO bookUpdateDTO) {
         Book book = bookMapper.findById(bookUpdateDTO.getBookId());
         if(null == book){
@@ -119,6 +123,7 @@ public class BookServiceImpl implements BookService {
      * @return 返回删除书籍信息
      */
     @Override
+    @Transactional(rollbackFor = RuntimeException.class)
     public Wrapper bookDelete(BaseBookDTO baseBookDTO) {
         Book book = bookMapper.findById(baseBookDTO.getBookId());
         if(null == book){
@@ -147,7 +152,7 @@ public class BookServiceImpl implements BookService {
             //上传到指定路径
             file.transferTo(filePath);
         }catch(Exception e){
-            log.info("上传文件失败");
+            log.info("上传文件失败", e);
         }
         // 重新生成唯一文件名，用于存储数据库
         String fileName = file.getOriginalFilename();
@@ -156,5 +161,15 @@ public class BookServiceImpl implements BookService {
         BookUrlVo bookUrlVo = new BookUrlVo();
         bookUrlVo.setBookUrl(bookUrl);
         return Wrapper.success(bookUrlVo);
+    }
+
+    /**
+     * 获取书籍详情列表
+     * @param ids 多个书籍id，以逗号隔开的字符串
+     * @return 返回书籍详情列表
+     */
+    @Override
+    public Wrapper<List<BookInfoVo>> bookInfoList(String ids) {
+        return Wrapper.success(bookMapper.searchBookInfoList(ids));
     }
 }

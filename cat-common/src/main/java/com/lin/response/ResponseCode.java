@@ -18,7 +18,7 @@ public enum ResponseCode {
 	BOOK_SERVICE_NO_AVAILABLE(50001, "book service no available"),
 	USER_NO_AVAILABLE(50002, "user service no available"),
 	COMMENT_CONTROL_NO_AVAILABLE(50003, "comment control service no available"),
-	QUALITY_CONTROL_NO_AVAILABLE(50004, "quality control service no available"),
+	ORDER_SERVICE_NO_AVAILABLE(50004, "order service no available"),
 	METHOD_NOT_ALLOWED(50405, "METHOD_NOT_ALLOWED"),
 	IOT_UN_KNOW_ERROR(50900, "IOT_UN_KNOW_ERROR"),
 	IOT_GROUP_NOT_EXITS(50901, "IOT_GROUP_NOT_EXITS"),

@@ -8,4 +8,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  */
 @FeignClient(name = "cat-provider-user", fallback = AuthUserServiceFallback.class)
 public interface AuthUserServiceFeign {
+
 }

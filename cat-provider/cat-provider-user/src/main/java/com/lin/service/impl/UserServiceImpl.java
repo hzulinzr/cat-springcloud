@@ -37,43 +37,6 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 注册
-     * @param userDTO
-     * @return
-     */
-    @Override
-    public Wrapper<User> register(UserDTO userDTO) {
-//        //必须是6-10位字母、数字、下划线（这里字母、数字、下划线是指任意组合，没有必须三类均包含）且不能以数字开头
-//        String nameCheck = "^[^0-9][\\w_]{5,9}$";
-//
-//        //必须是6-20位的字母、数字、下划线（这里字母、数字、下划线是指任意组合，没有必须三类均包含）
-//        String passwordCheck = "^[\\w_]{6,20}$";
-//
-//        if(!userDTO.getUsername().matches(nameCheck)){
-//            return Wrapper.fail("用户名格式不对");
-//        }
-//        if(!userDTO.getPassword().matches(passwordCheck)){
-//            return Wrapper.fail("密码格式不对");
-//        }
-        String uuid = ShortUUID.randomShortUUID().replace("-", "");
-        User user = new User();
-        Long userInfoId = new SnowFlake(0 , 0).nextId();
-        user.setId(new SnowFlake(0, 0).nextId());
-        user.setUuid(uuid);
-        user.setUserInfoId(userInfoId);
-        user.setUsername(userDTO.getUsername());
-        user.setPassword(user.getPassword());
-        user.setRegisterTime(System.currentTimeMillis());
-        userMapper.insert(user);
-
-        //用户个信息
-        UserInfo userInfo = new UserInfo();
-        userInfo.setId(user.getUserInfoId());
-        userInfoMapper.insert(userInfo);
-        return Wrapper.success();
-    }
-
-    /**
      * 注销
      * @param userDTO
      * @return

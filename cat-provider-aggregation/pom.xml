@@ -15,6 +15,7 @@
         <module>cat-provider-aggregation-comment</module>
         <module>cat-provider-aggregation-book</module>
         <module>cat-provider-aggregation-user</module>
+        <module>cat-provider-aggregation-order</module>
     </modules>
 
     <dependencies>

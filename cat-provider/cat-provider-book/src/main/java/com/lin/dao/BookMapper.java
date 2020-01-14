@@ -1,6 +1,7 @@
 package com.lin.dao;
 
 import com.lin.model.Book;
+import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,4 +19,6 @@ public interface BookMapper extends BaseMapper<Book, Long> {
     int searchBookListCount(@Param("keyword") String keyword);
 
     List<BookListVo> searchBookList(@Param("keyword") String keyword, @Param("page") int page, @Param("rows") int rows);
+
+    List<BookInfoVo> searchBookInfoList(@Param("ids") String ids);
 }

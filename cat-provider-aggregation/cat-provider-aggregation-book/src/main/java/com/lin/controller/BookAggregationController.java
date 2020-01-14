@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020-01-06 19:29:56
  */
 @RestController
-@RequestMapping("/cat")
 public class BookAggregationController {
     private final BookAggregationService bookAggregationService;
 

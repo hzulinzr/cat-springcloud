@@ -16,13 +16,6 @@ import java.security.NoSuchAlgorithmException;
 public interface UserService {
 
     /**
-     * 注册
-     * @param userDTO
-     * @return
-     */
-    Wrapper<User> register(UserDTO userDTO);
-
-    /**
      * 注销
      * @param userDTO
      * @return

@@ -15,15 +15,13 @@ spring:
           lowerCaseServiceId: true
       routes:
         - id: cat-provider-user
-          #uri: "http://127.0.0.1:8091/"
           uri: lb://cat-provider-user
           predicates:
             - Path=/cat/user/**
           filters:
             - StripPrefix=1
         - id: cat-provider-book
-          #uri: "http://127.0.0.1:8090/"
-          uri: lb://cat-provider-book
+          uri: lb://cat-provider-aggregation-book
           predicates:
             - Path=/cat/book/**
           filters:

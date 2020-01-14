@@ -15,6 +15,7 @@
         <module>cat-provider-book</module>
         <module>cat-provider-user</module>
         <module>cat-provider-comment</module>
+        <module>cat-provider-order</module>
     </modules>
 
     <dependencies>

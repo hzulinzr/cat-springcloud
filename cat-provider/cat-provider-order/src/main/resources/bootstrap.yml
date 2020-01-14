@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: cat-provider-order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/cat-book?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet:
+    multipart:
+      max-file-size: 10MB # 限制文件上传的大小
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml, mapper/*/*.xml

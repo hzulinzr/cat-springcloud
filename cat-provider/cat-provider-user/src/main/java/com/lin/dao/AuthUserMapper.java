@@ -1,5 +1,6 @@
 package com.lin.dao;
 
+import com.lin.dto.RegisterDTO;
 import com.lin.model.AuthUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,7 +19,7 @@ public interface AuthUserMapper extends BaseMapper<AuthUser, Long> {
      * @param clientId
      * @return
      */
-    AuthUser getUser(String clientId);
+    AuthUser getUser(@Param("clientId") String clientId);
 
     /**
      * 用户登录
@@ -27,4 +28,11 @@ public interface AuthUserMapper extends BaseMapper<AuthUser, Long> {
      * @return 返回用户信息
      */
     AuthUser login(@Param("username") String username, @Param("password") String password);
+
+    /**
+     * 用户注册
+     * @param registerDTO
+     * @return
+     */
+    int register(@Param("registerDTO") RegisterDTO registerDTO);
 }

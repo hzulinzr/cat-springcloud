@@ -5,10 +5,13 @@ import com.lin.model.Book;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.tools.Page;
+import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import com.lin.vo.BookUrlVo;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * @author lzr
@@ -58,4 +61,12 @@ public interface BookService {
      * @return
      */
     Wrapper<BookUrlVo> bookUpload(@RequestParam("file") MultipartFile file);
+
+    /**
+     * 获取书籍详情列表
+     * @param ids 多个书籍id，以逗号隔开的字符串
+     * @return 返回书籍详情列表
+     */
+    Wrapper<List<BookInfoVo>> bookInfoList(String ids);
 }
+

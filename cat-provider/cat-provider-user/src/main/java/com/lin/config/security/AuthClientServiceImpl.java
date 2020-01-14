@@ -1,4 +1,4 @@
-package com.lin.service.impl;
+package com.lin.config.security;
 
 import com.lin.model.AuthClient;
 import org.springframework.security.core.Authentication;
@@ -16,7 +16,6 @@ import java.util.List;
  */
 @Service
 public class AuthClientServiceImpl{
-
 
     /**
     * 获得用户验证数据、权限等等

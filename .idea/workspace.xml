@@ -2,56 +2,92 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4aed140b-37fb-4adc-a8a4-21650c268cdc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/model/OkHttpProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/tools/OkHttpConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/fallback/AuthUserServiceFallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/feign/AuthUserServiceFeign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/AuthResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/vo/UserLoginSuccessVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/resource/filter/Auth2ResourceServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/controller/AuthUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/AuthResourceMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/AuthUserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/ResourceMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/AuthUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/AuthUserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/AuthResourceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/AuthUserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/ResourceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/extend/AuthResourceMapperExtend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/extend/AuthUserMapperExtend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/extend/ResourceMapperExtend.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-order/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-order/src/main/java/com/lin/controller/CartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-order/src/main/java/com/lin/service/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-order/src/main/java/com/lin/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/vo/BookInfoVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-order-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-order-api/src/main/java/com/lin/CartServiceFallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-order-api/src/main/java/com/lin/feign/CartServiceFeign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-order-api/src/main/java/com/lin/model/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-order-api/src/main/java/com/lin/vo/CartListVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-order-api/src/main/java/com/lin/vo/CartVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/dto/RegisterDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/vo/UserRegisterSuccessVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/java/com/lin/OrderApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/java/com/lin/controller/CartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/java/com/lin/dao/CartMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/java/com/lin/service/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/java/com/lin/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/resources/mapper/CartMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/resources/mapper/extend/CartMapperExtend.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/feignConfig/HttpPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/response/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-common/src/main/java/com/lin/response/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-common/target/cat-common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-common/target/cat-common-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-common/target/classes/com/lin/response/ResponseCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-common/target/classes/com/lin/response/ResponseCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cat-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cat-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cat-gateway/src/main/java/com/lin/filter/AuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-gateway/src/main/java/com/lin/filter/AuthGlobalFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-gateway/target/classes/com/lin/GatewayRoutes.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-gateway/target/classes/com/lin/GatewayRoutes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/fallback/UserServiceFallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/fallback/UserServiceFallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/feign/UserServiceFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/feign/UserServiceFeign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/AuthUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model/Resource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/fallback/UserServiceFallback.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/fallback/UserServiceFallback.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/feign/UserServiceFeign.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/com/lin/feign/UserServiceFeign.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/AuthResourceServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/AuthResourceServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/OAuth2ResourceServerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/Oauth2AccessDecisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/resource/filter/Oauth2AccessDecisionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/Oauth2FilterInvocationSecurityMetadataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/resource/filter/Oauth2FilterInvocationSecurityMetadataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/Oauth2FilterSecurityInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/resource/filter/Oauth2FilterSecurityInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/AuthClientDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/AuthClientDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/CustomPasswordEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/CustomPasswordEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-gateway/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-gateway/target/cat-gateway-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-gateway/target/cat-gateway-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-gateway/target/cat-gateway-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/cat-gateway/target/cat-gateway-1.0-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-gateway/target/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-gateway/target/classes/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cat-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cat-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/java/com/lin/controller/BookAggregationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/java/com/lin/controller/BookAggregationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/java/com/lin/service/impl/BookAggregationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/java/com/lin/service/impl/BookAggregationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/cat-provider-aggregation-book-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/cat-provider-aggregation-book-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/com/lin/controller/BookAggregationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/com/lin/controller/BookAggregationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/com/lin/service/impl/BookAggregationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/target/classes/com/lin/service/impl/BookAggregationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-comment/target/cat-provider-aggregation-comment-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-comment/target/cat-provider-aggregation-comment-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/target/cat-provider-aggregation-user-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-user/target/cat-provider-aggregation-user-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-aggregation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-aggregation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/fallback/BookServiceFallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/fallback/BookServiceFallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/feign/BookServiceFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/src/main/java/com/lin/feign/BookServiceFeign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/cat-provider-book-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/cat-provider-book-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/fallback/BookServiceFallback.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-book-api/target/classes/com/lin/fallback/BookServiceFallback.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-comment-api/target/cat-provider-comment-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-comment-api/target/cat-provider-comment-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/fallback/AuthUserServiceFallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/fallback/AuthUserServiceFallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/feign/AuthUserServiceFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/feign/AuthUserServiceFeign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/cat-provider-user-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/cat-provider-user-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/classes/META-INF/cat-provider-user-api.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/dao/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/dao/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java/com/lin/service/impl/BookServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources/mapper/extend/BookMapperExtend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources/mapper/extend/BookMapperExtend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/cat-provider-book-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/cat-provider-book-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/controller/BookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/dao/BookMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/dao/BookMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/service/impl/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-book/target/classes/com/lin/service/impl/BookServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-comment/target/cat-provider-comment-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-comment/target/cat-provider-comment-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/controller/AuthUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/controller/AuthUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/AuthUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao/AuthUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/AuthUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/AuthUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/AuthClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/security/AuthClientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/AuthUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/AuthUserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/extend/UserMapperExtend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/extend/UserMapperExtend.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/extend/AuthUserMapperExtend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper/extend/AuthUserMapperExtend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/cat-provider-user-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/cat-provider-user-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/META-INF/cat-provider-user.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/dao/UserMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/com/lin/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/mapper/extend/UserMapperExtend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/classes/mapper/extend/UserMapperExtend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/cat-provider-user/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat-provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cat-provider/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,20 +149,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/cat-common/src/main/java/com/lin" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/resources" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.ignored.files" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/resource/filter" />
-      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources" />
-      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java" />
-      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources" />
-      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/resources" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-order/src/main/java/com/lin" />
+      <recent name="$PROJECT_DIR$/cat-provider-api/cat-provider-order-api/src/main/java/com/lin" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao" />
+      <recent name="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.lin.service.impl" />
@@ -135,12 +171,12 @@
       <recent name="com.lin.config.security" />
       <recent name="com.lin.model" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/dao" />
-      <recent name="$PROJECT_DIR$/cat-provider-api/cat-provider-user-api/src/main/java/com/lin/model" />
-      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources/mapper" />
-      <recent name="$PROJECT_DIR$/cat-provider-aggregation/cat-provider-aggregation-book/src/main/resources" />
-      <recent name="$PROJECT_DIR$/cat-common/src/main/java/com/lin" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java/com/lin/config/resource/filter" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/resources" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-book/src/main/java" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/resources" />
+      <recent name="$PROJECT_DIR$/cat-provider/cat-provider-user/src/main/java" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.GatewayRoutes">
@@ -177,6 +213,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="cat-provider-order" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lin.OrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="cat-provider-user" />
       <extension name="coverage">
@@ -192,9 +241,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserApplication" />
-        <item itemvalue="Spring Boot.BookApplication" />
         <item itemvalue="Spring Boot.BookAggregationApplication" />
+        <item itemvalue="Spring Boot.BookApplication" />
+        <item itemvalue="Spring Boot.UserApplication" />
+        <item itemvalue="Spring Boot.OrderApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +339,8 @@
       <workItem from="1578415681070" duration="35167000" />
       <workItem from="1578657522336" duration="2326000" />
       <workItem from="1578665123092" duration="5566000" />
-      <workItem from="1578722538243" duration="11341000" />
+      <workItem from="1578722538243" duration="19541000" />
+      <workItem from="1578895395625" duration="21792000" />
     </task>
     <task id="LOCAL-00001" summary="提交cat项目">
       <created>1578553618282</created>
@@ -305,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578678471329</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="增加okhttp远程调用">
+      <created>1578738403679</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1578738403680</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,21 +385,22 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="提交cat项目" />
     <MESSAGE value="网关认证鉴权" />
-    <option name="LAST_COMMIT_MESSAGE" value="网关认证鉴权" />
+    <MESSAGE value="增加okhttp远程调用" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加okhttp远程调用" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="190" key="#Inspections" timestamp="1578622765842">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="440" y="190" key="#Inspections/0.0.1680.1050@0.0.1680.1050" timestamp="1578622765842" />
-    <state x="440" y="190" key="#Project_Structure" timestamp="1578733120428">
+    <state x="440" y="190" key="#Project_Structure" timestamp="1578904663736">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="190" key="#Project_Structure/0.0.1680.1050@0.0.1680.1050" timestamp="1578733120428" />
-    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1578730806551">
+    <state x="440" y="190" key="#Project_Structure/0.0.1680.1050@0.0.1680.1050" timestamp="1578904663736" />
+    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1578983939773">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1578730806551" />
+    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1578983939773" />
     <state x="473" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578371638119">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -350,10 +409,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578556555181" />
-    <state x="0" y="127" key="CommitChangelistDialog2" timestamp="1578738366122">
+    <state x="0" y="126" key="CommitChangelistDialog2" timestamp="1578986631448">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="0" y="127" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1578738366122" />
+    <state x="0" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1578986631448" />
     <state width="532" height="466" key="DebuggerActiveHint" timestamp="1578581721687">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -366,126 +425,126 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="693" y="425" key="Github.ShareDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578554836995" />
-    <state width="1638" height="337" key="GridCell.Tab.0.bottom" timestamp="1578738284599">
+    <state width="1638" height="356" key="GridCell.Tab.0.bottom" timestamp="1578986427764">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284599" />
+    <state width="1638" height="356" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427764" />
     <state width="1638" height="337" key="GridCell.Tab.0.bottom/42.23.1638.1027@42.23.1638.1027" timestamp="1578737263760" />
-    <state width="1638" height="337" key="GridCell.Tab.0.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236865" />
-    <state width="1638" height="337" key="GridCell.Tab.0.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578731468574" />
+    <state width="1638" height="337" key="GridCell.Tab.0.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583671" />
+    <state width="1638" height="337" key="GridCell.Tab.0.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578765214066" />
     <state width="1638" height="363" key="GridCell.Tab.0.bottom/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909601" />
-    <state width="1638" height="363" key="GridCell.Tab.0.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194403" />
-    <state width="1638" height="337" key="GridCell.Tab.0.center" timestamp="1578738284598">
+    <state width="1638" height="356" key="GridCell.Tab.0.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797875" />
+    <state width="1638" height="356" key="GridCell.Tab.0.center" timestamp="1578986427763">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284598" />
+    <state width="1638" height="356" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427763" />
     <state width="1638" height="337" key="GridCell.Tab.0.center/42.23.1638.1027@42.23.1638.1027" timestamp="1578737263759" />
-    <state width="1638" height="337" key="GridCell.Tab.0.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236865" />
-    <state width="1638" height="337" key="GridCell.Tab.0.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578731468573" />
+    <state width="1638" height="337" key="GridCell.Tab.0.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583670" />
+    <state width="1638" height="337" key="GridCell.Tab.0.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578765214065" />
     <state width="1638" height="363" key="GridCell.Tab.0.center/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909600" />
-    <state width="1638" height="363" key="GridCell.Tab.0.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194402" />
-    <state width="1638" height="337" key="GridCell.Tab.0.left" timestamp="1578738284598">
+    <state width="1638" height="356" key="GridCell.Tab.0.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797874" />
+    <state width="1638" height="356" key="GridCell.Tab.0.left" timestamp="1578986427762">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284598" />
+    <state width="1638" height="356" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427762" />
     <state width="1638" height="337" key="GridCell.Tab.0.left/42.23.1638.1027@42.23.1638.1027" timestamp="1578737263758" />
-    <state width="1638" height="337" key="GridCell.Tab.0.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236864" />
-    <state width="1638" height="337" key="GridCell.Tab.0.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578731468572" />
+    <state width="1638" height="337" key="GridCell.Tab.0.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583670" />
+    <state width="1638" height="337" key="GridCell.Tab.0.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578765214064" />
     <state width="1638" height="363" key="GridCell.Tab.0.left/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909599" />
-    <state width="1638" height="363" key="GridCell.Tab.0.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194401" />
-    <state width="1638" height="337" key="GridCell.Tab.0.right" timestamp="1578738284599">
+    <state width="1638" height="356" key="GridCell.Tab.0.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797873" />
+    <state width="1638" height="356" key="GridCell.Tab.0.right" timestamp="1578986427764">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284599" />
+    <state width="1638" height="356" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427764" />
     <state width="1638" height="337" key="GridCell.Tab.0.right/42.23.1638.1027@42.23.1638.1027" timestamp="1578737263759" />
-    <state width="1638" height="337" key="GridCell.Tab.0.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236865" />
-    <state width="1638" height="337" key="GridCell.Tab.0.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578731468573" />
+    <state width="1638" height="337" key="GridCell.Tab.0.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583671" />
+    <state width="1638" height="337" key="GridCell.Tab.0.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578765214065" />
     <state width="1638" height="363" key="GridCell.Tab.0.right/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909601" />
-    <state width="1638" height="363" key="GridCell.Tab.0.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194402" />
-    <state width="1638" height="337" key="GridCell.Tab.1.bottom" timestamp="1578738316645">
-      <screen x="42" y="23" width="1638" height="1027" />
+    <state width="1638" height="356" key="GridCell.Tab.0.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797874" />
+    <state width="1638" height="356" key="GridCell.Tab.1.bottom" timestamp="1578986427766">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284513" />
+    <state width="1638" height="356" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427766" />
     <state width="1638" height="337" key="GridCell.Tab.1.bottom/42.23.1638.1027@42.23.1638.1027" timestamp="1578738316645" />
-    <state width="1638" height="337" key="GridCell.Tab.1.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236867" />
-    <state width="1638" height="337" key="GridCell.Tab.1.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578731668364" />
+    <state width="1638" height="337" key="GridCell.Tab.1.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583701" />
+    <state width="1638" height="337" key="GridCell.Tab.1.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578765222556" />
     <state width="1638" height="337" key="GridCell.Tab.1.bottom/45.23.1635.1027@45.23.1635.1027" timestamp="1578561877455" />
-    <state width="1638" height="363" key="GridCell.Tab.1.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194310" />
-    <state width="1638" height="337" key="GridCell.Tab.1.center" timestamp="1578738316645">
-      <screen x="42" y="23" width="1638" height="1027" />
+    <state width="1638" height="356" key="GridCell.Tab.1.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797769" />
+    <state width="1638" height="356" key="GridCell.Tab.1.center" timestamp="1578986427765">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284513" />
+    <state width="1638" height="356" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427765" />
     <state width="1638" height="337" key="GridCell.Tab.1.center/42.23.1638.1027@42.23.1638.1027" timestamp="1578738316645" />
-    <state width="1638" height="337" key="GridCell.Tab.1.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236866" />
-    <state width="1638" height="337" key="GridCell.Tab.1.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578731668363" />
+    <state width="1638" height="337" key="GridCell.Tab.1.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583700" />
+    <state width="1638" height="337" key="GridCell.Tab.1.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578765222556" />
     <state width="1638" height="337" key="GridCell.Tab.1.center/45.23.1635.1027@45.23.1635.1027" timestamp="1578561877454" />
-    <state width="1638" height="363" key="GridCell.Tab.1.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194309" />
-    <state width="1638" height="337" key="GridCell.Tab.1.left" timestamp="1578738316644">
-      <screen x="42" y="23" width="1638" height="1027" />
+    <state width="1638" height="356" key="GridCell.Tab.1.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797768" />
+    <state width="1638" height="356" key="GridCell.Tab.1.left" timestamp="1578986427765">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284512" />
+    <state width="1638" height="356" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427765" />
     <state width="1638" height="337" key="GridCell.Tab.1.left/42.23.1638.1027@42.23.1638.1027" timestamp="1578738316644" />
-    <state width="1638" height="337" key="GridCell.Tab.1.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236866" />
-    <state width="1638" height="337" key="GridCell.Tab.1.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578731668363" />
+    <state width="1638" height="337" key="GridCell.Tab.1.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583700" />
+    <state width="1638" height="337" key="GridCell.Tab.1.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578765222555" />
     <state width="1638" height="337" key="GridCell.Tab.1.left/45.23.1635.1027@45.23.1635.1027" timestamp="1578561877453" />
-    <state width="1638" height="363" key="GridCell.Tab.1.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194308" />
-    <state width="1638" height="337" key="GridCell.Tab.1.right" timestamp="1578738316645">
-      <screen x="42" y="23" width="1638" height="1027" />
+    <state width="1638" height="356" key="GridCell.Tab.1.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797767" />
+    <state width="1638" height="356" key="GridCell.Tab.1.right" timestamp="1578986427766">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284513" />
+    <state width="1638" height="356" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427766" />
     <state width="1638" height="337" key="GridCell.Tab.1.right/42.23.1638.1027@42.23.1638.1027" timestamp="1578738316645" />
-    <state width="1638" height="337" key="GridCell.Tab.1.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236866" />
-    <state width="1638" height="337" key="GridCell.Tab.1.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578731668364" />
+    <state width="1638" height="337" key="GridCell.Tab.1.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583701" />
+    <state width="1638" height="337" key="GridCell.Tab.1.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578765222556" />
     <state width="1638" height="337" key="GridCell.Tab.1.right/45.23.1635.1027@45.23.1635.1027" timestamp="1578561877454" />
-    <state width="1638" height="363" key="GridCell.Tab.1.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194309" />
-    <state width="1638" height="337" key="GridCell.Tab.2.bottom" timestamp="1578738284515">
+    <state width="1638" height="356" key="GridCell.Tab.1.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797769" />
+    <state width="1638" height="356" key="GridCell.Tab.2.bottom" timestamp="1578986427768">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.2.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284515" />
+    <state width="1638" height="356" key="GridCell.Tab.2.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427768" />
     <state width="1638" height="337" key="GridCell.Tab.2.bottom/42.23.1638.1027@42.23.1638.1027" timestamp="1578737263652" />
-    <state width="1638" height="337" key="GridCell.Tab.2.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236869" />
-    <state width="1638" height="337" key="GridCell.Tab.2.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578731468577" />
+    <state width="1638" height="337" key="GridCell.Tab.2.bottom/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583674" />
+    <state width="1638" height="337" key="GridCell.Tab.2.bottom/44.23.1636.1027@44.23.1636.1027" timestamp="1578765213985" />
     <state width="1638" height="363" key="GridCell.Tab.2.bottom/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909489" />
-    <state width="1638" height="363" key="GridCell.Tab.2.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194312" />
-    <state width="1638" height="337" key="GridCell.Tab.2.center" timestamp="1578738284514">
+    <state width="1638" height="356" key="GridCell.Tab.2.bottom/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797773" />
+    <state width="1638" height="356" key="GridCell.Tab.2.center" timestamp="1578986427767">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.2.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284514" />
+    <state width="1638" height="356" key="GridCell.Tab.2.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427767" />
     <state width="1638" height="337" key="GridCell.Tab.2.center/42.23.1638.1027@42.23.1638.1027" timestamp="1578737263651" />
-    <state width="1638" height="337" key="GridCell.Tab.2.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236868" />
-    <state width="1638" height="337" key="GridCell.Tab.2.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578731468576" />
+    <state width="1638" height="337" key="GridCell.Tab.2.center/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583674" />
+    <state width="1638" height="337" key="GridCell.Tab.2.center/44.23.1636.1027@44.23.1636.1027" timestamp="1578765213984" />
     <state width="1638" height="363" key="GridCell.Tab.2.center/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909486" />
-    <state width="1638" height="363" key="GridCell.Tab.2.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194311" />
-    <state width="1638" height="337" key="GridCell.Tab.2.left" timestamp="1578738284514">
+    <state width="1638" height="356" key="GridCell.Tab.2.center/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797771" />
+    <state width="1638" height="356" key="GridCell.Tab.2.left" timestamp="1578986427767">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.2.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284514" />
+    <state width="1638" height="356" key="GridCell.Tab.2.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427767" />
     <state width="1638" height="337" key="GridCell.Tab.2.left/42.23.1638.1027@42.23.1638.1027" timestamp="1578737263651" />
-    <state width="1638" height="337" key="GridCell.Tab.2.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236867" />
-    <state width="1638" height="337" key="GridCell.Tab.2.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578731468576" />
+    <state width="1638" height="337" key="GridCell.Tab.2.left/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583673" />
+    <state width="1638" height="337" key="GridCell.Tab.2.left/44.23.1636.1027@44.23.1636.1027" timestamp="1578765213984" />
     <state width="1638" height="363" key="GridCell.Tab.2.left/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909486" />
-    <state width="1638" height="363" key="GridCell.Tab.2.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194310" />
-    <state width="1638" height="337" key="GridCell.Tab.2.right" timestamp="1578738284515">
+    <state width="1638" height="356" key="GridCell.Tab.2.left/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797770" />
+    <state width="1638" height="356" key="GridCell.Tab.2.right" timestamp="1578986427768">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="337" key="GridCell.Tab.2.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578738284515" />
+    <state width="1638" height="356" key="GridCell.Tab.2.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578986427768" />
     <state width="1638" height="337" key="GridCell.Tab.2.right/42.23.1638.1027@42.23.1638.1027" timestamp="1578737263651" />
-    <state width="1638" height="337" key="GridCell.Tab.2.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578736236869" />
-    <state width="1638" height="337" key="GridCell.Tab.2.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578731468577" />
+    <state width="1638" height="337" key="GridCell.Tab.2.right/43.23.1637.1027@43.23.1637.1027" timestamp="1578764583674" />
+    <state width="1638" height="337" key="GridCell.Tab.2.right/44.23.1636.1027@44.23.1636.1027" timestamp="1578765213985" />
     <state width="1638" height="363" key="GridCell.Tab.2.right/45.23.1635.1027@45.23.1635.1027" timestamp="1578410909488" />
-    <state width="1638" height="363" key="GridCell.Tab.2.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578412194312" />
+    <state width="1638" height="356" key="GridCell.Tab.2.right/46.23.1634.1027@46.23.1634.1027" timestamp="1578984797772" />
     <state x="378" y="187" key="Maven.ArtifactSearchDialog" timestamp="1578376068295">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="378" y="187" key="Maven.ArtifactSearchDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578376068295" />
-    <state x="177" y="164" key="SettingsEditor" timestamp="1578670811199">
+    <state x="177" y="164" key="SettingsEditor" timestamp="1578901296146">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="177" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1578670811199" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1578678475108">
+    <state x="177" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1578901296146" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1578738405582">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1578678475108" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1578738405582" />
     <state x="629" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578555002120">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -494,13 +553,17 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="619" y="259" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578417570943" />
-    <state x="506" y="287" width="667" height="476" key="find.popup" timestamp="1578733142846">
+    <state x="506" y="287" width="667" height="476" key="find.popup" timestamp="1578900193042">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="506" y="287" width="667" height="476" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1578733142846" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1578730344271">
+    <state x="506" y="287" width="667" height="476" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1578900193042" />
+    <state x="384" y="313" key="new project wizard" timestamp="1578900617381">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1578730344271" />
+    <state x="384" y="313" key="new project wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1578900617381" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1578986458041">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1578986458041" />
   </component>
 </project>

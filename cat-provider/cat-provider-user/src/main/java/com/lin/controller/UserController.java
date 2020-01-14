@@ -6,7 +6,6 @@ import com.lin.model.UserInfo;
 import com.lin.response.Wrapper;
 import com.lin.service.UserService;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,15 +23,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    /**
-     * 注册
-     * @param userDTO
-     * @return
-     */
-    @PostMapping("/user/register")
-    public Wrapper<User> register(@RequestBody @Validated({UserDTO.Install.class}) UserDTO userDTO) {
-        return userService.register(userDTO);
-    }
 
     /**
      * 注销

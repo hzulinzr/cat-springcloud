@@ -1,3 +1,2 @@
-/Users/lzr/Project/cat-springcloud/cat-gateway/src/main/java/com/lin/filter/AuthFilter.java
 /Users/lzr/Project/cat-springcloud/cat-gateway/src/main/java/com/lin/GatewayRoutes.java
-/Users/lzr/Project/cat-springcloud/cat-gateway/src/main/java/com/lin/filter/AuthorizeFilter.java
+/Users/lzr/Project/cat-springcloud/cat-gateway/src/main/java/com/lin/filter/AuthGlobalFilter.java

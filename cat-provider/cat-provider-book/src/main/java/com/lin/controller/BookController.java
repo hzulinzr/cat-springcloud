@@ -6,12 +6,15 @@ import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.BookService;
 import com.lin.tools.Page;
+import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import com.lin.vo.BookUrlVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * @author lzr
@@ -87,5 +90,15 @@ public class BookController {
     @PostMapping("/book/upload")
     public Wrapper<BookUrlVo> bookUpload(@RequestParam("file") MultipartFile file){
         return bookService.bookUpload(file);
+    }
+
+    /**
+     * 获取书籍详情列表
+     * @param ids 多个书籍id，以逗号隔开的字符串
+     * @return 返回书籍详情列表
+     */
+    @GetMapping("/book/info/list")
+    public Wrapper<List<BookInfoVo>> bookInfoList(String ids){
+        return bookService.bookInfoList(ids);
     }
 }

@@ -1,17 +1,19 @@
 package com.lin.controller;
 
+import com.lin.dto.RegisterDTO;
 import com.lin.model.AuthClient;
 import com.lin.response.Wrapper;
 import com.lin.service.AuthUserService;
-import com.lin.service.impl.AuthClientServiceImpl;
+import com.lin.config.security.AuthClientServiceImpl;
 import com.lin.vo.UserLoginSuccessVo;
+import com.lin.vo.UserRegisterSuccessVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.security.Principal;
 
 /**
@@ -56,5 +58,15 @@ public class AuthUserController {
     @GetMapping("/user/login")
     public Wrapper<UserLoginSuccessVo> login(String username, String password) {
         return authUserService.login(username, password);
+    }
+
+    /**
+     * 用户注册
+     * @param registerDTO
+     * @return
+     */
+    @PostMapping("/user/register")
+    public Wrapper<UserRegisterSuccessVo> register(RegisterDTO registerDTO){
+        return authUserService.register(registerDTO);
     }
 }
