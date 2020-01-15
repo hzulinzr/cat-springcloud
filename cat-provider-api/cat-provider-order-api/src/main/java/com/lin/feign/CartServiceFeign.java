@@ -1,11 +1,15 @@
 package com.lin.feign;
 
-import com.lin.CartServiceFallback;
+import com.lin.dto.CartAddDTO;
+import com.lin.dto.CartAdjustDTO;
+import com.lin.dto.CartDeleteDTO;
+import com.lin.fallback.CartServiceFallback;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.vo.CartVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author lzr
@@ -20,4 +24,28 @@ public interface CartServiceFeign {
      */
     @GetMapping("/cart/list")
     Wrapper<PageData<CartVo>> cartList(Long userId);
+
+    /**
+     * 加入购物车
+     * @param cartAddDTO 书籍id
+     * @return
+     */
+    @PostMapping("/cart/add")
+    Wrapper<Void> cartAdd(CartAddDTO cartAddDTO);
+
+    /**
+     * 调整购物车书籍数量
+     * @param cartAdjustDTO 书籍id、调整类型
+     * @return
+     */
+    @PostMapping("/cart/adjust")
+    Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO);
+
+    /**
+     * 删除购物车书籍
+     * @param cartDeleteDTO 用户id、书籍id
+     * @return
+     */
+    @PostMapping("/cart/delete")
+    Wrapper<Void> cartDelete(CartDeleteDTO cartDeleteDTO);
 }

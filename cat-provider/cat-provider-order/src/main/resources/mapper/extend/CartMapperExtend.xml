@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lin.dao.CartMapper" >
+<mapper namespace="com.lin.dao.CartMapper">
     <select id="getCartList" resultType="com.lin.vo.CartVo">
         select id, user_id userId, book_id bookId, total_amount totalAmount, quantity
         from cart
@@ -11,4 +11,45 @@
         from cart
         where user_id = #{userId}
     </select>
+
+    <select id="searchCartInfo" resultType="com.lin.model.Cart" parameterType="com.lin.dto.CartAddDTO">
+        select id, user_id userId, book_id bookId, total_amount totalAmount, quantity
+        from cart
+        where 1=1
+        <if test="cartAddDTO.userId != null">
+            and user_id = #{cartAddDTO.userId},
+        </if>
+        <if test="cartAddDTO.bookId != null">
+            and book_id = #{cartAddDTO.bookId},
+        </if>
+    </select>
+
+    <insert id="insertCart" parameterType="com.lin.model.Cart">
+        insert into cart
+        (id, user_id , book_id , total_amount , quantity)
+        values
+        (#{cart.id}, #{cart.userId}, #{cart.bookId}, #{cart.totalAmount}, #{cart.quantity})
+    </insert>
+
+    <update id="updateCart" parameterType="com.lin.model.Cart">
+        update cart
+        quantity= #{cart.quantity}  where user_id = #{cart.userId} and book_id = #{cart.bookId};
+    </update>
+
+    <update id="adjustCart" parameterType="com.lin.dto.CartAdjustDTO">
+        update into cart
+        quantity = #{cartAdjustDTO.quantity} + #{cartAdjustDTO.type}
+        where user_id = #{cartAdjustDTO.userId} and book_id = #{cartAdjustDTO.bookId}
+    </update>
+
+    <delete id="cartDelete" parameterType="com.lin.dto.CartDeleteDTO">
+        delete from cart where 1=1
+        <if test="cartDeleteDTO.bookId != null">
+            and book_id = #{cartDeleteDTO.bookId},
+        </if>
+        <if test="cartDeleteDTO.userId != null">
+            and user_id = #{cartDeleteDTO.userId},
+        </if>
+    </delete>
+
 </mapper>

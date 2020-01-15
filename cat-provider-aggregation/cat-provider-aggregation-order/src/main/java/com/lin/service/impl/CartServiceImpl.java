@@ -1,5 +1,8 @@
 package com.lin.service.impl;
 
+import com.lin.dto.CartAddDTO;
+import com.lin.dto.CartAdjustDTO;
+import com.lin.dto.CartDeleteDTO;
 import com.lin.feign.BookServiceFeign;
 import com.lin.feign.CartServiceFeign;
 import com.lin.response.PageData;
@@ -69,5 +72,35 @@ public class CartServiceImpl implements CartService {
         cartListVoList.add(cartListVo);
 
         return Wrapper.success(cartListVoList, cartListVoList.size());
+    }
+
+    /**
+     * 加入购物车
+     * @param cartAddDTO 书籍id
+     * @return
+     */
+    @Override
+    public Wrapper<Void> cartAdd(CartAddDTO cartAddDTO) {
+        return cartServiceFeign.cartAdd(cartAddDTO);
+    }
+
+    /**
+     * 调整购物车书籍数量
+     * @param cartAdjustDTO 书籍id、调整类型
+     * @return
+     */
+    @Override
+    public Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO) {
+        return cartServiceFeign.cartAdjust(cartAdjustDTO);
+    }
+
+    /**
+     * 删除购物车书籍
+     * @param cartDeleteDTO 用户id、书籍id
+     * @return
+     */
+    @Override
+    public Wrapper<Void> cartDelete(CartDeleteDTO cartDeleteDTO) {
+        return cartServiceFeign.cartDelete(cartDeleteDTO);
     }
 }

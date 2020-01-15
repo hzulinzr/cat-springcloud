@@ -1,11 +1,15 @@
 package com.lin.controller;
 
+import com.lin.dto.CartAddDTO;
+import com.lin.dto.CartAdjustDTO;
+import com.lin.dto.CartDeleteDTO;
 import com.lin.model.Cart;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.CartService;
 import com.lin.vo.CartListVo;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
@@ -33,4 +37,33 @@ public class CartController {
         return cartService.cartList(userId);
     }
 
+    /**
+     * 加入购物车
+     * @param cartAddDTO 书籍id
+     * @return
+     */
+    @PostMapping("/cart/add")
+    public Wrapper<Void> cartAdd(CartAddDTO cartAddDTO){
+        return cartService.cartAdd(cartAddDTO);
+    }
+
+    /**
+     * 调整购物车书籍数量
+     * @param cartAdjustDTO 书籍id、调整类型
+     * @return
+     */
+    @PostMapping("/cart/adjust")
+    public Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO){
+        return cartService.cartAdjust(cartAdjustDTO);
+    }
+
+    /**
+     * 删除购物车书籍
+     * @param cartDeleteDTO 用户id、书籍id
+     * @return
+     */
+    @PostMapping("/cart/delete")
+    public Wrapper<Void> cartDelete(CartDeleteDTO cartDeleteDTO){
+        return cartService.cartDelete(cartDeleteDTO);
+    }
 }
