@@ -1,8 +1,9 @@
 com/lin/dao/BookMapper.class
 com/lin/service/impl/BookServiceImpl.class
-com/lin/controller/BookController.class
 com/lin/service/BookService.class
 com/lin/dao/BookTypeMapper.class
 com/lin/BookApplication.class
+com/lin/dao/BookOrderMapper.class
+com/lin/controller/BookController.class
 com/lin/config/JacksonConfig.class
 com/lin/config/SwaggerConfig.class

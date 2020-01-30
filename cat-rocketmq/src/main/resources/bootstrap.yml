@@ -1,0 +1,11 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: cat-rocketmq
+apache:
+  rocketmq:
+    producer:
+      producerGroup: cat-provider
+      consumerGroup: cat-consumer
+    namesrvAddr: 127.0.0.1:9876

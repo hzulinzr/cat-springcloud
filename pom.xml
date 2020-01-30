@@ -115,6 +115,7 @@
         <module>cat-provider</module>
         <module>cat-provider-api</module>
         <module>cat-provider-aggregation</module>
+        <module>cat-rocketmq</module>
     </modules>
     <!--所有子项目的默认依赖-->
     <dependencies>

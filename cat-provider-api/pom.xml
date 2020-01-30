@@ -16,6 +16,7 @@
         <module>cat-provider-book-api</module>
         <module>cat-provider-comment-api</module>
         <module>cat-provider-order-api</module>
+        <module>cat-provider-pay-api</module>
     </modules>
 
     <dependencies>

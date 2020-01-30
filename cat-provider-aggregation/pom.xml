@@ -16,6 +16,7 @@
         <module>cat-provider-aggregation-book</module>
         <module>cat-provider-aggregation-user</module>
         <module>cat-provider-aggregation-order</module>
+        <module>cat-provider-aggregation-pay</module>
     </modules>
 
     <dependencies>

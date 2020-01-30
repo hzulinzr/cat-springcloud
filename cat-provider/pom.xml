@@ -16,6 +16,7 @@
         <module>cat-provider-user</module>
         <module>cat-provider-comment</module>
         <module>cat-provider-order</module>
+        <module>cat-provider-pay</module>
     </modules>
 
     <dependencies>

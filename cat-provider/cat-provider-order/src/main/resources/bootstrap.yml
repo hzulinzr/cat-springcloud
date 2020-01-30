@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: cat-provider-order
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    cache: false
+
   cloud:
     nacos:
       discovery:
