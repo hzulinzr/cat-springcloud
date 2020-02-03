@@ -1,5 +1,6 @@
 package com.lin.service.impl;
 
+import com.alipay.api.domain.Car;
 import com.lin.dao.CartMapper;
 import com.lin.dto.CartAddDTO;
 import com.lin.dto.CartAdjustDTO;
@@ -85,6 +86,18 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
     public Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO) {
+        CartAddDTO cartAddDTO = new CartAddDTO();
+        cartAddDTO.setBookId(cartAdjustDTO.getBookId());
+        cartAddDTO.setUserId(cartAdjustDTO.getUserId());
+        //根据用户id和书籍id获取购物车书籍详情
+        Cart cart = cartMapper.searchCartInfo(cartAddDTO);
+        int quantity = cart.getQuantity();
+        double totalAmount = 0;
+        if(0 != quantity + cartAdjustDTO.getType()) {
+            totalAmount = (cart.getTotalAmount() / quantity) * (quantity + cartAdjustDTO.getType());
+        }
+        cartAdjustDTO.setQuantity(quantity + cartAdjustDTO.getType());
+        cartAdjustDTO.setTotalAmount(totalAmount);
         cartMapper.adjustCart(cartAdjustDTO);
         return Wrapper.success();
     }

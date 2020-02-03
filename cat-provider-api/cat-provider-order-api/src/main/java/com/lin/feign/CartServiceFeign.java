@@ -10,6 +10,7 @@ import com.lin.vo.CartVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author lzr
@@ -23,7 +24,7 @@ public interface CartServiceFeign {
      * @return 返回购物车列表
      */
     @GetMapping("/cart/list")
-    Wrapper<PageData<CartVo>> cartList(Long userId);
+    Wrapper<PageData<CartVo>> cartList(@RequestParam Long userId);
 
     /**
      * 加入购物车

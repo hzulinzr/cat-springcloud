@@ -20,5 +20,5 @@ public interface BookMapper extends BaseMapper<Book, Long> {
 
     List<BookListVo> searchBookList(@Param("keyword") String keyword, @Param("page") int page, @Param("rows") int rows);
 
-    List<BookInfoVo> searchBookInfoList(@Param("ids") String ids);
+    List<BookInfoVo> searchBookInfoList(@Param("ids") List<Long> ids);
 }

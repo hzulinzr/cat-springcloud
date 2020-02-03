@@ -44,9 +44,12 @@ public class OrderController {
     }
 
     @PostMapping("/order/finish")
+    @ResponseBody
     public Wrapper<Void> orderFinish(){
-        return null;
+        return orderService.orderFinish();
     }
+
+
 
     @PostMapping("/pay")
     @ResponseBody

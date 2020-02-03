@@ -98,7 +98,7 @@ public class BookController {
      * @return 返回书籍详情列表
      */
     @GetMapping("/book/info/list")
-    public Wrapper<List<BookInfoVo>> bookInfoList(String ids){
+    public Wrapper<List<BookInfoVo>> bookInfoList(@RequestParam(value = "ids") List<Long> ids){
         return bookService.bookInfoList(ids);
     }
 }

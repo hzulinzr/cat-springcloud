@@ -17,6 +17,11 @@ public class PayController {
         this.payService = payService;
     }
 
+    /**
+     * 发起支付
+     * @param payOrderDTO 支付实体类
+     * @return 返回支付页面
+     */
     @PostMapping("/pay")
     public String payOrder(PayOrderDTO payOrderDTO){
         return payService.payOrder(payOrderDTO);

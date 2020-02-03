@@ -1,5 +1,6 @@
 package com.lin.controller;
 
+import com.lin.dto.BaseUserDTO;
 import com.lin.dto.RegisterDTO;
 import com.lin.model.AuthClient;
 import com.lin.response.Wrapper;
@@ -12,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
@@ -66,7 +68,7 @@ public class AuthUserController {
      * @return
      */
     @PostMapping("/user/register")
-    public Wrapper<UserRegisterSuccessVo> register(RegisterDTO registerDTO){
+    public Wrapper<UserRegisterSuccessVo> register(@RequestBody RegisterDTO registerDTO){
         return authUserService.register(registerDTO);
     }
 }

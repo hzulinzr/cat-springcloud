@@ -76,6 +76,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Wrapper<Void> orderFinish() {
+        log.info("支付成功回调");
+        return null;
+    }
+
+    @Override
     public String alipay() {
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
         alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
@@ -87,9 +93,9 @@ public class OrderServiceImpl implements OrderService {
                 AlipayConfig.alipay_public_key,
                 AlipayConfig.sign_type);
         //订单号
-        String outTradeNo = "2";
+        String outTradeNo = "4";
         alipayRequest.setBizContent("{\"out_trade_no\":\""+ outTradeNo +"\","
-                + "\"total_amount\":\""+ 0.01 +"\","
+                + "\"total_amount\":\""+ 1.00 +"\","
                 + "\"subject\":\""+ "东野圭吾" +"\","
                 + "\"body\":\""+ "书籍买卖" +"\","
                 + "\"timeout_express\":\""+ "1c" +"\","

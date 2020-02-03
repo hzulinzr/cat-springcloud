@@ -2,6 +2,7 @@ package com.lin.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lin.dao.AuthUserMapper;
+import com.lin.dto.BaseUserDTO;
 import com.lin.dto.RegisterDTO;
 import com.lin.model.AuthUser;
 import com.lin.response.Wrapper;
@@ -74,8 +75,10 @@ public class AuthUserServiceImpl implements AuthUserService {
         UserLoginSuccessVo userLoginSuccessVo = new UserLoginSuccessVo();
         userLoginSuccessVo.setAccessToken(accessToken);
         userLoginSuccessVo.setScope(scope);
+        userLoginSuccessVo.setUsername(username);
+        userLoginSuccessVo.setUserId(authUser.getId());
 
-        log.info("用户：{} 登录成功", username);
+        log.info("用户：{} 登录成功, access_token 为: {}", username, accessToken);
         return Wrapper.success(userLoginSuccessVo);
     }
 

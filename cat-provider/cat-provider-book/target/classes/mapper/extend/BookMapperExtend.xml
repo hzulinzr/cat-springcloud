@@ -36,6 +36,7 @@
 
     <select id="searchBookInfoList" resultType="com.lin.vo.BookInfoVo">
         select
+            b.id,
             b.book_name AS bookName,
             b.book_author AS bookAuthor,
             b.amount AS amount,
@@ -49,7 +50,10 @@
         book b
         left join book_type bt on b.book_type_id = bt.id
         WHERE
-        b.id in (#{ids})
+        b.id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
     </select>
 
 </mapper>

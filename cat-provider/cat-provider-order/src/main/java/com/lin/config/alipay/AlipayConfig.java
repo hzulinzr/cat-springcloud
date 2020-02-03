@@ -27,7 +27,7 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjloIO2HxhOsghl0lyRS/ntKo70MhLZhWfoiWo1EwJEQV6byvZ5fNZJTHSJX4ySmYp+WcPZ9ALUOPpye4R70eR6JdZ9xWHAlSdbLeOr9P7qyJDZx8jndJbu37C4tB9DXp9f+gpAKdVRbqLh0mycvKk3MJpq7GW8buph8Rp0M14/p8SX4h7sUBvT5pFlMu1ah88lQN4jrjVsaybatB7DegUOp2H1epH0sboOwZfMfqGRdFYgxzY9xpOI+xPlOkZIxHMDhtCMWkJnybzMkKBkAEah+m6fsH+LmrZJ6mthBmHTrkJzpAqVUSfTuS/k2hHd9SScz0G5Fb1QZmZ+eFZPb46wIDAQAB";
 
     // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://localhost:8080/Alipay/notifyUrl";
+    public static String notify_url = "http://localhost:8081/order/finish";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
     public static String return_url = "http://localhost:8081";

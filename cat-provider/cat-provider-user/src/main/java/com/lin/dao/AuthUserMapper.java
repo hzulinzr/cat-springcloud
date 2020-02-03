@@ -1,5 +1,6 @@
 package com.lin.dao;
 
+import com.lin.dto.BaseUserDTO;
 import com.lin.dto.RegisterDTO;
 import com.lin.model.AuthUser;
 import org.apache.ibatis.annotations.Mapper;

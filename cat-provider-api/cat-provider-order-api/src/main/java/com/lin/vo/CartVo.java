@@ -19,7 +19,7 @@ public class CartVo {
     /**
      * 书籍id
      */
-    private String bookId;
+    private Long bookId;
     /**
      * 总金额
      */

@@ -8,9 +8,18 @@ import lombok.Data;
  */
 @Data
 public class CartListVo {
+    /**
+     * 书籍id
+     */
+    private Long bookId;
+    /**
+     * 书籍地址
+     */
     private String bookUrl;
+    /**
+     * 书籍名称
+     */
     private String bookName;
-    private String bookTypeName;
     /**
      * 总金额
      */
@@ -19,4 +28,12 @@ public class CartListVo {
      * 购物车书籍数量
      */
     private Integer quantity;
+    /**
+     * 书籍单价
+     */
+    private Double amount;
+    /**
+     * 书籍库存数量
+     */
+    private Integer bookQuantity;
 }

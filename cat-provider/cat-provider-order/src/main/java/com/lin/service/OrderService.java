@@ -28,6 +28,8 @@ public interface OrderService {
      */
     Wrapper<Void> orderAdd(OrderDTO orderDTO);
 
+    Wrapper<Void> orderFinish();
+
 
     String alipay();
 }

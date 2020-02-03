@@ -1,7 +1,9 @@
 package com.lin.feign;
 
+import com.lin.dto.BaseBookDTO;
 import com.lin.dto.BookListDTO;
 import com.lin.fallback.BookServiceFallback;
+import com.lin.model.Book;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.vo.BookInfoVo;
@@ -22,5 +24,8 @@ public interface BookServiceFeign {
     Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, @RequestParam Integer page, @RequestParam Integer rows);
 
     @GetMapping("/book/info/list")
-    Wrapper<List<BookInfoVo>> bookInfoList(String ids);
+    Wrapper<List<BookInfoVo>> bookInfoList(@RequestParam List<Long> ids);
+
+    @GetMapping("/book/info")
+    Wrapper<Book> bookInfo(BaseBookDTO baseBookDTO);
 }

@@ -17,6 +17,12 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class PayServiceImpl implements PayService {
+
+    /**
+     * 发起支付
+     * @param payOrderDTO 支付实体类
+     * @return 返回支付页面
+     */
     @Override
     public String payOrder(PayOrderDTO payOrderDTO) {
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();

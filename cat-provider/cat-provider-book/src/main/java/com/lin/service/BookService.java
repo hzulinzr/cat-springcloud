@@ -67,6 +67,6 @@ public interface BookService {
      * @param ids 多个书籍id，以逗号隔开的字符串
      * @return 返回书籍详情列表
      */
-    Wrapper<List<BookInfoVo>> bookInfoList(String ids);
+    Wrapper<List<BookInfoVo>> bookInfoList(List<Long> ids);
 }
 

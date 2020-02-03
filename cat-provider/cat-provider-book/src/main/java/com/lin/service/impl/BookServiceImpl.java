@@ -169,7 +169,9 @@ public class BookServiceImpl implements BookService {
      * @return 返回书籍详情列表
      */
     @Override
-    public Wrapper<List<BookInfoVo>> bookInfoList(String ids) {
-        return Wrapper.success(bookMapper.searchBookInfoList(ids));
+    public Wrapper<List<BookInfoVo>> bookInfoList(List<Long> ids) {
+        log.info("bookIds: {}", ids);
+        List<BookInfoVo> bookInfoVoList = bookMapper.searchBookInfoList(ids);
+        return Wrapper.success(bookInfoVoList);
     }
 }

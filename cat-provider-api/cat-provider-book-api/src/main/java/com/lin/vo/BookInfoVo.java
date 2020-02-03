@@ -9,6 +9,10 @@ import lombok.Data;
 @Data
 public class BookInfoVo {
     /**
+     * 书籍id
+     */
+    private Long id;
+    /**
      * 书籍类型名称
      */
     private String bookTypeName;

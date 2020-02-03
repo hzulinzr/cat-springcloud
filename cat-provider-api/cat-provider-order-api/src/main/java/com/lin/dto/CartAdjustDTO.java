@@ -20,4 +20,12 @@ public class CartAdjustDTO {
      * 用户id
      */
     private Long userId;
+    /**
+     * 总金额
+     */
+    private Double totalAmount;
+    /**
+     * 书籍数量
+     */
+    private Integer quantity;
 }

@@ -8,6 +8,20 @@ import lombok.Data;
  */
 @Data
 public class UserLoginSuccessVo {
+    /**
+     * 用户名
+     */
+    private String username;
+    /**
+     * 登录返回的token
+     */
     private String accessToken;
+    /**
+     * 权限范围
+     */
     private String scope;
+    /**
+     * 用户id
+     */
+    private Long userId;
 }

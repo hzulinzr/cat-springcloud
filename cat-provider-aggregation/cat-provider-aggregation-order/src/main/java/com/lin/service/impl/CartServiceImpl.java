@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author lzr
@@ -42,7 +43,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public Wrapper<PageData<CartListVo>> cartList(Long userId) {
         List<CartListVo> cartListVoList = new ArrayList<>();
-        CartListVo cartListVo = new CartListVo();
+
         //查找数据库获取购物车列表
         Wrapper<PageData<CartVo>> cartListVoWrapper = cartServiceFeign.cartList(userId);
         if(ResponseCode.SUCCESS.getCode() != cartListVoWrapper.getCode()){
@@ -52,24 +53,31 @@ public class CartServiceImpl implements CartService {
         if(null != cartPageData){
             //获取购物车列表数据
             List<CartVo> cartList =  cartPageData.getData();
-            BeanUtils.copyProperties(cartList, cartListVo);
+            cartList.forEach(cartVo -> {
+                CartListVo cartListVo = new CartListVo();
+                BeanUtils.copyProperties(cartVo, cartListVo);
+                cartListVoList.add(cartListVo);
+            });
+
             //获取书籍id集合
-            List<String> ids = cartList.stream().map(CartVo::getBookId).collect(Collectors.toList());
-            //将list转换成以逗号隔开的字符串
-            String bookIds = String.join(",", ids);
+            List<Long> ids = cartList.stream().map(CartVo::getBookId).collect(Collectors.toList());
             // 根据书籍id列表获取书籍详情列表
-            Wrapper<List<BookInfoVo>> bookInfoListWrapper = bookServiceFeign.bookInfoList(bookIds);
+            Wrapper<List<BookInfoVo>> bookInfoListWrapper = bookServiceFeign.bookInfoList(ids);
             if(ResponseCode.SUCCESS.getCode() != bookInfoListWrapper.getCode()){
                 return Wrapper.fail(bookInfoListWrapper.getMessage());
             }
             List<BookInfoVo> bookInfoVoList = bookInfoListWrapper.getData();
             if(null != bookInfoVoList){
                 bookInfoVoList.forEach(bookInfo -> {
-                    BeanUtils.copyProperties(bookInfo, cartListVo);
+                    cartListVoList.forEach(cartListVo -> {
+                        if(bookInfo.getId().equals(cartListVo.getBookId())){
+                            BeanUtils.copyProperties(bookInfo, cartListVo);
+                        }
+                    });
                 });
             }
         }
-        cartListVoList.add(cartListVo);
+
 
         return Wrapper.success(cartListVoList, cartListVoList.size());
     }

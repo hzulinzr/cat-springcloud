@@ -8,7 +8,7 @@
 
     <!--    用户登录-->
     <select id="login" resultType="com.lin.model.AuthUser">
-        select client_id clientId, state, secret from auth_user where client_id = #{username} and secret = #{password}
+        select id, client_id clientId, state, secret from auth_user where client_id = #{username} and secret = #{password}
     </select>
 
     <!--    注册用户-->
@@ -30,4 +30,5 @@
             </if>
         </trim>
     </insert>
+
 </mapper>

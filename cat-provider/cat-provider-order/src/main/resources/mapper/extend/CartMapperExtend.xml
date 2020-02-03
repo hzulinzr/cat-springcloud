@@ -38,18 +38,13 @@
 
     <update id="adjustCart" parameterType="com.lin.dto.CartAdjustDTO">
         update into cart
-        quantity = #{cartAdjustDTO.quantity} + #{cartAdjustDTO.type}
+        quantity = #{cartAdjustDTO.quantity},
+        total_amount = #{cartAdjustDTO.totalAmount}
         where user_id = #{cartAdjustDTO.userId} and book_id = #{cartAdjustDTO.bookId}
     </update>
 
     <delete id="cartDelete" parameterType="com.lin.dto.CartDeleteDTO">
-        delete from cart where 1=1
-        <if test="cartDeleteDTO.bookId != null">
-            and book_id = #{cartDeleteDTO.bookId},
-        </if>
-        <if test="cartDeleteDTO.userId != null">
-            and user_id = #{cartDeleteDTO.userId},
-        </if>
+        delete from cart where user_id = #{cartDeleteDTO.userId} and book_id = #{cartDeleteDTO.bookId}
     </delete>
 
 </mapper>

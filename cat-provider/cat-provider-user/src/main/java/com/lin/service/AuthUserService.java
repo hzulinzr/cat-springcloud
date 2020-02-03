@@ -1,9 +1,11 @@
 package com.lin.service;
 
+import com.lin.dto.BaseUserDTO;
 import com.lin.dto.RegisterDTO;
 import com.lin.response.Wrapper;
 import com.lin.vo.UserLoginSuccessVo;
 import com.lin.vo.UserRegisterSuccessVo;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
 
