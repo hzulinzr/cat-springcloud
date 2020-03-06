@@ -39,4 +39,12 @@ public class AuthUser extends BaseModel {
      * 表字段：auth_user.secret 注释：密码
      */
     private String secret;
+    /**
+     * 表字段：auth_user.balance 注释：账号余额
+     */
+    private Double balance;
+    /**
+     * 表字段：auth_user.user_url 注释：用户头像
+     */
+    private String userUrl;
 }

@@ -5,6 +5,7 @@ import com.lin.dto.CartAdjustDTO;
 import com.lin.dto.CartDeleteDTO;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
+import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartVo;
 
 /**
@@ -32,7 +33,7 @@ public interface CartService {
      * @param cartAdjustDTO 书籍id、调整类型
      * @return
      */
-    Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO);
+    Wrapper<CartAdjustVo> cartAdjust(CartAdjustDTO cartAdjustDTO);
 
     /**
      * 删除购物车书籍

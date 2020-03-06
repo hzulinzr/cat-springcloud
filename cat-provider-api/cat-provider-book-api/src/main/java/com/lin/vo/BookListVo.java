@@ -27,4 +27,20 @@ public class BookListVo {
 
     @ApiModelProperty("书籍类型名称")
     private String bookTypeName;
+
+    @ApiModelProperty("书籍图片地址")
+    private String bookUrl;
+
+    /**
+     * 上传用户
+     */
+    private Long uploadUserId;
+    /**
+     * 书籍状态
+     */
+    private Integer state;
+    /**
+     * 上传时间
+     */
+    private Long uploadTime;
 }

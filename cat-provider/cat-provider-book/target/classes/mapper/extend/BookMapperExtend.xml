@@ -6,10 +6,14 @@
         from
             book b
         where 1=1
-        AND
-            b.state = 1
-        <if test="null != keyword and '' != keyword">
-            AND (b.book_name LIKE CONCAT(#{keyword}, '%') or b.book_author LIKE CONCAT(#{keyword}, '%'))
+        <if test="bookListDTO.state != null">
+            and b.state = #{bookListDTO.state}
+        </if>
+        <if test="bookListDTO.state == null">
+            and b.state = 1
+        </if>
+        <if test="null != bookListDTO.keyword and '' != bookListDTO.keyword">
+            AND (b.book_name LIKE CONCAT(#{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT(#{bookListDTO.keyword}, '%') or bt.book_type_name LIKE CONCAT(#{bookListDTO.keyword}, '%') )
         </if>
     </select>
 
@@ -20,15 +24,23 @@
             b.book_author AS bookAuthor,
             b.amount AS amount,
             b.book_quantity AS bookQuantity,
-            bt.book_type_name AS bookTypeName
+            bt.book_type_name AS bookTypeName,
+            b.book_url AS bookUrl,
+            b.upload_user_id as uploadUserId,
+            b.state as state,
+            b.upload_time as uploadTime
         from
         book b
         left join book_type bt on b.book_type_id = bt.id
         WHERE 1 = 1
-        AND
-        b.state = 1
-        <if test="keyword != null and keyword !='' ">
-            AND (b.book_name LIKE CONCAT(#{keyword}, '%') or b.book_author LIKE CONCAT(#{keyword}, '%') or bt.book_type_name LIKE CONCAT(#{keyword}, '%') )
+        <if test="bookListDTO.state != null">
+            and b.state = #{bookListDTO.state}
+        </if>
+        <if test="bookListDTO.state == null">
+            and b.state = 1
+        </if>
+        <if test="bookListDTO.keyword != null and bookListDTO.keyword !='' ">
+            AND (b.book_name LIKE CONCAT(#{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT(#{bookListDTO.keyword}, '%') or bt.book_type_name LIKE CONCAT(#{bookListDTO.keyword}, '%') )
         </if>
         order by b.upload_time desc
         LIMIT #{page}, #{rows}

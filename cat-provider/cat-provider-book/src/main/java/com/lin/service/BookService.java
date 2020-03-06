@@ -8,6 +8,8 @@ import com.lin.tools.Page;
 import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import com.lin.vo.BookUrlVo;
+import com.lin.vo.CommentListVo;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,10 +52,10 @@ public interface BookService {
 
     /**
      * 删除书籍
-     * @param baseBookDTO
+     * @param bookDeleteDTO
      * @return 返回删除书籍信息
      */
-    Wrapper bookDelete(BaseBookDTO baseBookDTO);
+    Wrapper<Void> bookDelete(BookDeleteDTO bookDeleteDTO);
 
     /**
      * 上传书籍
@@ -68,5 +70,26 @@ public interface BookService {
      * @return 返回书籍详情列表
      */
     Wrapper<List<BookInfoVo>> bookInfoList(List<Long> ids);
+
+    /**
+     * 查看书籍评论列表
+     * @param commentListDTO
+     * @param page
+     * @return 返回书籍评论列表
+     */
+    Wrapper<PageData<CommentListVo>> commentList(CommentListDTO commentListDTO, Page page);
+    /**
+     * 添加评论
+     * @param commentInsetDTO
+     * @return
+     */
+    Wrapper<Void> commentInsert(CommentInsetDTO commentInsetDTO);
+
+    /**
+     * 更改书籍状态
+     * @param bookStateAdjustDTO
+     * @return
+     */
+    Wrapper<Void> bookStateAdjust(BookStateAdjustDTO bookStateAdjustDTO);
 }
 

@@ -2,12 +2,17 @@ package com.lin.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lin.dao.AuthUserMapper;
-import com.lin.dto.BaseUserDTO;
+import com.lin.dto.BalanceUpdateDTO;
+import com.lin.dto.BaseAuthUser;
 import com.lin.dto.RegisterDTO;
+import com.lin.dto.UserListDTO;
 import com.lin.model.AuthUser;
+import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.AuthUserService;
+import com.lin.tools.Page;
 import com.lin.tools.SnowFlake;
+import com.lin.vo.UserListVo;
 import com.lin.vo.UserLoginSuccessVo;
 import com.lin.vo.UserRegisterSuccessVo;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +22,8 @@ import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -52,7 +59,7 @@ public class AuthUserServiceImpl implements AuthUserService {
 
         //远程调用获取token接口
         String url = "http://localhost:8071/oauth/token";
-        url = url + "?grant_type=client_credentials&scopes=select&client_id=" + username + "&client_secret=" + password ;
+        url = url + "?grant_type=client_credentials&scope=all&client_id=" + username + "&client_secret=" + password ;
 
         Response response = doGet(url);
         String result = Optional.ofNullable(response).map(Response::body).map(responseBody -> {
@@ -63,12 +70,15 @@ public class AuthUserServiceImpl implements AuthUserService {
             }
             return "";
         }).orElse("");
-        if("".equals(result)){
-            return Wrapper.fail("获取token失败，请重新登录");
-        }
+//        if("".equals(result)){
+//            return Wrapper.fail("获取token失败，请重新登录");
+//        }
         JSONObject jsonObject = JSONObject.parseObject(result);
         //获取令牌
         String accessToken = jsonObject.getString("access_token");
+        if(null == accessToken){
+            return Wrapper.fail("获取token失败，请重新登录");
+        }
         //获取权限范围
         String scope = jsonObject.getString("scope");
         //返回给前端数据
@@ -101,6 +111,44 @@ public class AuthUserServiceImpl implements AuthUserService {
         authUserMapper.register(registerDTO);
         log.info("注册用户成功！");
         return Wrapper.success();
+    }
+
+    /**
+     * 用户账号余额转账
+     * @param balanceUpdateDTO
+     * @return
+     */
+    @Override
+    public Wrapper<Void> balanceUpdate(BalanceUpdateDTO balanceUpdateDTO) {
+        authUserMapper.balanceUpdate(balanceUpdateDTO);
+        return Wrapper.success();
+    }
+
+    /**
+     * 查看用户详情信息
+     * @param baseAuthUser
+     * @return 返回用户详情
+     */
+    @Override
+    public Wrapper<AuthUser> userInfo(BaseAuthUser baseAuthUser) {
+        AuthUser authUser = authUserMapper.findById(baseAuthUser.getUserId());
+        return Wrapper.success(authUser);
+    }
+
+    /**
+     * 用户列表
+     * @param userListDTO
+     * @param page 页码
+     * @return
+     */
+    @Override
+    public Wrapper<PageData<UserListVo>> userList(UserListDTO userListDTO, Page page) {
+        int totalCount = authUserMapper.searchUserListCount(userListDTO);
+        List<UserListVo> userListVoList = new ArrayList<>();
+        if(0 < totalCount){
+            userListVoList = authUserMapper.searchUserList(userListDTO, page);
+        }
+        return Wrapper.success(userListVoList, totalCount);
     }
 
     /**

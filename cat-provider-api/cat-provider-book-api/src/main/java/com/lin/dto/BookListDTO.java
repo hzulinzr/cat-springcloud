@@ -11,4 +11,9 @@ import lombok.Data;
 public class BookListDTO {
     @ApiModelProperty(value = "关键字检索")
     private String keyword;
+
+    /**
+     * 书籍状态
+     */
+    private Integer state;
 }

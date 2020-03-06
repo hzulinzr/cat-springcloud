@@ -20,10 +20,16 @@ spring:
             - Path=/cat/user/**
           filters:
             - StripPrefix=1
-        - id: cat-provider-book
+        - id: cat-provider-aggregation-book
           uri: lb://cat-provider-aggregation-book
           predicates:
             - Path=/cat/book/**
+          filters:
+            - StripPrefix=1
+        - id: cat-provider-aggregation-order
+          uri: lb://cat-provider-aggregation-order
+          predicates:
+            - Path=/cat/**
           filters:
             - StripPrefix=1
         - id: auth-user

@@ -7,7 +7,7 @@
         where 1=1
         <set>
             <if test="null != orderListDTO.keyword and '' != orderListDTO.keyword">
-                AND (o.order_no LIKE CONCAT(#{keyword}, '%'))
+                AND (o.payMethod LIKE CONCAT(#{orderListDTO.keyword}, '%'))
             </if>
             <if test="orderListDTO.userId != null">
                 and o.user_id = #{orderListDTO.userId}
@@ -19,7 +19,7 @@
     </select>
     <select id="searchOrderList" parameterType="com.lin.dto.OrderListDTO" resultType="com.lin.vo.OrderListVo">
         select
-            o.order_no orderNO,
+            o.id orderId,
             o.amount,
             o.pay_time payTime,
             o.pay_amount payAmount,
@@ -28,13 +28,13 @@
             o.contact_address contactAddress,
             o.contact_phone contactPhone,
             o.order_state orderState,
-            o.pay_state payState
+            o.pay_state payState,
+            o.pay_method as payMethod
         from
         `order` o
         WHERE 1 = 1
-        AND
         <if test="null != orderListDTO.keyword and '' != orderListDTO.keyword">
-            AND (o.order_no LIKE CONCAT(#{keyword}, '%'))
+            AND (o.payMethod LIKE CONCAT(#{keyword}, '%'))
         </if>
         <if test="orderListDTO.userId != null">
             and o.user_id = #{orderListDTO.userId}
@@ -43,6 +43,15 @@
             and o.order_id = #{orderListDTO.orderId}
         </if>
         order by o.create_time desc
-        LIMIT #{page}, #{rows}
+        LIMIT #{page.page}, #{page.rows}
     </select>
+
+    <select id="searchBookIds" resultType="java.lang.Long">
+        select
+            bo.book_id
+        from `order` o
+        left join book_order bo on o.id = bo.order_id
+        where bo.order_id = #{orderDTO.orderId}
+    </select>
+
 </mapper>

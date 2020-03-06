@@ -34,7 +34,7 @@ public class Book extends BaseModel {
     /**
      * 表字段：book.upload_time 注释：上传的时间
      */
-    private String uploadTime;
+    private Long uploadTime;
     /**
      * 表字段：book.upload_user_id 注释：上传的用户
      */
@@ -42,7 +42,7 @@ public class Book extends BaseModel {
     /**
      * 表字段：book.remove_time 注释：下架时间
      */
-    private String removeTime;
+    private Long removeTime;
     /**
      * 表字段：book.book_quantity 注释：书籍库存数量
      */

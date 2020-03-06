@@ -1,5 +1,6 @@
 package com.lin.dao;
 
+import com.lin.dto.BookListDTO;
 import com.lin.model.Book;
 import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
@@ -16,9 +17,9 @@ import java.util.List;
 @Mapper
 @Repository
 public interface BookMapper extends BaseMapper<Book, Long> {
-    int searchBookListCount(@Param("keyword") String keyword);
+    int searchBookListCount(@Param("bookListDTO") BookListDTO bookListDTO);
 
-    List<BookListVo> searchBookList(@Param("keyword") String keyword, @Param("page") int page, @Param("rows") int rows);
+    List<BookListVo> searchBookList(@Param("bookListDTO") BookListDTO bookListDTO, @Param("page") int page, @Param("rows") int rows);
 
     List<BookInfoVo> searchBookInfoList(@Param("ids") List<Long> ids);
 }

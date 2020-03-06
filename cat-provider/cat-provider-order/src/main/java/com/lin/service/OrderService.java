@@ -1,12 +1,17 @@
 package com.lin.service;
 
 import com.alipay.api.AlipayApiException;
+import com.lin.dto.AliPayDTO;
 import com.lin.dto.OrderDTO;
+import com.lin.dto.OrderInsertDTO;
 import com.lin.dto.OrderListDTO;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.tools.Page;
 import com.lin.vo.OrderListVo;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 /**
  * @author lzr
@@ -28,8 +33,17 @@ public interface OrderService {
      */
     Wrapper<Void> orderAdd(OrderDTO orderDTO);
 
-    Wrapper<Void> orderFinish();
+    /**
+     * 完成订单
+     * @param aliPayDTO
+     * @return
+     */
+    Wrapper<Void> orderFinish(AliPayDTO aliPayDTO);
 
-
-    String alipay();
+    /**
+     * 查询书籍id列表
+     * @param orderDTO
+     * @return 返回书籍id列表
+     */
+    Wrapper<List<Long>> orderBookIds(OrderDTO orderDTO);
 }

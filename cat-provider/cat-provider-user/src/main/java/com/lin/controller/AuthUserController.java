@@ -1,11 +1,17 @@
 package com.lin.controller;
 
-import com.lin.dto.BaseUserDTO;
+import com.lin.dto.BalanceUpdateDTO;
+import com.lin.dto.BaseAuthUser;
 import com.lin.dto.RegisterDTO;
+import com.lin.dto.UserListDTO;
 import com.lin.model.AuthClient;
+import com.lin.model.AuthUser;
+import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.AuthUserService;
 import com.lin.config.security.AuthClientServiceImpl;
+import com.lin.tools.Page;
+import com.lin.vo.UserListVo;
 import com.lin.vo.UserLoginSuccessVo;
 import com.lin.vo.UserRegisterSuccessVo;
 import io.swagger.annotations.ApiOperation;
@@ -70,5 +76,36 @@ public class AuthUserController {
     @PostMapping("/user/register")
     public Wrapper<UserRegisterSuccessVo> register(@RequestBody RegisterDTO registerDTO){
         return authUserService.register(registerDTO);
+    }
+
+    /**
+     * 用户账号余额转账
+     * @param balanceUpdateDTO
+     * @return
+     */
+    @PostMapping("/user/balance/update")
+    public Wrapper<Void> balanceUpdate(@RequestBody BalanceUpdateDTO balanceUpdateDTO){
+        return authUserService.balanceUpdate(balanceUpdateDTO);
+    }
+
+    /**
+     * 查看用户详情信息
+     * @param baseAuthUser
+     * @return 返回用户详情
+     */
+    @GetMapping("/user/person/info")
+    public Wrapper<AuthUser> userInfo(BaseAuthUser baseAuthUser){
+        return authUserService.userInfo(baseAuthUser);
+    }
+
+    /**
+     * 用户列表
+     * @param userListDTO
+     * @param page 页码
+     * @return
+     */
+    @GetMapping("/user/list")
+    public Wrapper<PageData<UserListVo>> userList(UserListDTO userListDTO, Page page){
+        return authUserService.userList(userListDTO, page);
     }
 }

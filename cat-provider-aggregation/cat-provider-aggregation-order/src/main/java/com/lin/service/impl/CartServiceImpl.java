@@ -10,6 +10,7 @@ import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
 import com.lin.service.CartService;
 import com.lin.vo.BookInfoVo;
+import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartListVo;
 import com.lin.vo.CartVo;
 import org.springframework.beans.BeanUtils;
@@ -61,20 +62,22 @@ public class CartServiceImpl implements CartService {
 
             //获取书籍id集合
             List<Long> ids = cartList.stream().map(CartVo::getBookId).collect(Collectors.toList());
-            // 根据书籍id列表获取书籍详情列表
-            Wrapper<List<BookInfoVo>> bookInfoListWrapper = bookServiceFeign.bookInfoList(ids);
-            if(ResponseCode.SUCCESS.getCode() != bookInfoListWrapper.getCode()){
-                return Wrapper.fail(bookInfoListWrapper.getMessage());
-            }
-            List<BookInfoVo> bookInfoVoList = bookInfoListWrapper.getData();
-            if(null != bookInfoVoList){
-                bookInfoVoList.forEach(bookInfo -> {
-                    cartListVoList.forEach(cartListVo -> {
-                        if(bookInfo.getId().equals(cartListVo.getBookId())){
-                            BeanUtils.copyProperties(bookInfo, cartListVo);
-                        }
+            if(0 != ids.size()) {
+                // 根据书籍id列表获取书籍详情列表
+                Wrapper<List<BookInfoVo>> bookInfoListWrapper = bookServiceFeign.bookInfoList(ids);
+                if (ResponseCode.SUCCESS.getCode() != bookInfoListWrapper.getCode()) {
+                    return Wrapper.fail(bookInfoListWrapper.getMessage());
+                }
+                List<BookInfoVo> bookInfoVoList = bookInfoListWrapper.getData();
+                if (null != bookInfoVoList) {
+                    bookInfoVoList.forEach(bookInfo -> {
+                        cartListVoList.forEach(cartListVo -> {
+                            if (bookInfo.getId().equals(cartListVo.getBookId())) {
+                                BeanUtils.copyProperties(bookInfo, cartListVo);
+                            }
+                        });
                     });
-                });
+                }
             }
         }
 
@@ -98,7 +101,7 @@ public class CartServiceImpl implements CartService {
      * @return
      */
     @Override
-    public Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO) {
+    public Wrapper<CartAdjustVo> cartAdjust(CartAdjustDTO cartAdjustDTO) {
         return cartServiceFeign.cartAdjust(cartAdjustDTO);
     }
 

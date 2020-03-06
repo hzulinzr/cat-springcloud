@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lin.dao.OrderMapper" >
     <resultMap id="BaseResultMap" type="com.lin.model.Order" >
-        <!--  自动生成 2020年01月19日 表与实体类字段对应 -->
+        <!--  自动生成 2020年03月04日 表与实体类字段对应 -->
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="user_id" property="userId" jdbcType="BIGINT" />
         <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
@@ -15,16 +15,17 @@
         <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
         <result column="order_state" property="orderState" jdbcType="INTEGER" />
         <result column="pay_state" property="payState" jdbcType="INTEGER" />
+        <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
     </resultMap>
     
     <sql id="Base_Column_List" >
-        <!--  自动生成 2020年01月19日 表字段名称 -->
+        <!--  自动生成 2020年03月04日 表字段名称 -->
         id, user_id, order_no, amount, pay_time, create_time, pay_amount, contact_person, 
-        contact_address, contact_phone, order_state, pay_state
+        contact_address, contact_phone, order_state, pay_state, pay_method
     </sql>
     
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-        <!--  自动生成 2020年01月19日 根据ID查询 -->
+        <!--  自动生成 2020年03月04日 根据ID查询 -->
         select 
         <include refid="Base_Column_List" />
         from order
@@ -32,7 +33,7 @@
     </select>
     
     <update id="update" parameterType="com.lin.model.Order" >
-        <!--  自动生成 2020年01月19日 更新数据 -->
+        <!--  自动生成 2020年03月04日 更新数据 -->
         update order
         <set >
             <if test="userId != null" >
@@ -45,7 +46,7 @@
                 amount = #{amount,jdbcType=DOUBLE},
             </if>
             <if test="payTime != null" >
-                pay_time = #{payTime,jdbcType=VARCHAR},
+                pay_time = #{payTime,jdbcType=BIGINT},
             </if>
             <if test="createTime != null" >
                 create_time = #{createTime,jdbcType=BIGINT},
@@ -68,13 +69,16 @@
             <if test="payState != null" >
                 pay_state = #{payState,jdbcType=INTEGER},
             </if>
+            <if test="payMethod != null" >
+                pay_method = #{payMethod,jdbcType=INTEGER},
+            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
     
     <insert id="insert" parameterType="com.lin.model.Order" >
-        <!--  自动生成 2020年01月19日 添加数据 -->
-        insert into `order`
+        <!--  自动生成 2020年03月04日 添加数据 -->
+        insert into order
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
                 id,
@@ -112,6 +116,9 @@
             <if test="payState != null" >
                 pay_state,
             </if>
+            <if test="payMethod != null" >
+                pay_method,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -127,7 +134,7 @@
                 #{amount,jdbcType=DOUBLE},
             </if>
             <if test="payTime != null" >
-                #{payTime,jdbcType=VARCHAR},
+                #{payTime,jdbcType=BIGINT},
             </if>
             <if test="createTime != null" >
                 #{createTime,jdbcType=BIGINT},
@@ -150,20 +157,23 @@
             <if test="payState != null" >
                 #{payState,jdbcType=INTEGER},
             </if>
+            <if test="payMethod != null" >
+                #{payMethod,jdbcType=INTEGER},
+            </if>
         </trim>
     </insert>
     
     <insert id="inserts" parameterType="java.util.List" >
-        <!-- WARNING -  自动生成 2020-01-19 添加多条数据 -->
-        insert into order (id, user_id, order_no, amount, pay_time, create_time, pay_amount, contact_person, contact_address, contact_phone, order_state, pay_state)
+        <!-- WARNING -  自动生成 2020-03-04 添加多条数据 -->
+        insert into order (id, user_id, order_no, amount, pay_time, create_time, pay_amount, contact_person, contact_address, contact_phone, order_state, pay_state, pay_method)
         values
         <foreach collection="list" item="item" separator="," >
-            (#{item.id,jdbcType=BIGINT}, #{item.userId,jdbcType=BIGINT}, #{item.orderNo,jdbcType=VARCHAR}, #{item.amount,jdbcType=DOUBLE}, #{item.payTime,jdbcType=VARCHAR}, #{item.createTime,jdbcType=BIGINT}, #{item.payAmount,jdbcType=DOUBLE}, #{item.contactPerson,jdbcType=VARCHAR}, #{item.contactAddress,jdbcType=VARCHAR}, #{item.contactPhone,jdbcType=VARCHAR}, #{item.orderState,jdbcType=INTEGER}, #{item.payState,jdbcType=INTEGER})
+            (#{item.id,jdbcType=BIGINT}, #{item.userId,jdbcType=BIGINT}, #{item.orderNo,jdbcType=VARCHAR}, #{item.amount,jdbcType=DOUBLE}, #{item.payTime,jdbcType=BIGINT}, #{item.createTime,jdbcType=BIGINT}, #{item.payAmount,jdbcType=DOUBLE}, #{item.contactPerson,jdbcType=VARCHAR}, #{item.contactAddress,jdbcType=VARCHAR}, #{item.contactPhone,jdbcType=VARCHAR}, #{item.orderState,jdbcType=INTEGER}, #{item.payState,jdbcType=INTEGER}, #{item.payMethod,jdbcType=INTEGER})
         </foreach>
     </insert>
     
     <delete id="delete" parameterType="java.lang.Long" >
-        <!--  自动生成 2020年01月19日 删除数据 -->
+        <!--  自动生成 2020年03月04日 删除数据 -->
         delete from order
         where id = #{id,jdbcType=BIGINT}
     </delete>

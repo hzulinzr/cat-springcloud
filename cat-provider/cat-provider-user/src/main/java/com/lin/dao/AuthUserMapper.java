@@ -1,11 +1,16 @@
 package com.lin.dao;
 
-import com.lin.dto.BaseUserDTO;
+import com.lin.dto.BalanceUpdateDTO;
 import com.lin.dto.RegisterDTO;
+import com.lin.dto.UserListDTO;
 import com.lin.model.AuthUser;
+import com.lin.tools.Page;
+import com.lin.vo.UserListVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 用户表ID数据操作接口
@@ -36,4 +41,27 @@ public interface AuthUserMapper extends BaseMapper<AuthUser, Long> {
      * @return
      */
     int register(@Param("registerDTO") RegisterDTO registerDTO);
+
+    /**
+     * 用户账号余额转账
+     * @param balanceUpdateDTO
+     * @return
+     */
+    int balanceUpdate(@Param("balanceUpdateDTO") BalanceUpdateDTO balanceUpdateDTO);
+
+    /**
+     * 查找用户列表数量
+     * @param userListDTO
+     * @return 返回用户列表数量
+     */
+    int searchUserListCount(@Param("userListDTO") UserListDTO userListDTO);
+
+    /**
+     * 查找用户列表
+     * @param userListDTO
+     * @param page
+     * @return 返回用户列表
+     */
+    List<UserListVo> searchUserList(@Param("userListDTO") UserListDTO userListDTO, @Param("page") Page page);
+
 }

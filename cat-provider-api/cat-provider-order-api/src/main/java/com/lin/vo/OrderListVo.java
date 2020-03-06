@@ -11,7 +11,7 @@ public class OrderListVo {
     /**
      * 订单编号
      */
-    private String orderNo;
+    private Long orderId;
     /**
      * 订单金额
      */
@@ -48,4 +48,8 @@ public class OrderListVo {
      * 支付状态（-1：待支付，1：已支付）
      */
     private Integer payState;
+    /**
+     * 支付方式
+     */
+    private String payMethod;
 }

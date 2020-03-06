@@ -9,5 +9,5 @@ import lombok.Data;
 @Data
 public class OrderDTO {
     private Long userId;
-    private String bookNumber;
+    private Long orderId;
 }

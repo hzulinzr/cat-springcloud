@@ -9,6 +9,7 @@ import com.lin.tools.Page;
 import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import com.lin.vo.BookUrlVo;
+import com.lin.vo.CommentListVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -74,12 +75,12 @@ public class BookController {
 
     /**
      * 删除书籍
-     * @param baseBookDTO
+     * @param bookDeleteDTO
      * @return 返回删除书籍信息
      */
     @PostMapping("/book/delete")
-    public Wrapper bookDelete(@RequestBody BaseBookDTO baseBookDTO){
-        return bookService.bookDelete(baseBookDTO);
+    public Wrapper<Void> bookDelete(@RequestBody BookDeleteDTO bookDeleteDTO){
+        return bookService.bookDelete(bookDeleteDTO);
     }
 
     /**
@@ -101,4 +102,36 @@ public class BookController {
     public Wrapper<List<BookInfoVo>> bookInfoList(@RequestParam(value = "ids") List<Long> ids){
         return bookService.bookInfoList(ids);
     }
+
+    /**
+     * 查看书籍评论列表
+     * @param commentListDTO
+     * @param page
+     * @return 返回书籍评论列表
+     */
+    @GetMapping("/comment/list")
+    public Wrapper<PageData<CommentListVo>> commentList(CommentListDTO commentListDTO, Page page){
+        return bookService.commentList(commentListDTO, page);
+    }
+
+    /**
+     * 添加评论
+     * @param commentInsetDTO
+     * @return
+     */
+    @PostMapping("/comment/insert")
+    public Wrapper<Void> commentInsert(@RequestBody CommentInsetDTO commentInsetDTO){
+        return bookService.commentInsert(commentInsetDTO);
+    }
+
+    /**
+     * 更改书籍状态
+     * @param bookStateAdjustDTO
+     * @return
+     */
+    @PostMapping("/book/state/adjust")
+    public Wrapper<Void> bookStateAdjust(@RequestBody BookStateAdjustDTO bookStateAdjustDTO){
+        return bookService.bookStateAdjust(bookStateAdjustDTO);
+    }
+
 }

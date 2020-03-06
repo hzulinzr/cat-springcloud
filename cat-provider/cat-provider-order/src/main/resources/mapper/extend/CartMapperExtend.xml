@@ -17,10 +17,10 @@
         from cart
         where 1=1
         <if test="cartAddDTO.userId != null">
-            and user_id = #{cartAddDTO.userId},
+            and user_id = #{cartAddDTO.userId}
         </if>
         <if test="cartAddDTO.bookId != null">
-            and book_id = #{cartAddDTO.bookId},
+            and book_id = #{cartAddDTO.bookId}
         </if>
     </select>
 
@@ -33,12 +33,12 @@
 
     <update id="updateCart" parameterType="com.lin.model.Cart">
         update cart
-        quantity= #{cart.quantity}  where user_id = #{cart.userId} and book_id = #{cart.bookId};
+        set quantity= #{cart.quantity}  where user_id = #{cart.userId} and book_id = #{cart.bookId};
     </update>
 
     <update id="adjustCart" parameterType="com.lin.dto.CartAdjustDTO">
-        update into cart
-        quantity = #{cartAdjustDTO.quantity},
+        update  cart
+        set quantity = #{cartAdjustDTO.quantity},
         total_amount = #{cartAdjustDTO.totalAmount}
         where user_id = #{cartAdjustDTO.userId} and book_id = #{cartAdjustDTO.bookId}
     </update>

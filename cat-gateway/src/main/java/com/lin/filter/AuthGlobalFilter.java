@@ -56,6 +56,14 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         urls.add("/cat/user/register");
         urls.add("/cat/book/list");
         urls.add("/cat/book/info");
+        urls.add("/cat/book/info/list");
+        urls.add("/cat/order/insert");
+        urls.add("/cat/order/finish");
+        urls.add("/aliPay");
+//        urls.add("/cat/cart/add");
+//        urls.add("/cat/cart/adjust");
+//        urls.add("/cat/cart/list");
+//        urls.add("/cat/cart/delete");
         String requestPath = exchange.getRequest().getPath().value();
         //特殊url不验证
         if (urls.contains(requestPath)) {
@@ -71,7 +79,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
         //获取用户信息
         HttpHeaders headers = new HttpHeaders();
-        headers.set(AUTHORIZATION, authorization.get(0));
+        headers.set(AUTHORIZATION, "Bearer" + authorization.get(0));
         HttpEntity<MultiValueMap<String, Object>> requests = new HttpEntity(null, headers);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<AuthClient> exchange1 = restTemplate.exchange("http://localhost:8071/user/info", HttpMethod.GET, requests, AuthClient.class);
@@ -80,6 +88,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             log.error("获取用户信息异常");
             throw new RuntimeException("获取用户信息异常");
         }
+        log.info("权限： {}",body.getAuthorities());
         if (!body.getAuthorities().contains(requestPath)) {
             log.error("用户权限不足");
             throw new RuntimeException("用户权限不足");

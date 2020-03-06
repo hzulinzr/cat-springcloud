@@ -9,10 +9,6 @@ import lombok.Data;
 @Data
 public class CartAdjustDTO {
     /**
-     * 调整类型 （1：加， -1：减）
-     */
-    private Integer type;
-    /**
      * 书籍id
      */
     private Long bookId;

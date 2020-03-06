@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.CommentMapper" >
+    <select id="searchCommentListCount" resultType="java.lang.Integer">
+        select Count(c.id)
+        from comment c
+        where c.book_id = #{commentListDTO.bookId}
+    </select>
+    <select id="searchCommentList" resultType="com.lin.vo.CommentListVo">
+        select
+            c.user_id as userId,
+            c.content as content,
+            c.create_time as createTime,
+            c.score as score
+        from comment c
+        where c.book_id = #{commentListDTO.bookId}
+        order by c.create_time desc
+        limit #{page.page},  #{page.rows}
+    </select>
+</mapper>

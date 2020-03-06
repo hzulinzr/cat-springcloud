@@ -7,8 +7,10 @@ import com.lin.feign.CartServiceFeign;
 import com.lin.response.PageData;
 import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
+import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartVo;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author lzr
@@ -21,13 +23,14 @@ public class CartServiceFallback implements CartServiceFeign {
         return Wrapper.fail(ResponseCode.ORDER_SERVICE_NO_AVAILABLE);
     }
 
+    @PostMapping("/cart/add")
     @Override
     public Wrapper<Void> cartAdd(CartAddDTO cartAddDTO) {
         return Wrapper.fail(ResponseCode.ORDER_SERVICE_NO_AVAILABLE);
     }
 
     @Override
-    public Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO) {
+    public Wrapper<CartAdjustVo> cartAdjust(CartAdjustDTO cartAdjustDTO) {
         return Wrapper.fail(ResponseCode.ORDER_SERVICE_NO_AVAILABLE);
     }
 

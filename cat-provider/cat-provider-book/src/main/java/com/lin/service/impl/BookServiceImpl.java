@@ -2,12 +2,11 @@ package com.lin.service.impl;
 
 import com.lin.dao.BookMapper;
 import com.lin.dao.BookTypeMapper;
-import com.lin.dto.BaseBookDTO;
-import com.lin.dto.BookAddDTO;
-import com.lin.dto.BookListDTO;
-import com.lin.dto.BookUpdateDTO;
+import com.lin.dao.CommentMapper;
+import com.lin.dto.*;
 import com.lin.model.Book;
 import com.lin.model.BookType;
+import com.lin.model.Comment;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.BookService;
@@ -16,6 +15,7 @@ import com.lin.tools.SnowFlake;
 import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import com.lin.vo.BookUrlVo;
+import com.lin.vo.CommentListVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,9 +39,12 @@ public class BookServiceImpl implements BookService {
 
     private final BookTypeMapper bookTypeMapper;
 
-    public BookServiceImpl(BookMapper bookMapper, BookTypeMapper bookTypeMapper) {
+    private final CommentMapper commentMapper;
+
+    public BookServiceImpl(BookMapper bookMapper, BookTypeMapper bookTypeMapper, CommentMapper commentMapper) {
         this.bookMapper = bookMapper;
         this.bookTypeMapper = bookTypeMapper;
+        this.commentMapper = commentMapper;
     }
 
     /**
@@ -51,10 +55,10 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, Page page) {
-        int totalCount = bookMapper.searchBookListCount(bookListDTO.getKeyword());
+        int totalCount = bookMapper.searchBookListCount(bookListDTO);
         List<BookListVo> bookList = null;
         if(0 < totalCount){
-            bookList = bookMapper.searchBookList(bookListDTO.getKeyword(), page.getPage(), page.getRows());
+            bookList = bookMapper.searchBookList(bookListDTO, page.getPage(), page.getRows());
         }
         return Wrapper.success(bookList, totalCount);
     }
@@ -85,7 +89,7 @@ public class BookServiceImpl implements BookService {
         BeanUtils.copyProperties(bookAddDTO, book);
         book.setId(new SnowFlake(0, 0).nextId());
         book.setBookTypeId(new SnowFlake(0, 0).nextId());
-        book.setUploadTime(String.valueOf(System.currentTimeMillis()));
+        book.setUploadTime(System.currentTimeMillis());
         book.setState(1);
         bookMapper.insert(book);
         BookType bookType = new BookType();
@@ -119,19 +123,22 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 删除书籍
-     * @param baseBookDTO
+     * @param bookDeleteDTO
      * @return 返回删除书籍信息
      */
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
-    public Wrapper bookDelete(BaseBookDTO baseBookDTO) {
-        Book book = bookMapper.findById(baseBookDTO.getBookId());
-        if(null == book){
-            return Wrapper.fail("没有该书籍");
+    public Wrapper<Void> bookDelete(BookDeleteDTO bookDeleteDTO) {
+        List<BookInfoVo> bookInfoVoList = bookMapper.searchBookInfoList(bookDeleteDTO.getBookIds());
+        if(0 != bookInfoVoList.size()){
+            bookInfoVoList.forEach(bookInfoVo -> {
+                bookInfoVo.setState(0);
+                bookInfoVo.setRemoveTime(String.valueOf(System.currentTimeMillis()));
+                Book book = new Book();
+                BeanUtils.copyProperties(bookInfoVo, book);
+                bookMapper.update(book);
+            });
         }
-        book.setState(0);
-        book.setRemoveTime(String.valueOf(System.currentTimeMillis()));
-        bookMapper.update(book);
         return Wrapper.success();
     }
 
@@ -173,5 +180,54 @@ public class BookServiceImpl implements BookService {
         log.info("bookIds: {}", ids);
         List<BookInfoVo> bookInfoVoList = bookMapper.searchBookInfoList(ids);
         return Wrapper.success(bookInfoVoList);
+    }
+
+    /**
+     * 查看书籍评论列表
+     * @param commentListDTO
+     * @param page
+     * @return 返回书籍评论列表
+     */
+    @Override
+    public Wrapper<PageData<CommentListVo>> commentList(CommentListDTO commentListDTO, Page page) {
+        int count = commentMapper.searchCommentListCount(commentListDTO);
+        List<CommentListVo> commentListVoList = new ArrayList<>();
+        if(0 < count) {
+            commentListVoList = commentMapper.searchCommentList(commentListDTO, page);
+        }
+        return Wrapper.success(commentListVoList, count);
+    }
+
+    /**
+     * 添加评论
+     * @param commentInsetDTO
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public Wrapper<Void> commentInsert(CommentInsetDTO commentInsetDTO) {
+        Comment comment = new Comment();
+        comment.setBookId(commentInsetDTO.getBookId());
+        comment.setId(new SnowFlake(0, 0).nextId());
+        comment.setScore(commentInsetDTO.getScore());
+        comment.setContent(commentInsetDTO.getContent());
+        comment.setCreateTime(System.currentTimeMillis());
+        commentMapper.insert(comment);
+        return Wrapper.success();
+    }
+
+    /**
+     * 更改书籍状态
+     * @param bookStateAdjustDTO
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public Wrapper<Void> bookStateAdjust(BookStateAdjustDTO bookStateAdjustDTO) {
+        Book book = new Book();
+        book.setId(bookStateAdjustDTO.getBookId());
+        book.setState(bookStateAdjustDTO.getState());
+        bookMapper.update(book);
+        return Wrapper.success();
     }
 }

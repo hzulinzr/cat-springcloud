@@ -27,5 +27,12 @@ spring:
     multipart:
       max-file-size: 10MB # 限制文件上传的大小
 
+apache:
+  rocketmq:
+    producer:
+      producerGroup: cat-provider
+      consumerGroup: cat-consumer
+    namesrvAddr: 127.0.0.1:9876
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml, mapper/*/*.xml

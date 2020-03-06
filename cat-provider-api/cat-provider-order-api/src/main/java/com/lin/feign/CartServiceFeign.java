@@ -6,6 +6,7 @@ import com.lin.dto.CartDeleteDTO;
 import com.lin.fallback.CartServiceFallback;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
+import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +41,7 @@ public interface CartServiceFeign {
      * @return
      */
     @PostMapping("/cart/adjust")
-    Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO);
+    Wrapper<CartAdjustVo> cartAdjust(CartAdjustDTO cartAdjustDTO);
 
     /**
      * 删除购物车书籍

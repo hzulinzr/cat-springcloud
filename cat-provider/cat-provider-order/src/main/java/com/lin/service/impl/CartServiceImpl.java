@@ -10,6 +10,7 @@ import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.CartService;
 import com.lin.tools.SnowFlake;
+import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -85,21 +86,25 @@ public class CartServiceImpl implements CartService {
      */
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
-    public Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO) {
+    public Wrapper<CartAdjustVo> cartAdjust(CartAdjustDTO cartAdjustDTO) {
         CartAddDTO cartAddDTO = new CartAddDTO();
         cartAddDTO.setBookId(cartAdjustDTO.getBookId());
         cartAddDTO.setUserId(cartAdjustDTO.getUserId());
         //根据用户id和书籍id获取购物车书籍详情
         Cart cart = cartMapper.searchCartInfo(cartAddDTO);
-        int quantity = cart.getQuantity();
+        //获取前端返回的书籍数量
+        int newQuantity = cartAdjustDTO.getQuantity();
         double totalAmount = 0;
-        if(0 != quantity + cartAdjustDTO.getType()) {
-            totalAmount = (cart.getTotalAmount() / quantity) * (quantity + cartAdjustDTO.getType());
+        if(0 != newQuantity) {
+            //计算书籍总价钱
+            totalAmount = (cart.getTotalAmount() / cart.getQuantity()) * (newQuantity);
         }
-        cartAdjustDTO.setQuantity(quantity + cartAdjustDTO.getType());
         cartAdjustDTO.setTotalAmount(totalAmount);
         cartMapper.adjustCart(cartAdjustDTO);
-        return Wrapper.success();
+        CartAdjustVo cartAdjustVo = new CartAdjustVo();
+        cartAdjustVo.setQuantity(newQuantity);
+        cartAdjustVo.setTotalAmount(totalAmount);
+        return Wrapper.success(cartAdjustVo);
     }
 
     /**

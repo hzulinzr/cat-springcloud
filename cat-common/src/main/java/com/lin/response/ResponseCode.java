@@ -14,6 +14,7 @@ public enum ResponseCode {
 	 */
 	DATA_VALID_FAIL(100, "DATA_VALID_FAIL"),
 	BUSINESS_ERROR(30000, "BUSINESS_ERROR"),
+    INSUFFICIENT_BALANCE(30001, "Insufficient balance"),
 	SERVER_NO_AVAILABLE(50000, "server no available"),
 	BOOK_SERVICE_NO_AVAILABLE(50001, "book service no available"),
 	USER_NO_AVAILABLE(50002, "user service no available"),

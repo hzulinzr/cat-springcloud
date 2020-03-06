@@ -7,9 +7,11 @@ import com.lin.model.Cart;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.CartService;
+import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartListVo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
@@ -43,7 +45,7 @@ public class CartController {
      * @return
      */
     @PostMapping("/cart/add")
-    public Wrapper<Void> cartAdd(CartAddDTO cartAddDTO){
+    public Wrapper<Void> cartAdd(@RequestBody CartAddDTO cartAddDTO){
         return cartService.cartAdd(cartAddDTO);
     }
 
@@ -53,7 +55,7 @@ public class CartController {
      * @return
      */
     @PostMapping("/cart/adjust")
-    public Wrapper<Void> cartAdjust(CartAdjustDTO cartAdjustDTO){
+    public Wrapper<CartAdjustVo> cartAdjust(@RequestBody CartAdjustDTO cartAdjustDTO){
         return cartService.cartAdjust(cartAdjustDTO);
     }
 
@@ -63,7 +65,7 @@ public class CartController {
      * @return
      */
     @PostMapping("/cart/delete")
-    public Wrapper<Void> cartDelete(CartDeleteDTO cartDeleteDTO){
+    public Wrapper<Void> cartDelete(@RequestBody CartDeleteDTO cartDeleteDTO){
         return cartService.cartDelete(cartDeleteDTO);
     }
 }

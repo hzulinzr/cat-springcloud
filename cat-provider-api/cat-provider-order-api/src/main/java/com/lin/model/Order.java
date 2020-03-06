@@ -55,4 +55,8 @@ public class Order extends BaseModel {
      * 表字段：order.pay_state 注释：支付状态（-1：待支付，1：已支付）
      */
     private Integer payState;
+    /**
+     * 表字段：order.pay_method 注释：支付方式（0：余额，1：支付宝）
+     */
+    private Integer payMethod;
 }

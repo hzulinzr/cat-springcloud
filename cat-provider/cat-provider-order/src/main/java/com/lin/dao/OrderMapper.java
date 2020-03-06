@@ -1,5 +1,6 @@
 package com.lin.dao;
 
+import com.lin.dto.OrderDTO;
 import com.lin.dto.OrderListDTO;
 import com.lin.model.Order;
 import com.lin.tools.Page;
@@ -22,7 +23,7 @@ public interface OrderMapper extends BaseMapper<Order, Long> {
      * @param orderListDTO 订单列表查询实体类
      * @return 返回订单列表记录数
      */
-    int searchOrderListCount(OrderListDTO orderListDTO);
+    int searchOrderListCount(@Param("orderListDTO") OrderListDTO orderListDTO);
 
     /**
      * 查询订单列表
@@ -31,5 +32,12 @@ public interface OrderMapper extends BaseMapper<Order, Long> {
      * @return 返回订单列表
      */
     List<OrderListVo> searchOrderList(@Param("orderListDTO") OrderListDTO orderListDTO, @Param("page") Page page);
+
+    /**
+     * 查询书籍id列表
+     * @param orderDTO
+     * @return 返回书籍id列表
+     */
+    List<Long> searchBookIds(@Param("orderDTO") OrderDTO orderDTO);
 
 }

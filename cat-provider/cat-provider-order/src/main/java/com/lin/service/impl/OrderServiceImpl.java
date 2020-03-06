@@ -5,8 +5,11 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.lin.config.alipay.AlipayConfig;
+import com.lin.config.rocketmq.RocketProducer;
 import com.lin.dao.OrderMapper;
+import com.lin.dto.AliPayDTO;
 import com.lin.dto.OrderDTO;
+import com.lin.dto.OrderInsertDTO;
 import com.lin.dto.OrderListDTO;
 import com.lin.model.Order;
 import com.lin.response.PageData;
@@ -17,7 +20,9 @@ import com.lin.tools.SnowFlake;
 import com.lin.vo.OrderListVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +34,8 @@ import java.util.List;
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
+    @Resource
+    private RocketProducer rocketProducer;
     private OrderMapper orderMapper;
 
     public OrderServiceImpl(OrderMapper orderMapper) {
@@ -54,15 +61,13 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 创建订单
-     *
      * @param orderDTO 创建订单实体类
      * @return
      */
     @Override
     public Wrapper<Void> orderAdd(OrderDTO orderDTO) {
-        long orderId = new SnowFlake(0, 0).nextId();
         Order order = new Order();
-        order.setId(orderId);
+        order.setId(orderDTO.getOrderId());
         order.setUserId(orderDTO.getUserId());
         order.setCreateTime(System.currentTimeMillis());
         //待支付
@@ -71,42 +76,37 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderState(0);
         //插入订单
         orderMapper.insert(order);
-        //向MQ发布消息
         return Wrapper.success();
     }
 
+    /**
+     * 完成订单
+     * @param aliPayDTO
+     * @return
+     */
     @Override
-    public Wrapper<Void> orderFinish() {
-        log.info("支付成功回调");
-        return null;
+    @Transactional(rollbackFor = RuntimeException.class)
+    public Wrapper<Void> orderFinish(AliPayDTO aliPayDTO) {
+        Order order = new Order();
+        order.setUserId(aliPayDTO.getUserId());
+        //已支付
+        order.setPayState(1);
+        //已完成
+        order.setOrderState(1);
+        //更新订单
+        orderMapper.update(order);
+        return Wrapper.success();
     }
 
+    /**
+     * 查询书籍id列表
+     * @param orderDTO
+     * @return 返回书籍id列表
+     */
     @Override
-    public String alipay() {
-        AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
-        alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
-        alipayRequest.setReturnUrl(AlipayConfig.return_url);
-        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl,AlipayConfig.app_id,
-                AlipayConfig.merchant_private_key,
-                "json",
-                AlipayConfig.charset,
-                AlipayConfig.alipay_public_key,
-                AlipayConfig.sign_type);
-        //订单号
-        String outTradeNo = "4";
-        alipayRequest.setBizContent("{\"out_trade_no\":\""+ outTradeNo +"\","
-                + "\"total_amount\":\""+ 1.00 +"\","
-                + "\"subject\":\""+ "东野圭吾" +"\","
-                + "\"body\":\""+ "书籍买卖" +"\","
-                + "\"timeout_express\":\""+ "1c" +"\","
-                + "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
-        //请求
-        String result = null;
-        try {
-            result = alipayClient.pageExecute(alipayRequest).getBody();
-        } catch (AlipayApiException e) {
-            log.info("异常错误", e);
-        }
-        return result;
+    public Wrapper<List<Long>> orderBookIds(OrderDTO orderDTO) {
+        List<Long> bookIds = orderMapper.searchBookIds(orderDTO);
+        return Wrapper.success(bookIds);
     }
+
 }

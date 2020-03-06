@@ -6,6 +6,7 @@ import com.lin.dto.CartDeleteDTO;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.CartService;
+import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,7 +54,7 @@ public class CartController {
      * @return
      */
     @PostMapping("/cart/adjust")
-    public Wrapper<Void> cartAdjust(@RequestBody CartAdjustDTO cartAdjustDTO){
+    public Wrapper<CartAdjustVo> cartAdjust(@RequestBody CartAdjustDTO cartAdjustDTO){
         return cartService.cartAdjust(cartAdjustDTO);
     }
 
