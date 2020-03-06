@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.AuthUserMapper">
+    <!--    获取用户信息-->
+    <select id="getUser" resultType="com.lin.model.AuthUser">
+        select client_id clientId, state, secret from auth_user where client_id = #{clientId}
+    </select>
+
+    <!--    用户登录-->
+    <select id="login" resultType="com.lin.model.AuthUser">
+        select id, client_id clientId, state, secret from auth_user where client_id = #{username} and secret = #{password}
+    </select>
+
+    <!--    注册用户-->
+    <insert id="register" parameterType="com.lin.dto.RegisterDTO">
+        insert into auth_user
+        (id, create_time, client_id, secret)
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="registerDTO.id != null ">
+                #{registerDTO.id},
+            </if>
+            <if test="registerDTO.createTime != null ">
+                #{registerDTO.createTime},
+            </if>
+            <if test="registerDTO.username != null ">
+                #{registerDTO.username},
+            </if>
+            <if test="registerDTO.password != null ">
+                #{registerDTO.password},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="balanceUpdate" parameterType="com.lin.dto.BalanceUpdateDTO">
+        update auth_user
+        set balance += ( #{balanceUpdateDTO.totalAmount} * #{balanceUpdateDTO.type} )
+        where id = #{balanceUpdateDTO.userId}
+    </update>
+
+    <select id="searchUserListCount" resultType="java.lang.Integer">
+        select COUNT(au.id)
+        from
+        auth_user au
+        where 1=1
+        <if test="null != userListDTO.keyword and '' != userListDTO.keyword">
+            AND au.client_id LIKE CONCAT(#{userListDTO.keyword}, '%')
+        </if>
+    </select>
+
+    <select id="searchUserList" resultType="com.lin.vo.UserListVo">
+        select
+        au.id As userId,
+        au.client_id As username,
+        au.create_time As createTime,
+        au.user_url As userUrl
+        from
+        auth_user au
+        WHERE 1 = 1
+        <if test="userListDTO.keyword != null and userListDTO.keyword !='' ">
+            AND au.client_id LIKE CONCAT(#{userListDTO.keyword}, '%')
+        </if>
+        order by au.create_time desc
+        LIMIT #{page.page}, #{page.rows}
+    </select>
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.OrderMapper">
+    <select id="searchOrderListCount" parameterType="com.lin.dto.OrderListDTO" resultType="java.lang.Integer">
+        select count(o.id)
+        from `order` o
+        where 1=1
+        <set>
+            <if test="null != orderListDTO.keyword and '' != orderListDTO.keyword">
+                AND (o.order_no LIKE CONCAT(#{orderListDTO.keyword}, '%'))
+            </if>
+            <if test="orderListDTO.userId != null">
+                and o.user_id = #{orderListDTO.userId}
+            </if>
+            <if test="orderListDTO.orderId != null">
+                and o.order_id = #{orderListDTO.orderId}
+            </if>
+        </set>
+    </select>
+    <select id="searchOrderList" parameterType="com.lin.dto.OrderListDTO" resultType="com.lin.vo.OrderListVo">
+        select
+            o.id orderId,
+            o.amount,
+            o.pay_time payTime,
+            o.pay_amount payAmount,
+            o.create_time createTime,
+            o.contact_person contactPerson,
+            o.contact_address contactAddress,
+            o.contact_phone contactPhone,
+            o.order_state orderState,
+            o.pay_state payState,
+            o.pay_method as payMethod
+        from
+        `order` o
+        WHERE 1 = 1
+        <if test="null != orderListDTO.keyword and '' != orderListDTO.keyword">
+            AND (o.order_no LIKE CONCAT(#{keyword}, '%'))
+        </if>
+        <if test="orderListDTO.userId != null">
+            and o.user_id = #{orderListDTO.userId}
+        </if>
+        <if test="orderListDTO.orderId != null">
+            and o.order_id = #{orderListDTO.orderId}
+        </if>
+        order by o.create_time desc
+        LIMIT #{page.page}, #{page.rows}
+    </select>
+
+    <select id="searchBookIds" resultType="java.lang.Long">
+        select
+            bo.book_id
+        from `order` o
+        left join book_order bo on o.id = bo.order_id
+        where bo.order_id = #{orderDTO.orderId}
+    </select>
+
+</mapper>
