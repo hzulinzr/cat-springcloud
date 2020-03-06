@@ -72,4 +72,5 @@ public interface BookServiceFeign {
      */
     @PostMapping("/comment/insert")
     Wrapper<Void> commentInsert(CommentInsetDTO commentInsetDTO);
+
 }
