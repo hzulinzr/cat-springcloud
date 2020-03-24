@@ -26,6 +26,12 @@ spring:
             - Path=/cat/book/**
           filters:
             - StripPrefix=1
+        - id: cat-provider-aggregation-book
+          uri: lb://cat-provider-aggregation-book
+          predicates:
+            - Path=/cat/comment/**
+          filters:
+            - StripPrefix=1
         - id: cat-provider-aggregation-order
           uri: lb://cat-provider-aggregation-order
           predicates:

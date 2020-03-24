@@ -12,10 +12,7 @@ import com.lin.response.Wrapper;
 import com.lin.service.BookService;
 import com.lin.tools.Page;
 import com.lin.tools.SnowFlake;
-import com.lin.vo.BookInfoVo;
-import com.lin.vo.BookListVo;
-import com.lin.vo.BookUrlVo;
-import com.lin.vo.CommentListVo;
+import com.lin.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -25,7 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 /**
  * @author lzr
@@ -209,8 +208,12 @@ public class BookServiceImpl implements BookService {
         Comment comment = new Comment();
         comment.setBookId(commentInsetDTO.getBookId());
         comment.setId(new SnowFlake(0, 0).nextId());
+        comment.setBookId(commentInsetDTO.getBookId());
+        comment.setUserId(commentInsetDTO.getUserId());
         comment.setScore(commentInsetDTO.getScore());
         comment.setContent(commentInsetDTO.getContent());
+        //评论状态为有效
+        comment.setState(1);
         comment.setCreateTime(System.currentTimeMillis());
         commentMapper.insert(comment);
         return Wrapper.success();
@@ -229,5 +232,101 @@ public class BookServiceImpl implements BookService {
         book.setState(bookStateAdjustDTO.getState());
         bookMapper.update(book);
         return Wrapper.success();
+    }
+
+    /**
+     * 删除评论
+     * @param commentDeleteDTO
+     * @return
+     */
+    @Override
+    public Wrapper<Void> commentDelete(CommentDeleteDTO commentDeleteDTO) {
+        List<Long> ids = commentDeleteDTO.getIds();
+        ids.forEach(id -> {
+            Comment comment = new Comment();
+            comment.setId(id);
+            comment.setState(0);
+            commentMapper.update(comment);
+        });
+        return Wrapper.success();
+    }
+
+    /**
+     * 管理后台首页的接口
+     * @return
+     */
+    @Override
+    public Wrapper<HomeInfoVo> homeInfo() {
+        HomeInfoVo homeInfoVo = new HomeInfoVo();
+        List<OneWeekNewCountVo> oneWeekNewList = new ArrayList<>();
+
+        //获取书籍类型数量
+        List<BookTypeCountVo> bookTypeList = bookMapper.bookTypeCount();
+        homeInfoVo.setBookTypeList(bookTypeList);
+
+        //获取上架书籍的数量
+        int state = 1;
+        int bookOnShelvesCount = bookMapper.bookStateCount(state);
+        homeInfoVo.setBookOnShelvesCount(bookOnShelvesCount);
+
+        //获取待审核书籍数量
+        state = 2;
+        int bookReviewCount = bookMapper.bookStateCount(state);
+        homeInfoVo.setBookReviewCount(bookReviewCount);
+
+        //获取一周新增上架数
+        oneWeekNewList.add(oneWeekCount("新增上架数量"));
+        //获取一周新增用户数
+        oneWeekNewList.add(oneWeekCount("新增用户数量"));
+        homeInfoVo.setOneWeekNewList(oneWeekNewList);
+
+
+        //获取当前的时间戳
+        long time = System.currentTimeMillis();
+        //获取当天零点零分零秒的时间戳
+        long begin =time/(1000*3600*24)*(1000*3600*24)- TimeZone.getDefault().getRawOffset();
+        //获取当天23点59分59秒的时间戳
+        long end = begin +24*60*60*1000-1;
+
+        //获取当日新增用户数
+        homeInfoVo.setNewUserCount(bookMapper.newUserCount(begin, end));
+        //获取用户总数
+        homeInfoVo.setAllUserCount(bookMapper.allUserCount());
+
+
+        return Wrapper.success(homeInfoVo);
+    }
+
+    /**
+     * 获取一周新增的数量
+     * @param name
+     * @return
+     */
+    public OneWeekNewCountVo oneWeekCount(String name){
+        OneWeekNewCountVo oneWeekNewCountVo = new OneWeekNewCountVo();
+        oneWeekNewCountVo.setName(name);
+        oneWeekNewCountVo.setType("line");
+        List<Integer> data = new ArrayList<>(7);
+
+        //获取当前的时间戳
+        long time = System.currentTimeMillis();
+        //获取当天零点零分零秒的时间戳
+        long begin =time/(1000*3600*24)*(1000*3600*24)- TimeZone.getDefault().getRawOffset();
+        //获取当天23点59分59秒的时间戳
+        long end = begin +24*60*60*1000-1;
+        //获取7天的新增上架数
+        for(int i = 1; i < 8; i++){
+            if("新增用户数量".equals(name)){
+                data.add(bookMapper.bookOneDayCount(begin, end));
+            }else{
+                data.add(bookMapper.newUserCount(begin, end));
+            }
+            //获取前1天0点的时间戳
+            begin -= 24*60*60*1000;
+            //获取前一天23点59分59s的时间戳
+            end -= 24*60*60*1000;
+        }
+        oneWeekNewCountVo.setData(data);
+        return oneWeekNewCountVo;
     }
 }

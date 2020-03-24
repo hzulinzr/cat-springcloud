@@ -5,6 +5,7 @@
         select COUNT(b.id)
         from
             book b
+        left join book_type bt on b.book_type_id = bt.id
         where 1=1
         <if test="bookListDTO.state != null">
             and b.state = #{bookListDTO.state}
@@ -12,8 +13,14 @@
         <if test="bookListDTO.state == null">
             and b.state = 1
         </if>
+        <if test="bookListDTO.userId != null">
+            and b.upload_user_id = #{bookListDTO.userId}
+        </if>
         <if test="null != bookListDTO.keyword and '' != bookListDTO.keyword">
-            AND (b.book_name LIKE CONCAT(#{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT(#{bookListDTO.keyword}, '%') or bt.book_type_name LIKE CONCAT(#{bookListDTO.keyword}, '%') )
+            AND (b.book_name LIKE CONCAT(#{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT(#{bookListDTO.keyword}, '%')  )
+        </if>
+        <if test="bookListDTO.bookType != null">
+            and bt.book_type_name = #{bookListDTO.bookType}
         </if>
     </select>
 
@@ -39,8 +46,14 @@
         <if test="bookListDTO.state == null">
             and b.state = 1
         </if>
+        <if test="bookListDTO.userId != null">
+            and b.upload_user_id = #{bookListDTO.userId}
+        </if>
         <if test="bookListDTO.keyword != null and bookListDTO.keyword !='' ">
-            AND (b.book_name LIKE CONCAT(#{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT(#{bookListDTO.keyword}, '%') or bt.book_type_name LIKE CONCAT(#{bookListDTO.keyword}, '%') )
+            AND (b.book_name LIKE CONCAT(#{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT(#{bookListDTO.keyword}, '%')  )
+        </if>
+        <if test="bookListDTO.bookType != null">
+            and bt.book_type_name = #{bookListDTO.bookType}
         </if>
         order by b.upload_time desc
         LIMIT #{page}, #{rows}
@@ -57,15 +70,51 @@
             b.upload_time uploadTime,
             b.book_url bookUrl,
             bt.book_type_name bookTypeName,
-            bt.book_content bookContent
+            bt.book_content bookContent,
+            bo.quantity as quantity
         from
         book b
         left join book_type bt on b.book_type_id = bt.id
+        left join book_order bo on bo.book_id = b.id
         WHERE
         b.id in
         <foreach collection="ids" item="id" open="(" separator="," close=")">
             #{id}
         </foreach>
+    </select>
+
+    <select id="bookTypeCount" resultType="com.lin.vo.BookTypeCountVo">
+        select
+	        bt.book_type_name bookTypeName,
+	        Count(b.id) bookTypeNameCount
+        from book b
+        left join book_type bt on b.book_type_id = bt.id
+        group by bt.id
+    </select>
+
+    <select id="bookStateCount" resultType="java.lang.Integer">
+        select
+	        COUNT(b.id)
+        from book b
+        where b.`state` = #{state}
+    </select>
+
+    <select id="bookOneDayCount" resultType="java.lang.Integer">
+        select
+	        COUNT(b.id)
+        from book b
+        where b.`state` = 1 and b.upload_time BETWEEN #{begin} and #{end}
+    </select>
+    <select id="newUserCount" resultType="java.lang.Integer">
+        select
+            Count(au.id)
+        from auth_user au
+        where au.create_time BETWEEN #{begin} and #{end}
+    </select>
+    
+    <select id="allUserCount" resultType="java.lang.Integer">
+        select count(au.id)
+        from auth_user au
     </select>
 
 </mapper>

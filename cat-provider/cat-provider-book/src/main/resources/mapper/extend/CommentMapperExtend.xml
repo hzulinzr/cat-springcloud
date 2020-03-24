@@ -8,6 +8,8 @@
     </select>
     <select id="searchCommentList" resultType="com.lin.vo.CommentListVo">
         select
+            c.id as id,
+            c.book_id as bookId,
             c.user_id as userId,
             c.content as content,
             c.create_time as createTime,

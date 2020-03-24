@@ -56,4 +56,8 @@ public class BookInfoVo {
      * 状态 （0：无效 1：有效）
      */
     private Integer state;
+    /**
+     * 购买的书籍数量
+     */
+    private Integer quantity;
 }

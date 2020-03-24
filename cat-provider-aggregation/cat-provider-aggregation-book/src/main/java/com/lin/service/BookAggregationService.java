@@ -6,7 +6,9 @@ import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.vo.BookListVo;
 import com.lin.vo.CommentListVo;
+import com.lin.vo.HomeInfoVo;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author lzr
@@ -20,7 +22,7 @@ public interface BookAggregationService {
      * @param rows 行数
      * @return 返回书籍列表
      */
-    Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, Integer page, Integer rows);
+    Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, int page, int rows);
 
     /**
      * 获取书籍详情
@@ -51,4 +53,15 @@ public interface BookAggregationService {
      * @return
      */
     Wrapper<Void> commentInsert(CommentInsetDTO commentInsetDTO);
+    /**
+     * 删除评论
+     * @param commentDeleteDTO
+     * @return
+     */
+    Wrapper<Void> commentDelete(CommentDeleteDTO commentDeleteDTO);
+    /**
+     * 管理后台首页的接口
+     * @return
+     */
+    Wrapper<HomeInfoVo> homeInfo();
 }

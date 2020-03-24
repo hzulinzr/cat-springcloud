@@ -1,16 +1,15 @@
 package com.lin.controller;
 
-import com.lin.dto.AliPayDTO;
-import com.lin.dto.OrderDTO;
-import com.lin.dto.OrderInsertDTO;
-import com.lin.dto.OrderListDTO;
+import com.lin.dto.*;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.OrderService;
 import com.lin.tools.Page;
 import com.lin.vo.OrderListVo;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -65,5 +64,35 @@ public class OrderController {
     @GetMapping("/order/bookIds")
     public Wrapper<List<Long>> orderBookIds(OrderDTO orderDTO){
         return orderService.orderBookIds(orderDTO);
+    }
+
+    /**
+     * 调整订单状态
+     * @param orderStateDTO
+     * @return
+     */
+    @PostMapping("/order/state/adjust")
+    public Wrapper<Void> orderStateAdjust(@RequestBody OrderStateDTO orderStateDTO){
+        return orderService.orderStateAdjust(orderStateDTO);
+    }
+
+    /**
+     * 插入书籍和订单表数据
+     * @param bookOrderInsertDTO
+     * @return 返回书籍和订单表数据
+     */
+    @PostMapping("/order/book/insert")
+    public Wrapper<Void> orderBookInsert(@RequestBody BookOrderInsertDTO bookOrderInsertDTO){
+        return orderService.orderBookInsert(bookOrderInsertDTO);
+    }
+
+    /**
+     * 更新书籍订单关联表的数据
+     * @param bookOrderUpdateDTO
+     * @return
+     */
+    @PostMapping("/order/book/update")
+    public Wrapper<Void> orderBookUpdate(@RequestBody BookOrderUpdateDTO bookOrderUpdateDTO){
+        return orderService.orderBookUpdate(bookOrderUpdateDTO);
     }
 }

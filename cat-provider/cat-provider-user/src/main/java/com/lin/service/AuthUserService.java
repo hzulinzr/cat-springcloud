@@ -1,9 +1,6 @@
 package com.lin.service;
 
-import com.lin.dto.BalanceUpdateDTO;
-import com.lin.dto.BaseAuthUser;
-import com.lin.dto.RegisterDTO;
-import com.lin.dto.UserListDTO;
+import com.lin.dto.*;
 import com.lin.model.AuthUser;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
@@ -53,4 +50,11 @@ public interface AuthUserService {
      * @return
      */
     Wrapper<PageData<UserListVo>> userList(UserListDTO userListDTO, Page page);
+
+    /**
+     * 完善个人信息
+     * @param authUserUpdateDTO
+     * @return
+     */
+    Wrapper<Void> userUpdate(AuthUserUpdateDTO authUserUpdateDTO);
 }

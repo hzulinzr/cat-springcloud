@@ -16,4 +16,8 @@ public class BookListDTO {
      * 总金额
      */
     private Double totalAmount;
+    /**
+     * 书籍数量
+     */
+    private Integer quantity;
 }

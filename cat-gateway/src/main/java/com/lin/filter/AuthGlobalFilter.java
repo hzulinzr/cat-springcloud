@@ -60,6 +60,8 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         urls.add("/cat/order/insert");
         urls.add("/cat/order/finish");
         urls.add("/aliPay");
+        urls.add("/cat/user/list");
+        urls.add("/cat/order/list");
 //        urls.add("/cat/cart/add");
 //        urls.add("/cat/cart/adjust");
 //        urls.add("/cat/cart/list");
@@ -88,11 +90,11 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             log.error("获取用户信息异常");
             throw new RuntimeException("获取用户信息异常");
         }
-        log.info("权限： {}",body.getAuthorities());
-        if (!body.getAuthorities().contains(requestPath)) {
-            log.error("用户权限不足");
-            throw new RuntimeException("用户权限不足");
-        }
+//        log.info("权限： {}",body.getAuthorities());
+//        if (!body.getAuthorities().contains(requestPath)) {
+//            log.error("用户权限不足");
+//            throw new RuntimeException("用户权限不足");
+//        }
     }
 
     @Override

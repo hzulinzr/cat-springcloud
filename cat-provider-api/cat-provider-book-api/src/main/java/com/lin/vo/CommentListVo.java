@@ -9,9 +9,17 @@ import lombok.Data;
 @Data
 public class CommentListVo {
     /**
+     * 评论id
+     */
+    private Long id;
+    /**
      * 用户id
      */
     private Long userId;
+    /**
+     * 书籍id
+     */
+    private Long bookId;
     /**
      * 评论内容
      */
@@ -24,4 +32,13 @@ public class CommentListVo {
      * 评分
      */
     private Integer score;
+    /**
+     * 评论用户名
+     */
+    private String username;
+    /**
+     * 书籍名称
+     */
+    private String bookName;
+
 }

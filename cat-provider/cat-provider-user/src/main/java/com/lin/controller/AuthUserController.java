@@ -1,9 +1,6 @@
 package com.lin.controller;
 
-import com.lin.dto.BalanceUpdateDTO;
-import com.lin.dto.BaseAuthUser;
-import com.lin.dto.RegisterDTO;
-import com.lin.dto.UserListDTO;
+import com.lin.dto.*;
 import com.lin.model.AuthClient;
 import com.lin.model.AuthUser;
 import com.lin.response.PageData;
@@ -107,5 +104,15 @@ public class AuthUserController {
     @GetMapping("/user/list")
     public Wrapper<PageData<UserListVo>> userList(UserListDTO userListDTO, Page page){
         return authUserService.userList(userListDTO, page);
+    }
+
+    /**
+     * 完善个人信息
+     * @param authUserUpdateDTO
+     * @return
+     */
+    @PostMapping("/user/info/update")
+    public Wrapper<Void> userUpdate(@RequestBody AuthUserUpdateDTO authUserUpdateDTO){
+        return authUserService.userUpdate(authUserUpdateDTO);
     }
 }

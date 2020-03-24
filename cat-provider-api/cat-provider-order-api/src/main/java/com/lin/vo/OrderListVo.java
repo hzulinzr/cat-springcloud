@@ -41,7 +41,7 @@ public class OrderListVo {
      */
     private String contactPhone;
     /**
-     * 订单状态（-1：失败，0：预订单，1：已完成）
+     * 订单状态（-1：失败，0：预订单，1：已完成，2待评价）
      */
     private Integer orderState;
     /**
@@ -49,7 +49,7 @@ public class OrderListVo {
      */
     private Integer payState;
     /**
-     * 支付方式
+     * 支付方式（0：余额，1：支付宝）
      */
-    private String payMethod;
+    private Integer payMethod;
 }

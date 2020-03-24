@@ -3,10 +3,9 @@ package com.lin.controller;
 import com.lin.dto.CartAddDTO;
 import com.lin.dto.CartAdjustDTO;
 import com.lin.dto.CartDeleteDTO;
-import com.lin.model.Cart;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
-import com.lin.service.CartService;
+import com.lin.service.CartAggregationService;
 import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartListVo;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,12 +20,12 @@ import javax.validation.constraints.NotNull;
  * @date 2020-01-13 16:38:18
  */
 @RestController
-public class CartController {
+public class CartAggregationController {
 
-    private CartService cartService;
+    private CartAggregationService cartAggregationService;
 
-    public CartController(CartService cartService) {
-        this.cartService = cartService;
+    public CartAggregationController(CartAggregationService cartAggregationService) {
+        this.cartAggregationService = cartAggregationService;
     }
 
     /**
@@ -36,7 +35,7 @@ public class CartController {
      */
     @GetMapping("/cart/list")
     public Wrapper<PageData<CartListVo>> cartList(@NotNull(message = "userId not null") Long userId){
-        return cartService.cartList(userId);
+        return cartAggregationService.cartList(userId);
     }
 
     /**
@@ -46,7 +45,7 @@ public class CartController {
      */
     @PostMapping("/cart/add")
     public Wrapper<Void> cartAdd(@RequestBody CartAddDTO cartAddDTO){
-        return cartService.cartAdd(cartAddDTO);
+        return cartAggregationService.cartAdd(cartAddDTO);
     }
 
     /**
@@ -56,7 +55,7 @@ public class CartController {
      */
     @PostMapping("/cart/adjust")
     public Wrapper<CartAdjustVo> cartAdjust(@RequestBody CartAdjustDTO cartAdjustDTO){
-        return cartService.cartAdjust(cartAdjustDTO);
+        return cartAggregationService.cartAdjust(cartAdjustDTO);
     }
 
     /**
@@ -66,6 +65,6 @@ public class CartController {
      */
     @PostMapping("/cart/delete")
     public Wrapper<Void> cartDelete(@RequestBody CartDeleteDTO cartDeleteDTO){
-        return cartService.cartDelete(cartDeleteDTO);
+        return cartAggregationService.cartDelete(cartDeleteDTO);
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.MessageMapper">
+    <select id="searchMessageListCount" resultType="java.lang.Integer">
+        select
+        Count(m.id)
+        from message m
+        where 1=1
+        <if test="messageListDTO.userId != null">
+            and m.user_id = #{messageListDTO.userId}
+        </if>
+        <if test="messageListDTO.type != null">
+            and m.type = #{messageListDTO.type}
+        </if>
+        <if test="messageListDTO.type == null">
+            and m.type = 3
+        </if>
+    </select>
+
+    <select id="searchMessageList" resultType="com.lin.vo.MessageListInfoVo">
+        select
+        m.id id,
+        m.book_id bookId,
+        m.content content,
+        m.create_time createTime,
+        m.type type,
+        m.state state
+        from message m
+        where 1=1
+        <if test="messageListDTO.userId != null">
+            and m.user_id = #{messageListDTO.userId}
+        </if>
+        <if test="messageListDTO.type != null">
+            and m.type = #{messageListDTO.type}
+        </if>
+        <if test="messageListDTO.type == null">
+            and m.type = 3
+        </if>
+        order by m.create_time
+        limit #{page}, #{rows}
+    </select>
+    <select id="searchMessageUnreadCount" resultType="java.lang.Integer">
+        select Count(m.id)
+        from message m
+        where 1=1
+        <if test="messageListDTO.userId != null">
+            and m.user_id = #{messageListDTO.userId}
+        </if>
+        <if test="messageListDTO.type != null">
+            and m.type = #{messageListDTO.type}
+        </if>
+        <if test="messageListDTO.state != null">
+            and m.state = #{messageListDTO.state}
+        </if>
+    </select>
+
+</mapper>

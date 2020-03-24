@@ -8,6 +8,7 @@ import com.lin.response.Wrapper;
 import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import com.lin.vo.CommentListVo;
+import com.lin.vo.HomeInfoVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,11 +26,11 @@ public interface BookServiceFeign {
      * 获取书籍列表
      * @param bookListDTO 书籍实体类
      * @param page 页码
-     * @param rows 行数
+     * @param rows 行数int
      * @return 返回书籍列表
      */
     @GetMapping("/book/list")
-    Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, @RequestParam Integer page, @RequestParam Integer rows);
+    Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, @RequestParam int page,  @RequestParam int rows);
 
     /**
      * 获取书籍详情列表
@@ -63,7 +64,7 @@ public interface BookServiceFeign {
      * @return 返回书籍评论列表
      */
     @GetMapping("/comment/list")
-    Wrapper<PageData<CommentListVo>> commentList(CommentListDTO commentListDTO, Integer page, Integer rows);
+    Wrapper<PageData<CommentListVo>> commentList(CommentListDTO commentListDTO, @RequestParam Integer page, @RequestParam Integer rows);
 
     /**
      * 添加评论
@@ -72,4 +73,19 @@ public interface BookServiceFeign {
      */
     @PostMapping("/comment/insert")
     Wrapper<Void> commentInsert(CommentInsetDTO commentInsetDTO);
+
+    /**
+     * 删除评论
+     * @param commentDeleteDTO
+     * @return
+     */
+    @PostMapping("/comment/delete")
+    Wrapper<Void> commentDelete(CommentDeleteDTO commentDeleteDTO);
+
+    /**
+     * 管理后台首页的接口
+     * @return
+     */
+    @GetMapping("/book/home/info")
+    Wrapper<HomeInfoVo> homeInfo();
 }

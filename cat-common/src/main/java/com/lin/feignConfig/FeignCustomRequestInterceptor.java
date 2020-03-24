@@ -38,17 +38,15 @@ public class FeignCustomRequestInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate requestTemplate) {
         // feign组件不支持GET方式POJO，需要转换格式
-        if (HttpMethod.GET.name().equals(requestTemplate.method()) && null != requestTemplate.body()) {
+        if (HttpMethod.GET.name().equals(requestTemplate.method()) && null != requestTemplate.body() && 2 < requestTemplate.body().length) {
             Map<String, Collection<String>> queries = new HashMap<>(16);
             try {
                 JsonNode jsonNode = objectMapper.readTree(requestTemplate.body());
                 requestTemplate.body(null);
-                // 构建 Map
                 buildQuery(jsonNode, "", queries);
             } catch (IOException e) {
                 log.error("【FeignCustomRequestInterceptor】数据转换异常:" + e.getMessage(), e);
             }
-            // queries 就是 POJO 解析为 Map 后的数据
             requestTemplate.queries(queries);
         }
     }
@@ -87,4 +85,3 @@ public class FeignCustomRequestInterceptor implements RequestInterceptor {
         }
     }
 }
-

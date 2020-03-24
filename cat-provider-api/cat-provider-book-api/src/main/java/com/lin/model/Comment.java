@@ -24,7 +24,7 @@ public class Comment extends BaseModel {
      */
     private String content;
     /**
-     * 表字段：comment.user_id 注释：评论用户id
+     * 表字段：comment.user_id 注释：评论id
      */
     private Long userId;
     /**

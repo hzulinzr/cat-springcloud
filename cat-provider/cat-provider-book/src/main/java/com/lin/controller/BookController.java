@@ -6,10 +6,7 @@ import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.BookService;
 import com.lin.tools.Page;
-import com.lin.vo.BookInfoVo;
-import com.lin.vo.BookListVo;
-import com.lin.vo.BookUrlVo;
-import com.lin.vo.CommentListVo;
+import com.lin.vo.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -132,6 +129,24 @@ public class BookController {
     @PostMapping("/book/state/adjust")
     public Wrapper<Void> bookStateAdjust(@RequestBody BookStateAdjustDTO bookStateAdjustDTO){
         return bookService.bookStateAdjust(bookStateAdjustDTO);
+    }
+    /**
+     * 删除评论
+     * @param commentDeleteDTO
+     * @return
+     */
+    @PostMapping("/comment/delete")
+    public Wrapper<Void> commentDelete(@RequestBody CommentDeleteDTO commentDeleteDTO){
+        return bookService.commentDelete(commentDeleteDTO);
+    }
+
+    /**
+     * 管理后台首页的接口
+     * @return
+     */
+    @GetMapping("/book/home/info")
+    public Wrapper<HomeInfoVo> homeInfo(){
+        return bookService.homeInfo();
     }
 
 }

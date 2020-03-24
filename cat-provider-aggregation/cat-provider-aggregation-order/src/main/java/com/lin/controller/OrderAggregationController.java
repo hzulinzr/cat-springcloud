@@ -1,14 +1,11 @@
 package com.lin.controller;
 
-import com.lin.dto.OrderDTO;
-import com.lin.dto.OrderFinishDTO;
-import com.lin.dto.OrderInsertDTO;
-import com.lin.dto.OrderListDTO;
+import com.lin.dto.*;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
-import com.lin.service.OrderService;
-import com.lin.tools.Page;
+import com.lin.service.OrderAggregationService;
 import com.lin.vo.BookInfoVo;
+import com.lin.vo.OrderAllListVo;
 import com.lin.vo.OrderListVo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,11 +19,11 @@ import java.util.List;
  * @date 2020-02-17 20:32:56
  */
 @RestController
-public class OrderController {
-    private OrderService orderService;
+public class OrderAggregationController {
+    private OrderAggregationService orderAggregationService;
 
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
+    public OrderAggregationController(OrderAggregationService orderAggregationService) {
+        this.orderAggregationService = orderAggregationService;
     }
 
     /**
@@ -37,8 +34,8 @@ public class OrderController {
      * @return 返回订单列表
      */
     @GetMapping("/order/list")
-    public Wrapper<PageData<OrderListVo>> orderList(OrderListDTO orderListDTO,  Integer page,  Integer rows){
-        return orderService.orderList(orderListDTO, page, rows);
+    public Wrapper<PageData<OrderListVo>> orderList(OrderListDTO orderListDTO,  int page,  int rows){
+        return orderAggregationService.orderList(orderListDTO, page, rows);
     }
 
     /**
@@ -48,7 +45,7 @@ public class OrderController {
      */
     @PostMapping("/order/insert")
     public String aliPay(@RequestBody OrderInsertDTO orderInsertDTO){
-        return orderService.aliPay(orderInsertDTO);
+        return orderAggregationService.aliPay(orderInsertDTO);
     }
 
     /**
@@ -58,9 +55,8 @@ public class OrderController {
      */
     @PostMapping("/order/balance/insert")
     public Wrapper<Void> orderBalanceInsert(@RequestBody OrderInsertDTO orderInsertDTO){
-        return orderService.orderBalanceInsert(orderInsertDTO);
+        return orderAggregationService.orderBalanceInsert(orderInsertDTO);
     }
-
 
     /**
      * 完成订单
@@ -69,7 +65,7 @@ public class OrderController {
      */
     @PostMapping("/order/finish")
     public Wrapper<Void> orderFinish(@RequestBody OrderFinishDTO orderFinishDTO){
-        return orderService.orderFinish(orderFinishDTO);
+        return orderAggregationService.orderFinish(orderFinishDTO);
     }
 
     /**
@@ -79,7 +75,19 @@ public class OrderController {
      */
     @GetMapping("/order/info/list")
     public Wrapper<List<BookInfoVo>> orderInfoList(OrderDTO orderDTO){
-        return orderService.orderInfoList(orderDTO);
+        return orderAggregationService.orderInfoList(orderDTO);
+    }
+
+    /**
+     * 查看用户的订单列表（包含详情）
+     * @param orderAllListDTO
+     * @param rows 行数
+     * @param page 页码
+     * @return 返回用户的订单列表 （包含详情）
+     */
+    @GetMapping("/order/all/list")
+    public Wrapper<PageData<OrderAllListVo>> orderAllList(OrderAllListDTO orderAllListDTO, int page,  int rows){
+        return orderAggregationService.orderAllList(orderAllListDTO, page, rows);
     }
 
 

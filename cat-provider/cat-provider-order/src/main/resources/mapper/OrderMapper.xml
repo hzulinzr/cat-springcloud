@@ -78,7 +78,7 @@
     
     <insert id="insert" parameterType="com.lin.model.Order" >
         <!--  自动生成 2020年03月04日 添加数据 -->
-        insert into order
+        insert into `order`
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
                 id,

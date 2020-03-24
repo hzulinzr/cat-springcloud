@@ -17,5 +17,5 @@ public class OrderInsertDTO {
     /**
      * 书籍列表
      */
-    List<BookListDTO> bookList;
+    private List<BookListDTO> bookList;
 }

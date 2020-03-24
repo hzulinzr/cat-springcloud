@@ -1,14 +1,13 @@
 package com.lin.fallback;
 
-import com.lin.dto.AliPayDTO;
-import com.lin.dto.OrderDTO;
-import com.lin.dto.OrderListDTO;
+import com.lin.dto.*;
 import com.lin.feign.OrderServiceFeign;
 import com.lin.response.PageData;
 import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
 import com.lin.vo.OrderListVo;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -33,8 +32,24 @@ public class OrderServiceFallback implements OrderServiceFeign {
         return Wrapper.fail(ResponseCode.ORDER_SERVICE_NO_AVAILABLE);
     }
 
+    @GetMapping("/order/bookIds")
     @Override
     public Wrapper<List<Long>> orderBookIds(OrderDTO orderDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> orderStateAdjust(OrderStateDTO orderStateDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> orderBookInsert(BookOrderInsertDTO bookOrderInsertDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> orderBookUpdate(BookOrderUpdateDTO bookOrderUpdateDTO) {
         return null;
     }
 }

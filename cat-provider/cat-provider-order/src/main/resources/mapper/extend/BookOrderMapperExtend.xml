@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.BookOrderMapper">
+  <insert id="orderBookInsert">
+      insert into book_order (id, order_id, book_id, quantity, user_id, state) values
+      (#{bookOrderDTO.id}, #{bookOrderDTO.orderId}, #{bookOrderDTO.bookId}, #{bookOrderDTO.quantity}, #{bookOrderDTO.userId}, #{bookOrderDTO.state})
+  </insert>
+    <update id="orderBookUpdate">
+        update book_order bo
+        set
+        bo.state = 1
+        where
+        bo.user_id = #{bookOrderUpdateDTO.userId}
+        and bo.book_id = #{bookOrderUpdateDTO.bookId}
+    </update>
+</mapper>

@@ -1,8 +1,6 @@
 package com.lin.feign;
 
-import com.lin.dto.AliPayDTO;
-import com.lin.dto.OrderDTO;
-import com.lin.dto.OrderListDTO;
+import com.lin.dto.*;
 import com.lin.fallback.OrderServiceFallback;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
@@ -51,4 +49,28 @@ public interface OrderServiceFeign {
      */
     @GetMapping("/order/bookIds")
     Wrapper<List<Long>> orderBookIds(OrderDTO orderDTO);
+
+    /**
+     * 调整订单状态
+     * @param orderStateDTO
+     * @return
+     */
+    @PostMapping("/order/state/adjust")
+    Wrapper<Void> orderStateAdjust(OrderStateDTO orderStateDTO);
+
+    /**
+     * 插入书籍和订单表数据
+     * @param bookOrderInsertDTO
+     * @return 返回书籍和订单表数据
+     */
+    @PostMapping("/order/book/insert")
+    Wrapper<Void> orderBookInsert(BookOrderInsertDTO bookOrderInsertDTO);
+
+    /**
+     * 更新书籍订单关联表的数据
+     * @param bookOrderUpdateDTO
+     * @return
+     */
+    @PostMapping("/order/book/update")
+    Wrapper<Void> orderBookUpdate(BookOrderUpdateDTO bookOrderUpdateDTO);
 }

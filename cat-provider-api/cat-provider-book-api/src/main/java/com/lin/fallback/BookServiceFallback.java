@@ -9,6 +9,7 @@ import com.lin.response.Wrapper;
 import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
 import com.lin.vo.CommentListVo;
+import com.lin.vo.HomeInfoVo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -20,9 +21,8 @@ import java.util.List;
  */
 @Component
 public class BookServiceFallback implements BookServiceFeign {
-    @GetMapping("/book/list")
     @Override
-    public Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, Integer page, Integer rows) {
+    public Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, int page, int rows) {
         return Wrapper.fail(ResponseCode.BOOK_SERVICE_NO_AVAILABLE);
     }
 
@@ -48,6 +48,16 @@ public class BookServiceFallback implements BookServiceFeign {
 
     @Override
     public Wrapper<Void> commentInsert(CommentInsetDTO commentInsetDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> commentDelete(CommentDeleteDTO commentDeleteDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<HomeInfoVo> homeInfo() {
         return null;
     }
 }

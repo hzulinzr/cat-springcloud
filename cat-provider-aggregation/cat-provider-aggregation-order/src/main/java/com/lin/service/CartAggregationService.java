@@ -14,7 +14,7 @@ import com.lin.vo.CartListVo;
  * @author lzr
  * @date 2020-01-13 16:48:52
  */
-public interface CartService {
+public interface CartAggregationService {
     /**
      * 获取购物车列表
      * @param userId 用户id

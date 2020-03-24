@@ -20,5 +20,13 @@ public class OrderListDTO {
      * 用户id
      */
     private Long userId;
+    /**
+     * 订单状态
+     */
+    private Integer orderState;
+    /**
+     * 订单中的书籍状态(0:待评价，1：已评价）
+     */
+    private Integer state;
 
 }

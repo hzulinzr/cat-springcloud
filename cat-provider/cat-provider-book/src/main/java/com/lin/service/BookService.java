@@ -5,10 +5,7 @@ import com.lin.model.Book;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.tools.Page;
-import com.lin.vo.BookInfoVo;
-import com.lin.vo.BookListVo;
-import com.lin.vo.BookUrlVo;
-import com.lin.vo.CommentListVo;
+import com.lin.vo.*;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -91,5 +88,17 @@ public interface BookService {
      * @return
      */
     Wrapper<Void> bookStateAdjust(BookStateAdjustDTO bookStateAdjustDTO);
+    /**
+     * 删除评论
+     * @param commentDeleteDTO
+     * @return
+     */
+    Wrapper<Void> commentDelete(CommentDeleteDTO commentDeleteDTO);
+
+    /**
+     * 管理后台首页的接口
+     * @return
+     */
+    Wrapper<HomeInfoVo> homeInfo();
 }
 

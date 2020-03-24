@@ -15,12 +15,13 @@ import com.lin.model.Book;
 import com.lin.response.PageData;
 import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
-import com.lin.service.OrderService;
-import com.lin.tools.Page;
+import com.lin.service.OrderAggregationService;
 import com.lin.tools.SnowFlake;
 import com.lin.vo.BookInfoVo;
+import com.lin.vo.OrderAllListVo;
 import com.lin.vo.OrderListVo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,13 +33,13 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrderAggregationServiceImpl implements OrderAggregationService {
     private RocketProducer producer;
     private AuthUserServiceFeign authUserServiceFeign;
     private OrderServiceFeign orderServiceFeign;
     private BookServiceFeign bookServiceFeign;
 
-    public OrderServiceImpl(RocketProducer producer, AuthUserServiceFeign authUserServiceFeign, OrderServiceFeign orderServiceFeign, BookServiceFeign bookServiceFeign) {
+    public OrderAggregationServiceImpl(RocketProducer producer, AuthUserServiceFeign authUserServiceFeign, OrderServiceFeign orderServiceFeign, BookServiceFeign bookServiceFeign) {
         this.producer = producer;
         this.authUserServiceFeign = authUserServiceFeign;
         this.orderServiceFeign = orderServiceFeign;
@@ -58,20 +59,23 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public String aliPay(OrderInsertDTO orderInsertDTO) {
+        //获取书籍总金额
+        double totalAmount = 0;
+        List<BookListDTO> bookList = orderInsertDTO.getBookList();
+        totalAmount = bookList.stream().mapToDouble(BookListDTO::getTotalAmount).sum();
+
         //创建订单
         long orderId = new SnowFlake(0, 0).nextId();
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setOrderId(orderId);
         orderDTO.setUserId(orderInsertDTO.getUserId());
+        //支付宝支付
+        orderDTO.setPayMethod(1);
+        orderDTO.setTotalAmount(totalAmount);
         orderServiceFeign.orderAdd(orderDTO);
 
         //向MQ发布消息
         // producer.sendMessage("order", "OrderProcess", "", "1");
-
-        //获取书籍总金额
-        double totalAmount = 0;
-        List<BookListDTO> bookList = orderInsertDTO.getBookList();
-        totalAmount = bookList.stream().mapToDouble(BookListDTO::getTotalAmount).sum();
 
         //调支付宝沙箱的支付页面
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
@@ -109,20 +113,23 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public Wrapper<Void> orderBalanceInsert(OrderInsertDTO orderInsertDTO) {
+        //获取书籍总金额
+        double totalAmount = 0;
+        List<BookListDTO> bookList = orderInsertDTO.getBookList();
+        totalAmount = bookList.stream().mapToDouble(BookListDTO::getTotalAmount).sum();
+
         //创建订单
         long orderId = new SnowFlake(0, 0).nextId();
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setOrderId(orderId);
         orderDTO.setUserId(orderInsertDTO.getUserId());
+        //余额支付
+        orderDTO.setPayMethod(0);
+        orderDTO.setTotalAmount(totalAmount);
         orderServiceFeign.orderAdd(orderDTO);
 
         //向MQ发布消息
         producer.sendMessage("order", "OrderProcess", "", "1");
-
-        //获取书籍总金额
-        double totalAmount = 0;
-        List<BookListDTO> bookList = orderInsertDTO.getBookList();
-        totalAmount = bookList.stream().mapToDouble(BookListDTO::getTotalAmount).sum();
 
         //获取用户详情信息
         BaseAuthUser baseAuthUser = new BaseAuthUser();
@@ -157,10 +164,20 @@ public class OrderServiceImpl implements OrderService {
 
         });
 
-        //更改订单的状态
+        //更改订单的状态为已完成
         AliPayDTO aliPayDTO = new AliPayDTO();
         aliPayDTO.setOrderId(orderId);
         orderServiceFeign.orderFinish(aliPayDTO);
+
+        //将数据插入书籍和订单的关联表中，状态为待评价
+        BookOrderInsertDTO bookOrderInsertDTO = new BookOrderInsertDTO();
+        bookOrderInsertDTO.setOrderId(orderId);
+        bookOrderInsertDTO.setBookList(orderInsertDTO.getBookList());
+        bookOrderInsertDTO.setId(new SnowFlake(0, 0).nextId());
+        bookOrderInsertDTO.setUserId(orderInsertDTO.getUserId());
+        //书籍订单关联表的状态为待评价
+        bookOrderInsertDTO.setState(0);
+        orderServiceFeign.orderBookInsert(bookOrderInsertDTO);
 
         //订单流水
         //todo
@@ -200,6 +217,16 @@ public class OrderServiceImpl implements OrderService {
         aliPayDTO.setOrderId(orderFinishDTO.getOrderId());
         orderServiceFeign.orderFinish(aliPayDTO);
 
+        //将数据插入书籍和订单的关联表中，状态为待评价
+        BookOrderInsertDTO bookOrderInsertDTO = new BookOrderInsertDTO();
+        bookOrderInsertDTO.setOrderId(orderFinishDTO.getOrderId());
+        bookOrderInsertDTO.setBookList(orderFinishDTO.getBookList());
+        bookOrderInsertDTO.setId(new SnowFlake(0, 0).nextId());
+        bookOrderInsertDTO.setUserId(orderFinishDTO.getUserId());
+        //书籍订单关联表的状态为待评价
+        bookOrderInsertDTO.setState(0);
+        orderServiceFeign.orderBookInsert(bookOrderInsertDTO);
+
         //订单流水
         //todo
 
@@ -216,5 +243,41 @@ public class OrderServiceImpl implements OrderService {
     public Wrapper<List<BookInfoVo>> orderInfoList(OrderDTO orderDTO) {
         List<Long> bookIds = orderServiceFeign.orderBookIds(orderDTO).getData();
         return bookServiceFeign.bookInfoList(bookIds);
+    }
+
+    /**
+     * 查看用户的订单列表（包含详情）
+     * @param orderAllListDTO
+     * @param rows 行数
+     * @param page 页码
+     * @return 返回用户的订单列表 （包含详情）
+     */
+    @Override
+    public Wrapper<PageData<OrderAllListVo>> orderAllList(OrderAllListDTO orderAllListDTO, int page, int rows) {
+        List<OrderAllListVo> orderAllListVoList = new ArrayList<>(10);
+        //查看用户的订单列表
+        OrderListDTO orderListDTO = new OrderListDTO();
+        orderListDTO.setUserId(orderAllListDTO.getUserId());
+        orderListDTO.setState(orderAllListDTO.getState());
+        PageData<OrderListVo> orderList = orderServiceFeign.orderList(orderListDTO, page, rows).getData();
+        if(0 == orderList.getTotalCount()){
+            return Wrapper.success(orderAllListVoList, 0);
+        }
+        List<OrderListVo> orderListVoList = orderList.getData();
+        //获取订单的书籍详情
+        orderListVoList.forEach(orderListVo -> {
+            OrderDTO orderDTO = new OrderDTO();
+            orderDTO.setOrderId(orderListVo.getOrderId());
+            List<Long> bookIds = orderServiceFeign.orderBookIds(orderDTO).getData();
+            List<BookInfoVo> bookInfoVoList = bookServiceFeign.bookInfoList(bookIds).getData();
+
+            //将订单和订单的书籍详情放入返回数据中
+            OrderAllListVo orderAllListVo = new OrderAllListVo();
+            BeanUtils.copyProperties(orderListVo, orderAllListVo);
+            orderAllListVo.setBookInfoVoList(bookInfoVoList);
+            orderAllListVoList.add(orderAllListVo);
+        });
+
+        return Wrapper.success(orderAllListVoList, orderList.getTotalCount());
     }
 }

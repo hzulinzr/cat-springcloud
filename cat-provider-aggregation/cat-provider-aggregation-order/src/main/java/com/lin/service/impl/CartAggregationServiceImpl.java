@@ -8,7 +8,7 @@ import com.lin.feign.CartServiceFeign;
 import com.lin.response.PageData;
 import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
-import com.lin.service.CartService;
+import com.lin.service.CartAggregationService;
 import com.lin.vo.BookInfoVo;
 import com.lin.vo.CartAdjustVo;
 import com.lin.vo.CartListVo;
@@ -19,19 +19,18 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author lzr
  * @date 2020-01-13 16:49:10
  */
 @Service
-public class CartServiceImpl implements CartService {
+public class CartAggregationServiceImpl implements CartAggregationService {
 
     private CartServiceFeign cartServiceFeign;
     private BookServiceFeign bookServiceFeign;
 
-    public CartServiceImpl(CartServiceFeign cartServiceFeign, BookServiceFeign bookServiceFeign) {
+    public CartAggregationServiceImpl(CartServiceFeign cartServiceFeign, BookServiceFeign bookServiceFeign) {
         this.cartServiceFeign = cartServiceFeign;
         this.bookServiceFeign = bookServiceFeign;
     }

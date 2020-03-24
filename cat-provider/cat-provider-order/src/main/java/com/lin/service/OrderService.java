@@ -1,10 +1,7 @@
 package com.lin.service;
 
 import com.alipay.api.AlipayApiException;
-import com.lin.dto.AliPayDTO;
-import com.lin.dto.OrderDTO;
-import com.lin.dto.OrderInsertDTO;
-import com.lin.dto.OrderListDTO;
+import com.lin.dto.*;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.tools.Page;
@@ -46,4 +43,23 @@ public interface OrderService {
      * @return 返回书籍id列表
      */
     Wrapper<List<Long>> orderBookIds(OrderDTO orderDTO);
+
+    /**
+     * 调整订单状态
+     * @param orderStateDTO
+     * @return
+     */
+    Wrapper<Void> orderStateAdjust(OrderStateDTO orderStateDTO);
+    /**
+     * 插入书籍和订单表数据
+     * @param bookOrderInsertDTO
+     * @return 返回书籍和订单表数据
+     */
+    Wrapper<Void> orderBookInsert(BookOrderInsertDTO bookOrderInsertDTO);
+    /**
+     * 更新书籍订单关联表的数据
+     * @param bookOrderUpdateDTO
+     * @return
+     */
+    Wrapper<Void> orderBookUpdate(BookOrderUpdateDTO bookOrderUpdateDTO);
 }

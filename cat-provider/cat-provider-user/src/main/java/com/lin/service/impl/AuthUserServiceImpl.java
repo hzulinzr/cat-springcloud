@@ -2,10 +2,7 @@ package com.lin.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lin.dao.AuthUserMapper;
-import com.lin.dto.BalanceUpdateDTO;
-import com.lin.dto.BaseAuthUser;
-import com.lin.dto.RegisterDTO;
-import com.lin.dto.UserListDTO;
+import com.lin.dto.*;
 import com.lin.model.AuthUser;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
@@ -19,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -149,6 +147,22 @@ public class AuthUserServiceImpl implements AuthUserService {
             userListVoList = authUserMapper.searchUserList(userListDTO, page);
         }
         return Wrapper.success(userListVoList, totalCount);
+    }
+
+    /**
+     * 完善个人信息
+     * @param authUserUpdateDTO
+     * @return
+     */
+    @Override
+    public Wrapper<Void> userUpdate(AuthUserUpdateDTO authUserUpdateDTO) {
+        AuthUser authUser = new AuthUser();
+        authUser.setName(authUserUpdateDTO.getName());
+        authUser.setId(authUserUpdateDTO.getUserId());
+        BeanUtils.copyProperties(authUserUpdateDTO, authUser);
+        //完善个人信息
+        authUserMapper.update(authUser);
+        return Wrapper.success();
     }
 
     /**
