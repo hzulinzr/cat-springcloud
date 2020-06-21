@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.CollectMapper" >
+    <select id="searchBookCollectListCount" resultType="java.lang.Integer">
+        select count(c.id)
+        from collect c
+        where 1=1
+        <if test="bookCollectDTO.userId != null">
+            and c.user_id = #{bookCollectDTO.userId}
+        </if>
+        and c.state = 1
+    </select>
+
+    <select id="searchBookCollectList" resultType="com.lin.vo.BookCollectVo">
+        select
+        c.id,
+        c.user_id userId,
+        c.book_id bookId,
+        c.create_time createTime,
+        c.state state
+        from collect c
+        where 1=1
+        <if test="bookCollectDTO.userId != null">
+            and c.user_id = #{bookCollectDTO.userId}
+        </if>
+        and c.state = 1
+        order by c.create_time
+        limit #{page}, #{rows}
+    </select>
+
+    <select id="collectInfo" resultType="com.lin.model.Collect">
+        select
+        c.id,
+        c.user_id userId,
+        c.book_id bookId,
+        c.state,
+        c.create_time createTime
+        from collect c
+        where 1=1
+        <if test="bookCollectUpdateDTO.userId != null">
+            and c.user_id = #{bookCollectUpdateDTO.userId}
+        </if>
+        <if test="bookCollectUpdateDTO.bookId != null">
+            and c.book_id = #{bookCollectUpdateDTO.bookId}
+        </if>
+    </select>
+
+</mapper>

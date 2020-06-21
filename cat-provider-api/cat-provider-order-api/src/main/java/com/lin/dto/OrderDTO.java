@@ -24,4 +24,12 @@ public class OrderDTO {
      * 订单金额
      */
     private Double totalAmount;
+    /**
+     * 书籍订单关联表的状态 1：已评价 0：待评价
+     */
+    private Integer commentState;
+    /**
+     * 购买用户名
+     */
+    private String contactPerson;
 }

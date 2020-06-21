@@ -3,15 +3,15 @@ package com.lin.fallback;
 import com.lin.dto.*;
 import com.lin.feign.BookServiceFeign;
 import com.lin.model.Book;
+import com.lin.model.Collect;
+import com.lin.model.ThumbsUp;
 import com.lin.response.PageData;
 import com.lin.response.ResponseCode;
 import com.lin.response.Wrapper;
-import com.lin.vo.BookInfoVo;
-import com.lin.vo.BookListVo;
-import com.lin.vo.CommentListVo;
-import com.lin.vo.HomeInfoVo;
+import com.lin.vo.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -60,4 +60,55 @@ public class BookServiceFallback implements BookServiceFeign {
     public Wrapper<HomeInfoVo> homeInfo() {
         return null;
     }
+
+    @Override
+    public Wrapper<Void> bookAdd(BookAddDTO bookAddDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> bookUpdate(BookUpdateDTO bookUpdateDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<PageData<BookCollectVo>> bookCollectList(BookCollectDTO bookCollectDTO, int page, int rows) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> bookCollectUpdate(BookCollectUpdateDTO bookCollectUpdateDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Collect> collectInfo(BookCollectUpdateDTO bookCollectUpdateDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> bookCollectInsert(BookCollectUpdateDTO bookCollectUpdateDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<ThumbsUp> thumbsUpInfo(ThumbsUpInfoDTO thumbsUpInfoDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> thumbsUpUpdate(ThumbsUpUpdateDTO thumbsUpUpdateDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<Void> thumbsUpInsert(ThumbsUpUpdateDTO thumbsUpUpdateDTO) {
+        return null;
+    }
+
+    @Override
+    public Wrapper<List<BookRecommendVo>> bookRecommend() {
+        return null;
+    }
+
 }

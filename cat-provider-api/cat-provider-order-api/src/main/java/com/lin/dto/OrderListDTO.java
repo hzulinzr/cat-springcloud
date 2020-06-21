@@ -28,5 +28,9 @@ public class OrderListDTO {
      * 订单中的书籍状态(0:待评价，1：已评价）
      */
     private Integer state;
+    /**
+     * 购买总金额
+     */
+    private Double amount;
 
 }

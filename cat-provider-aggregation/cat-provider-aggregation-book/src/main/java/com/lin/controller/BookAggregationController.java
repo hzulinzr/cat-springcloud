@@ -1,18 +1,14 @@
 package com.lin.controller;
 
 import com.lin.dto.*;
-import com.lin.feign.AuthUserServiceFeign;
-import com.lin.feign.OrderServiceFeign;
 import com.lin.model.Book;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.BookAggregationService;
-import com.lin.vo.BookListVo;
-import com.lin.vo.CommentListVo;
-import com.lin.vo.HomeInfoVo;
+import com.lin.vo.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,12 +38,12 @@ public class BookAggregationController {
 
     /**
      * 获取书籍详情
-     * @param baseBookDTO 书籍id
+     * @param bookInfoDTO 书籍id
      * @return 返回书籍详情
      */
     @GetMapping("/book/info")
-    public Wrapper<Book> bookInfo(BaseBookDTO baseBookDTO){
-        return bookAggregationService.bookInfo(baseBookDTO);
+    public Wrapper<BookInfoAllVo> bookInfo(BookInfoDTO bookInfoDTO){
+        return bookAggregationService.bookInfo(bookInfoDTO);
     }
 
     /**
@@ -99,6 +95,77 @@ public class BookAggregationController {
     @GetMapping("/book/home/info")
     public Wrapper<HomeInfoVo> homeInfo(){
         return bookAggregationService.homeInfo();
+    }
+
+    /**
+     * 新增书籍
+     * @param bookAddDTO
+     * @return
+     */
+    @PostMapping("/book/add")
+    public Wrapper<Void> bookAdd(@RequestBody BookAddDTO bookAddDTO){
+        return bookAggregationService.bookAdd(bookAddDTO);
+    }
+
+    /**
+     * 上传书籍
+     * @param file
+     * @return 返回书籍路径
+     */
+    @PostMapping("/book/upload")
+    public Wrapper<BookUrlVo> bookUpload(@RequestPart("file") MultipartFile file){
+        return bookAggregationService.bookUpload(file);
+    }
+
+    /**
+     * 更新书籍
+     * @param bookUpdateDTO
+     * @return
+     */
+    @PostMapping("/book/update")
+    public Wrapper<Void> bookUpdate(@RequestBody BookUpdateDTO bookUpdateDTO){
+        return bookAggregationService.bookUpdate(bookUpdateDTO);
+    }
+
+    /**
+     * 查看收藏列表
+     * @param bookCollectDTO
+     * @param rows 行数
+     * @param page 页码
+     * @return 返回收藏列表
+     */
+    @GetMapping("/book/collect/list")
+    public Wrapper<PageData<BookCollectVo>> bookCollectList(BookCollectDTO bookCollectDTO, Integer page, Integer rows){
+        return bookAggregationService.bookCollectList(bookCollectDTO, page, rows);
+    }
+
+    /**
+     * 更改收藏状态
+     * @param bookCollectUpdateDTO
+     * @return
+     */
+    @PostMapping("/book/collect/update")
+    public Wrapper<Void> bookCollectUpdate(@RequestBody BookCollectUpdateDTO bookCollectUpdateDTO){
+        return bookAggregationService.bookCollectUpdate(bookCollectUpdateDTO);
+    }
+
+    /**
+     * 更改书籍的点赞信息
+     * @param thumbsUpUpdateDTO
+     * @return
+     */
+    @PostMapping("/book/thumbsUp/update")
+    public Wrapper<Void> thumbsUpUpdate(@RequestBody ThumbsUpUpdateDTO thumbsUpUpdateDTO){
+        return bookAggregationService.thumbsUpUpdate(thumbsUpUpdateDTO);
+    }
+
+    /**
+     * 每日推荐
+     * @return 返回点赞数最高的前六本书籍
+     */
+    @GetMapping("/book/recommend")
+    public Wrapper<List<BookRecommendVo>> bookRecommend(){
+        return bookAggregationService.bookRecommend();
     }
 
 }

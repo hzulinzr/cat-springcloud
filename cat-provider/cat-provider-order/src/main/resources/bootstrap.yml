@@ -5,12 +5,6 @@ spring:
   application:
     name: cat-provider-order
 
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-    mode: LEGACYHTML5
-    cache: false
-
   cloud:
     nacos:
       discovery:
@@ -22,10 +16,11 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/cat-book?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   servlet:
     multipart:
-      max-file-size: 10MB # 限制文件上传的大小
+      max-file-size: 10Mb
+      max-request-size: 100Mb
+
 
 apache:
   rocketmq:

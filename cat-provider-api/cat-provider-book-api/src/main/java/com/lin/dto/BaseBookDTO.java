@@ -16,4 +16,5 @@ public class BaseBookDTO {
     @NotNull(message = "bookId not null")
     @ApiModelProperty(value = "书籍id", required = true)
     private Long bookId;
+
 }

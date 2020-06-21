@@ -72,7 +72,10 @@ public class CartAggregationServiceImpl implements CartAggregationService {
                     bookInfoVoList.forEach(bookInfo -> {
                         cartListVoList.forEach(cartListVo -> {
                             if (bookInfo.getId().equals(cartListVo.getBookId())) {
-                                BeanUtils.copyProperties(bookInfo, cartListVo);
+                                cartListVo.setBookName(bookInfo.getBookName());
+                                cartListVo.setAmount(bookInfo.getAmount());
+                                cartListVo.setBookQuantity(bookInfo.getBookQuantity());
+                                cartListVo.setBookUrl(bookInfo.getBookUrl());
                             }
                         });
                     });

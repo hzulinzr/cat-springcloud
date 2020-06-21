@@ -18,9 +18,9 @@ import javax.annotation.PreDestroy;
 @Component
 @Slf4j
 public class MqProducer {
-    @Value("${spring.rocketmq.namesrvAddr")
+    @Value("${apache.rocketmq.namesrvAddr")
     private String namesrvAddr;
-    @Value("${spring.rocketmq.producer.producerGroup")
+    @Value("${apache.rocketmq.producer.producerGroup")
     private String producerGroup;
 
     private final DefaultMQProducer producer = new DefaultMQProducer(producerGroup);

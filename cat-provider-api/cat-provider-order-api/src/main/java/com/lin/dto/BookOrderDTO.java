@@ -2,7 +2,6 @@ package com.lin.dto;
 
 import lombok.Data;
 
-import java.util.List;
 
 /**
  * @author lzr
@@ -15,10 +14,6 @@ public class BookOrderDTO {
      */
     private Long id;
     /**
-     * 订单中的书籍状态(0:待评价，1：已评价）
-     */
-    private Integer state;
-    /**
      * 订单id
      */
     private Long orderId;
@@ -27,11 +22,19 @@ public class BookOrderDTO {
      */
     private Long bookId;
     /**
-     * 总金额
-     */
-    private Double totalAmount;
-    /**
      * 书籍数量
      */
     private Integer quantity;
+    /**
+     * 用户id
+     */
+    private Long userId;
+    /**
+     * 订单中的书籍状态(0:待评价，1：已评价）
+     */
+    private Integer state;
+    /**
+     * 总金额
+     */
+    private Double totalAmount;
 }

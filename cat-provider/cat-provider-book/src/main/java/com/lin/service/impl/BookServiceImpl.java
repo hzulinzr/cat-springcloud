@@ -48,6 +48,7 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 获取书籍列表
+     *
      * @param bookListDTO
      * @param page
      * @return 返回书籍列表
@@ -56,7 +57,7 @@ public class BookServiceImpl implements BookService {
     public Wrapper<PageData<BookListVo>> bookList(BookListDTO bookListDTO, Page page) {
         int totalCount = bookMapper.searchBookListCount(bookListDTO);
         List<BookListVo> bookList = null;
-        if(0 < totalCount){
+        if (0 < totalCount) {
             bookList = bookMapper.searchBookList(bookListDTO, page.getPage(), page.getRows());
         }
         return Wrapper.success(bookList, totalCount);
@@ -64,13 +65,14 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 获取书籍详情
+     *
      * @param baseBookDTO 书籍id
      * @return 返回书籍详情
      */
     @Override
     public Wrapper<Book> bookInfo(BaseBookDTO baseBookDTO) {
         Book book = bookMapper.findById(baseBookDTO.getBookId());
-        if(null == book){
+        if (null == book) {
             return Wrapper.fail("没有该书籍");
         }
         return Wrapper.success(book);
@@ -78,50 +80,60 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 新增书籍
+     *
      * @param bookAddDTO
      * @return 返回新增书籍信息
      */
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
-    public Wrapper bookAdd(BookAddDTO bookAddDTO) {
+    public Wrapper<Void> bookAdd(BookAddDTO bookAddDTO) {
         Book book = new Book();
         BeanUtils.copyProperties(bookAddDTO, book);
         book.setId(new SnowFlake(0, 0).nextId());
         book.setBookTypeId(new SnowFlake(0, 0).nextId());
         book.setUploadTime(System.currentTimeMillis());
-        book.setState(1);
+        book.setUploadUserId(bookAddDTO.getUploadUserId());
+        //书籍状态为待审核
+        book.setState(2);
+        //点赞数为0
+        book.setThumbsUp(0);
+
+        //查看书籍类型的id
+        BookType bookTypeInfo = bookMapper.bookInfo(bookAddDTO.getBookTypeName());
+        book.setBookTypeId(bookTypeInfo.getId());
         bookMapper.insert(book);
-        BookType bookType = new BookType();
-        bookType.setId(book.getBookTypeId());
-        bookType.setBookTypeName(bookAddDTO.getBookTypeName());
-        bookTypeMapper.insert(bookType);
         return Wrapper.success();
     }
 
     /**
      * 更新书籍
+     *
      * @param bookUpdateDTO
      * @return 返回更新书籍信息
      */
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
-    public Wrapper bookUpdate(BookUpdateDTO bookUpdateDTO) {
+    public Wrapper<Void> bookUpdate(BookUpdateDTO bookUpdateDTO) {
         Book book = bookMapper.findById(bookUpdateDTO.getBookId());
-        if(null == book){
+        if (null == book) {
             return Wrapper.fail("没有该书籍");
         }
         book.setAmount(bookUpdateDTO.getAmount());
         book.setBookQuantity(bookUpdateDTO.getBookQuantity());
+        book.setThumbsUp(bookUpdateDTO.getThumbsUp());
+
         bookMapper.update(book);
-        BookType bookType = bookTypeMapper.findById(book.getBookTypeId());
-        bookType.setBookTypeName(bookUpdateDTO.getBookTypeName());
-        bookTypeMapper.update(bookType);
-        BeanUtils.copyProperties(book, bookUpdateDTO);
+        log.info("更新书籍成功！");
+//        BookType bookType = bookTypeMapper.findById(book.getBookTypeId());
+//        bookType.setBookTypeName(bookUpdateDTO.getBookTypeName());
+//        bookTypeMapper.update(bookType);
+//        BeanUtils.copyProperties(book, bookUpdateDTO);
         return Wrapper.success();
     }
 
     /**
      * 删除书籍
+     *
      * @param bookDeleteDTO
      * @return 返回删除书籍信息
      */
@@ -129,7 +141,7 @@ public class BookServiceImpl implements BookService {
     @Transactional(rollbackFor = RuntimeException.class)
     public Wrapper<Void> bookDelete(BookDeleteDTO bookDeleteDTO) {
         List<BookInfoVo> bookInfoVoList = bookMapper.searchBookInfoList(bookDeleteDTO.getBookIds());
-        if(0 != bookInfoVoList.size()){
+        if (0 != bookInfoVoList.size()) {
             bookInfoVoList.forEach(bookInfoVo -> {
                 bookInfoVo.setState(0);
                 bookInfoVo.setRemoveTime(String.valueOf(System.currentTimeMillis()));
@@ -143,27 +155,30 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 上传书籍
+     *
      * @param file 路径
      * @return
      */
     @Override
     public Wrapper<BookUrlVo> bookUpload(MultipartFile file) {
-        if(null == file) {
+        if (null == file) {
             log.info("上传文件为空");
             return Wrapper.fail("上传文件为空");
-        }
-        String path = "/Users/lzr/Pictures/cat";
-        File filePath = new File(path);
-        try {
-            //上传到指定路径
-            file.transferTo(filePath);
-        }catch(Exception e){
-            log.info("上传文件失败", e);
         }
         // 重新生成唯一文件名，用于存储数据库
         String fileName = file.getOriginalFilename();
         String newFileName = UUID.randomUUID().toString().replace("-", "") + fileName;
-        String bookUrl = path + newFileName;
+        String path = "/Users/lzr/study/images/" + newFileName;
+        File filePath = new File(path);
+        try {
+            //上传到指定路径
+            file.transferTo(filePath);
+        } catch (Exception e) {
+            log.info("上传文件失败", e);
+        }
+        //nginx搭建图片服务器，通过/images/转发到/Users/lzr/study/images/
+        String pathNew = "/images/";
+        String bookUrl = pathNew + newFileName;
         BookUrlVo bookUrlVo = new BookUrlVo();
         bookUrlVo.setBookUrl(bookUrl);
         return Wrapper.success(bookUrlVo);
@@ -171,6 +186,7 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 获取书籍详情列表
+     *
      * @param ids 多个书籍id，以逗号隔开的字符串
      * @return 返回书籍详情列表
      */
@@ -183,6 +199,7 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 查看书籍评论列表
+     *
      * @param commentListDTO
      * @param page
      * @return 返回书籍评论列表
@@ -191,7 +208,7 @@ public class BookServiceImpl implements BookService {
     public Wrapper<PageData<CommentListVo>> commentList(CommentListDTO commentListDTO, Page page) {
         int count = commentMapper.searchCommentListCount(commentListDTO);
         List<CommentListVo> commentListVoList = new ArrayList<>();
-        if(0 < count) {
+        if (0 < count) {
             commentListVoList = commentMapper.searchCommentList(commentListDTO, page);
         }
         return Wrapper.success(commentListVoList, count);
@@ -199,6 +216,7 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 添加评论
+     *
      * @param commentInsetDTO
      * @return
      */
@@ -221,6 +239,7 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 更改书籍状态
+     *
      * @param bookStateAdjustDTO
      * @return
      */
@@ -236,6 +255,7 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 删除评论
+     *
      * @param commentDeleteDTO
      * @return
      */
@@ -253,6 +273,7 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 管理后台首页的接口
+     *
      * @return
      */
     @Override
@@ -284,9 +305,9 @@ public class BookServiceImpl implements BookService {
         //获取当前的时间戳
         long time = System.currentTimeMillis();
         //获取当天零点零分零秒的时间戳
-        long begin =time/(1000*3600*24)*(1000*3600*24)- TimeZone.getDefault().getRawOffset();
+        long begin = time / (1000 * 3600 * 24) * (1000 * 3600 * 24) - TimeZone.getDefault().getRawOffset();
         //获取当天23点59分59秒的时间戳
-        long end = begin +24*60*60*1000-1;
+        long end = begin + 24 * 60 * 60 * 1000 - 1;
 
         //获取当日新增用户数
         homeInfoVo.setNewUserCount(bookMapper.newUserCount(begin, end));
@@ -298,11 +319,23 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
+     * 每日推荐
+     * @return 返回点赞数最高的前六本书籍
+     */
+    @Override
+    public Wrapper<List<BookRecommendVo>> bookRecommend() {
+        List<BookRecommendVo> bookRecommendVos = bookMapper.searchBookRecommend();
+        log.info("查询每日推荐数");
+        return Wrapper.success(bookRecommendVos);
+    }
+
+    /**
      * 获取一周新增的数量
+     *
      * @param name
      * @return
      */
-    public OneWeekNewCountVo oneWeekCount(String name){
+    public OneWeekNewCountVo oneWeekCount(String name) {
         OneWeekNewCountVo oneWeekNewCountVo = new OneWeekNewCountVo();
         oneWeekNewCountVo.setName(name);
         oneWeekNewCountVo.setType("line");
@@ -311,20 +344,20 @@ public class BookServiceImpl implements BookService {
         //获取当前的时间戳
         long time = System.currentTimeMillis();
         //获取当天零点零分零秒的时间戳
-        long begin =time/(1000*3600*24)*(1000*3600*24)- TimeZone.getDefault().getRawOffset();
+        long begin = time / (1000 * 3600 * 24) * (1000 * 3600 * 24) - TimeZone.getDefault().getRawOffset();
         //获取当天23点59分59秒的时间戳
-        long end = begin +24*60*60*1000-1;
+        long end = begin + 24 * 60 * 60 * 1000 - 1;
         //获取7天的新增上架数
-        for(int i = 1; i < 8; i++){
-            if("新增用户数量".equals(name)){
+        for (int i = 1; i < 8; i++) {
+            if ("新增上架数量".equals(name)) {
                 data.add(bookMapper.bookOneDayCount(begin, end));
-            }else{
+            } else {
                 data.add(bookMapper.newUserCount(begin, end));
             }
             //获取前1天0点的时间戳
-            begin -= 24*60*60*1000;
+            begin -= 24 * 60 * 60 * 1000;
             //获取前一天23点59分59s的时间戳
-            end -= 24*60*60*1000;
+            end -= 24 * 60 * 60 * 1000;
         }
         oneWeekNewCountVo.setData(data);
         return oneWeekNewCountVo;

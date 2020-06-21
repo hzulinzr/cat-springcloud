@@ -24,4 +24,16 @@ public class BookListDTO{
      * 上传用户
      */
     private Long userId;
+    /**
+     * 开始时间
+     */
+    private Long startTime;
+    /**
+     * 结束时间
+     */
+    private Long endTime;
+    /**
+     * 上传用户id
+     */
+    private Long username;
 }

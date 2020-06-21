@@ -24,5 +24,9 @@ public class AliPayDTO {
      * 上传书籍的用户id
      */
     private Long uploadUserId;
+    /**
+     * 支付时间
+     */
+    private Long payTime;
 
 }

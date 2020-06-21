@@ -8,13 +8,13 @@
 
     <!--    用户登录-->
     <select id="login" resultType="com.lin.model.AuthUser">
-        select id, client_id clientId, state, secret from auth_user where client_id = #{username} and secret = #{password}
+        select id, client_id clientId, state, secret, user_url userUrl from auth_user where client_id = #{username} and secret = #{password}
     </select>
 
     <!--    注册用户-->
     <insert id="register" parameterType="com.lin.dto.RegisterDTO">
         insert into auth_user
-        (id, create_time, client_id, secret)
+        (id, create_time, client_id, secret, balance, state)
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="registerDTO.id != null ">
                 #{registerDTO.id},
@@ -28,12 +28,18 @@
             <if test="registerDTO.password != null ">
                 #{registerDTO.password},
             </if>
+            <if test="registerDTO.balance != null ">
+                #{registerDTO.balance},
+            </if>
+            <if test="registerDTO.state != null ">
+                #{registerDTO.state},
+            </if>
         </trim>
     </insert>
 
     <update id="balanceUpdate" parameterType="com.lin.dto.BalanceUpdateDTO">
         update auth_user
-        set balance += ( #{balanceUpdateDTO.totalAmount} * #{balanceUpdateDTO.type} )
+        set balance = #{balanceUpdateDTO.totalAmount}
         where id = #{balanceUpdateDTO.userId}
     </update>
 
@@ -61,6 +67,16 @@
         </if>
         order by au.create_time desc
         LIMIT #{page.page}, #{page.rows}
+    </select>
+
+    <select id="userInfo" resultType="com.lin.vo.MessageVo">
+        select
+        au.id As userId,
+        au.client_id As username,
+        au.create_time As createTime,
+        au.user_url As userUrl
+        from auth_user au
+        where au.client_id = #{username}
     </select>
 
 </mapper>

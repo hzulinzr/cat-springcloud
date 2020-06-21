@@ -1,6 +1,5 @@
 package com.lin.service.impl;
 
-import com.alipay.api.domain.Car;
 import com.lin.dao.CartMapper;
 import com.lin.dto.CartAddDTO;
 import com.lin.dto.CartAdjustDTO;
@@ -63,7 +62,8 @@ public class CartServiceImpl implements CartService {
         //购物车是否存在该书籍
         if(null != cartInfo){
             //存在则书籍加1
-            cartInfo.setQuantity(cartInfo.getQuantity() + 1);
+            cartInfo.setQuantity(cartAddDTO.getQuantity());
+            cartInfo.setTotalAmount(cartAddDTO.getTotalAmount());
             cartMapper.updateCart(cartInfo);
             log.info("购物书籍加1");
         }else{
@@ -71,7 +71,8 @@ public class CartServiceImpl implements CartService {
             Cart cartNew = new Cart();
             cartNew.setId(new SnowFlake(0, 0).nextId());
             cartNew.setBookId(cartAddDTO.getBookId());
-            cartNew.setQuantity(1);
+            cartNew.setQuantity(cartAddDTO.getQuantity());
+            cartNew.setTotalAmount(cartAddDTO.getTotalAmount());
             cartNew.setUserId(cartAddDTO.getUserId());
             cartMapper.insertCart(cartNew);
             log.info("{} 将书籍加入购物成功", cartAddDTO.getUserId());
@@ -115,7 +116,11 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
     public Wrapper<Void> cartDelete(CartDeleteDTO cartDeleteDTO) {
-        cartMapper.cartDelete(cartDeleteDTO);
+        List<Long> bookIds = cartDeleteDTO.getBookIds();
+        bookIds.forEach(bookId -> {
+            cartDeleteDTO.setBookId(bookId);
+            cartMapper.cartDelete(cartDeleteDTO);
+        });
         log.info("用户：{} 删除购物车成功！", cartDeleteDTO.getUserId());
         return Wrapper.success();
     }

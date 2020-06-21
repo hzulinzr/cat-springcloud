@@ -16,4 +16,12 @@ public class CartAddDTO {
      * 用户id
      */
     private Long userId;
+    /**
+     * 书籍数量
+     */
+    private Integer quantity;
+    /**
+     * 总金额
+     */
+    private Double totalAmount;
 }

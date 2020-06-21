@@ -46,7 +46,7 @@ public class RocketConsumer implements MessageListenerConcurrently {
             //集群消费模式
             consumer.setMessageModel(MessageModel.CLUSTERING);
             //订阅主题
-            consumer.subscribe("cat", "*");
+            consumer.subscribe("order", "*");
             //注册消息监听器
             consumer.registerMessageListener(this);
             //启动消费端

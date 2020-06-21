@@ -1,6 +1,7 @@
 package com.lin.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lin.config.MD5;
 import com.lin.dao.AuthUserMapper;
 import com.lin.dto.*;
 import com.lin.model.AuthUser;
@@ -9,20 +10,21 @@ import com.lin.response.Wrapper;
 import com.lin.service.AuthUserService;
 import com.lin.tools.Page;
 import com.lin.tools.SnowFlake;
-import com.lin.vo.UserListVo;
-import com.lin.vo.UserLoginSuccessVo;
-import com.lin.vo.UserRegisterSuccessVo;
+import com.lin.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * @author lzr
@@ -68,9 +70,6 @@ public class AuthUserServiceImpl implements AuthUserService {
             }
             return "";
         }).orElse("");
-//        if("".equals(result)){
-//            return Wrapper.fail("获取token失败，请重新登录");
-//        }
         JSONObject jsonObject = JSONObject.parseObject(result);
         //获取令牌
         String accessToken = jsonObject.getString("access_token");
@@ -83,6 +82,7 @@ public class AuthUserServiceImpl implements AuthUserService {
         UserLoginSuccessVo userLoginSuccessVo = new UserLoginSuccessVo();
         userLoginSuccessVo.setAccessToken(accessToken);
         userLoginSuccessVo.setScope(scope);
+        userLoginSuccessVo.setUserUrl(authUser.getUserUrl());
         userLoginSuccessVo.setUsername(username);
         userLoginSuccessVo.setUserId(authUser.getId());
 
@@ -105,6 +105,13 @@ public class AuthUserServiceImpl implements AuthUserService {
         }
         registerDTO.setCreateTime(System.currentTimeMillis());
         registerDTO.setId(new SnowFlake(0, 0).nextId());
+
+        //md5加密
+        MD5 md5 = new MD5();
+        String password = md5.encryption(registerDTO.getPassword());
+        registerDTO.setPassword(password);
+        registerDTO.setState(1);
+        registerDTO.setBalance(0.0);
         //注册用户
         authUserMapper.register(registerDTO);
         log.info("注册用户成功！");
@@ -118,6 +125,8 @@ public class AuthUserServiceImpl implements AuthUserService {
      */
     @Override
     public Wrapper<Void> balanceUpdate(BalanceUpdateDTO balanceUpdateDTO) {
+        AuthUser authUser = authUserMapper.findById(balanceUpdateDTO.getUserId());
+        balanceUpdateDTO.setTotalAmount(authUser.getBalance() + balanceUpdateDTO.getType() * balanceUpdateDTO.getTotalAmount());
         authUserMapper.balanceUpdate(balanceUpdateDTO);
         return Wrapper.success();
     }
@@ -163,6 +172,48 @@ public class AuthUserServiceImpl implements AuthUserService {
         //完善个人信息
         authUserMapper.update(authUser);
         return Wrapper.success();
+    }
+
+    /**
+     * 上传用户头像
+     * @param file
+     * @return
+     */
+    @Override
+    public Wrapper<UserUrlVo> userUpload(MultipartFile file, Long userId) {
+        if(null == file) {
+            log.info("上传文件为空");
+            return Wrapper.fail("上传文件为空");
+        }
+        // 重新生成唯一文件名，用于存储数据库
+        String fileName = file.getOriginalFilename();
+        String newFileName = UUID.randomUUID().toString().replace("-", "") + fileName;
+        String path = "/Users/lzr/study/images/" + newFileName;
+        File filePath = new File(path);
+        try {
+            //上传到指定路径
+            file.transferTo(filePath);
+        }catch(Exception e){
+            log.info("上传文件失败", e);
+        }
+
+        //nginx搭建图片服务器，通过/images/转发到/Users/lzr/study/images/
+        String pathNew = "/images/";
+        String userUrl = pathNew + newFileName;
+        UserUrlVo userUrlVo = new UserUrlVo();
+        userUrlVo.setUserUrl(userUrl);
+        AuthUser authUser = new AuthUser();
+        authUser.setId(userId);
+        authUser.setUserUrl(userUrl);
+        authUserMapper.update(authUser);
+        log.info("上传头像成功");
+
+        return Wrapper.success(userUrlVo);
+    }
+
+    @Override
+    public MessageVo messageInfo(String username) {
+        return authUserMapper.userInfo(username);
     }
 
     /**

@@ -32,6 +32,12 @@ spring:
             - Path=/cat/comment/**
           filters:
             - StripPrefix=1
+#        - id: cat-websocket
+#          uri: lb://cat-websocket
+#          predicates:
+#            - Path=/cat/websocket/**
+#          filters:
+#            - StripPrefix=1
         - id: cat-provider-aggregation-order
           uri: lb://cat-provider-aggregation-order
           predicates:
@@ -44,6 +50,7 @@ spring:
             - Path=/cat/oauth/**
           filters:
             - StripPrefix=1
+
 server:
   port: 5001
 

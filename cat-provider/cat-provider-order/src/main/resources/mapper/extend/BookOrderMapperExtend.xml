@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lin.dao.BookOrderMapper">
-  <insert id="orderBookInsert">
-      insert into book_order (id, order_id, book_id, quantity, user_id, state) values
-      (#{bookOrderDTO.id}, #{bookOrderDTO.orderId}, #{bookOrderDTO.bookId}, #{bookOrderDTO.quantity}, #{bookOrderDTO.userId}, #{bookOrderDTO.state})
+  <insert id="orderBookInsert" parameterType="com.lin.dto.BookOrderDTO">
+      insert into book_order
+      <trim prefix="(" suffix=")" suffixOverrides="," >
+          <if test="bookOrderDTO.id != null" >
+              id,
+          </if>
+          <if test="bookOrderDTO.orderId != null" >
+              order_id,
+          </if>
+          <if test="bookOrderDTO.bookId != null" >
+              book_id,
+          </if>
+          <if test="bookOrderDTO.quantity != null" >
+              quantity,
+          </if>
+          <if test="bookOrderDTO.userId != null" >
+              user_id,
+          </if>
+          <if test="bookOrderDTO.state != null" >
+              state,
+          </if>
+      </trim>
+      <trim prefix="values (" suffix=")" suffixOverrides="," >
+          <if test="bookOrderDTO.id != null" >
+              #{bookOrderDTO.id,jdbcType=BIGINT},
+          </if>
+          <if test="bookOrderDTO.orderId != null" >
+              #{bookOrderDTO.orderId,jdbcType=BIGINT},
+          </if>
+          <if test="bookOrderDTO.bookId != null" >
+              #{bookOrderDTO.bookId,jdbcType=BIGINT},
+          </if>
+          <if test="bookOrderDTO.quantity != null" >
+              #{bookOrderDTO.quantity,jdbcType=INTEGER},
+          </if>
+          <if test="bookOrderDTO.userId != null" >
+              #{bookOrderDTO.userId,jdbcType=BIGINT},
+          </if>
+          <if test="bookOrderDTO.state != null" >
+              #{bookOrderDTO.state,jdbcType=INTEGER},
+          </if>
+      </trim>
   </insert>
     <update id="orderBookUpdate">
         update book_order bo

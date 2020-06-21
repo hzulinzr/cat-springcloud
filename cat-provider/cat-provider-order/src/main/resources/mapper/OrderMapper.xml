@@ -34,7 +34,7 @@
     
     <update id="update" parameterType="com.lin.model.Order" >
         <!--  自动生成 2020年03月04日 更新数据 -->
-        update order
+        update `order`
         <set >
             <if test="userId != null" >
                 user_id = #{userId,jdbcType=BIGINT},

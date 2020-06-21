@@ -12,4 +12,6 @@ public class RegisterDTO {
     private String password;
     private Long createTime;
     private Long id;
+    private Integer state;
+    private Double balance;
 }

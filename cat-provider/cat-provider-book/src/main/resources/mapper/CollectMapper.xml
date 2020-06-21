@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.CollectMapper" >
+    <resultMap id="BaseResultMap" type="com.lin.model.Collect" >
+        <!--  自动生成 2020年04月18日 表与实体类字段对应 -->
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="book_id" property="bookId" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        <!--  自动生成 2020年04月18日 表字段名称 -->
+        id, book_id, create_time, user_id, state
+    </sql>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--  自动生成 2020年04月18日 根据ID查询 -->
+        select 
+        <include refid="Base_Column_List" />
+        from collect
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    
+    <update id="update" parameterType="com.lin.model.Collect" >
+        <!--  自动生成 2020年04月18日 更新数据 -->
+        update collect
+        <set >
+            <if test="bookId != null" >
+                book_id = #{bookId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null" >
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    
+    <insert id="insert" parameterType="com.lin.model.Collect" >
+        <!--  自动生成 2020年04月18日 添加数据 -->
+        insert into collect
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="bookId != null" >
+                book_id,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="userId != null" >
+                user_id,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="bookId != null" >
+                #{bookId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null" >
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    
+    <insert id="inserts" parameterType="java.util.List" >
+        <!-- WARNING -  自动生成 2020-04-18 添加多条数据 -->
+        insert into collect (id, book_id, create_time, user_id, state)
+        values
+        <foreach collection="list" item="item" separator="," >
+            (#{item.id,jdbcType=BIGINT}, #{item.bookId,jdbcType=BIGINT}, #{item.createTime,jdbcType=BIGINT}, #{item.userId,jdbcType=BIGINT}, #{item.state,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+    
+    <delete id="delete" parameterType="java.lang.Long" >
+        <!--  自动生成 2020年04月18日 删除数据 -->
+        delete from collect
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>

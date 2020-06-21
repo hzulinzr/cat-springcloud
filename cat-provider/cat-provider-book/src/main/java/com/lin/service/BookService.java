@@ -38,14 +38,14 @@ public interface BookService {
      * @param bookAddDTO
      * @return 返回新增书籍信息
      */
-    Wrapper bookAdd(BookAddDTO bookAddDTO);
+    Wrapper<Void> bookAdd(BookAddDTO bookAddDTO);
 
     /**
      * 更新书籍
      * @param bookUpdateDTO
      * @return 返回更新书籍信息
      */
-    Wrapper bookUpdate(BookUpdateDTO bookUpdateDTO);
+    Wrapper<Void> bookUpdate(BookUpdateDTO bookUpdateDTO);
 
     /**
      * 删除书籍
@@ -94,11 +94,15 @@ public interface BookService {
      * @return
      */
     Wrapper<Void> commentDelete(CommentDeleteDTO commentDeleteDTO);
-
     /**
      * 管理后台首页的接口
      * @return
      */
     Wrapper<HomeInfoVo> homeInfo();
+    /**
+     * 每日推荐
+     * @return 返回点赞数最高的前六本书籍
+     */
+    Wrapper<List<BookRecommendVo>> bookRecommend();
 }
 

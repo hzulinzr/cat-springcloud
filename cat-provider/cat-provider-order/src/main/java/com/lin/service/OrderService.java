@@ -5,6 +5,7 @@ import com.lin.dto.*;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.tools.Page;
+import com.lin.vo.OrderFlowListVo;
 import com.lin.vo.OrderListVo;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -62,4 +63,17 @@ public interface OrderService {
      * @return
      */
     Wrapper<Void> orderBookUpdate(BookOrderUpdateDTO bookOrderUpdateDTO);
+    /**
+     * 查看账单列表
+     * @param orderFlowListDTO
+     * @param page
+     * @return 返回账单列表
+     */
+    Wrapper<PageData<OrderFlowListVo>> orderFlowList(OrderFlowListDTO orderFlowListDTO, Page page);
+    /**
+     * 插入账单
+     * @param orderFlowInsertDTO
+     * @return
+     */
+    Wrapper<Void> orderFlowInsert(OrderFlowInsertDTO orderFlowInsertDTO);
 }

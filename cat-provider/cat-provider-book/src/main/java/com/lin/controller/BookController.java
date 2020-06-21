@@ -56,7 +56,7 @@ public class BookController {
      * @return 返回新增书籍信息
      */
     @PostMapping("/book/add")
-    public Wrapper bookAdd(@RequestBody BookAddDTO bookAddDTO){
+    public Wrapper<Void> bookAdd(@RequestBody BookAddDTO bookAddDTO){
         return bookService.bookAdd(bookAddDTO);
     }
 
@@ -66,7 +66,7 @@ public class BookController {
      * @return 返回更新书籍信息
      */
     @PostMapping("/book/update")
-    public Wrapper bookUpdate(@RequestBody BookUpdateDTO bookUpdateDTO){
+    public Wrapper<Void> bookUpdate(@RequestBody BookUpdateDTO bookUpdateDTO){
         return bookService.bookUpdate(bookUpdateDTO);
     }
 
@@ -86,7 +86,7 @@ public class BookController {
      * @return
      */
     @PostMapping("/book/upload")
-    public Wrapper<BookUrlVo> bookUpload(@RequestParam("file") MultipartFile file){
+    public Wrapper<BookUrlVo> bookUpload(@RequestPart("file") MultipartFile file){
         return bookService.bookUpload(file);
     }
 
@@ -147,6 +147,15 @@ public class BookController {
     @GetMapping("/book/home/info")
     public Wrapper<HomeInfoVo> homeInfo(){
         return bookService.homeInfo();
+    }
+
+    /**
+     * 每日推荐
+     * @return 返回点赞数最高的前六本书籍
+     */
+    @GetMapping("/book/recommend")
+    public Wrapper<List<BookRecommendVo>> bookRecommend(){
+        return bookService.bookRecommend();
     }
 
 }

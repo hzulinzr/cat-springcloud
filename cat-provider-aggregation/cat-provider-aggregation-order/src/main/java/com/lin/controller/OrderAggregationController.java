@@ -4,9 +4,7 @@ import com.lin.dto.*;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.OrderAggregationService;
-import com.lin.vo.BookInfoVo;
-import com.lin.vo.OrderAllListVo;
-import com.lin.vo.OrderListVo;
+import com.lin.vo.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,7 +52,7 @@ public class OrderAggregationController {
      * @return
      */
     @PostMapping("/order/balance/insert")
-    public Wrapper<Void> orderBalanceInsert(@RequestBody OrderInsertDTO orderInsertDTO){
+    public Wrapper<BalanceInsertVo> orderBalanceInsert(@RequestBody OrderInsertDTO orderInsertDTO){
         return orderAggregationService.orderBalanceInsert(orderInsertDTO);
     }
 
@@ -88,6 +86,28 @@ public class OrderAggregationController {
     @GetMapping("/order/all/list")
     public Wrapper<PageData<OrderAllListVo>> orderAllList(OrderAllListDTO orderAllListDTO, int page,  int rows){
         return orderAggregationService.orderAllList(orderAllListDTO, page, rows);
+    }
+
+    /**
+     * 查看用户账单列表
+     * @param orderFlowListDTO
+     * @param page
+     * @param rows
+     * @return 返回用户账单列表
+     */
+    @GetMapping("/order/flow/list")
+    public Wrapper<PageData<OrderFlowListVo>> orderFlowList(OrderFlowListDTO orderFlowListDTO, int page, int rows){
+        return orderAggregationService.orderFlowList(orderFlowListDTO, page, rows);
+    }
+
+
+    /**
+     * 测试消息中间件
+     * @return
+     */
+    @GetMapping("/message/rocketmq")
+    public String test(String content){
+        return orderAggregationService.test(content);
     }
 
 

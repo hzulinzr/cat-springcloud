@@ -40,5 +40,6 @@ public class CommentListVo {
      * 书籍名称
      */
     private String bookName;
+    private String userUrl;
 
 }

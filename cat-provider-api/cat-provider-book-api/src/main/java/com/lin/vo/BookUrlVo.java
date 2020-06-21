@@ -8,5 +8,8 @@ import lombok.Data;
  */
 @Data
 public class BookUrlVo {
+    /**
+     * 图片路径
+     */
     private String bookUrl;
 }

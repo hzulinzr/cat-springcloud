@@ -36,4 +36,8 @@ public class BookAddDTO extends BaseBookDTO{
     @NotBlank(message = "bookUrl not null")
     @ApiModelProperty(value = "书籍图片地址")
     private String bookUrl;
+    /**
+     * 用户id
+     */
+    private Long uploadUserId;
 }

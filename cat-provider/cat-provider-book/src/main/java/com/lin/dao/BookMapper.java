@@ -2,8 +2,10 @@ package com.lin.dao;
 
 import com.lin.dto.BookListDTO;
 import com.lin.model.Book;
+import com.lin.model.BookType;
 import com.lin.vo.BookInfoVo;
 import com.lin.vo.BookListVo;
+import com.lin.vo.BookRecommendVo;
 import com.lin.vo.BookTypeCountVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -35,4 +37,8 @@ public interface BookMapper extends BaseMapper<Book, Long> {
     int newUserCount(@Param("begin") Long begin, @Param("end") Long end);
 
     int allUserCount();
+
+    BookType bookInfo(@Param("bookTypeName") String bookTypeName);
+
+    List<BookRecommendVo> searchBookRecommend();
 }

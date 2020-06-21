@@ -11,16 +11,22 @@
             and b.state = #{bookListDTO.state}
         </if>
         <if test="bookListDTO.state == null">
-            and b.state = 1
+            and (b.state = 1 or b.state = 2)
         </if>
         <if test="bookListDTO.userId != null">
             and b.upload_user_id = #{bookListDTO.userId}
         </if>
         <if test="null != bookListDTO.keyword and '' != bookListDTO.keyword">
-            AND (b.book_name LIKE CONCAT(#{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT(#{bookListDTO.keyword}, '%')  )
+            AND (b.book_name LIKE CONCAT('%', #{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT('%', #{bookListDTO.keyword}, '%')  )
         </if>
         <if test="bookListDTO.bookType != null">
             and bt.book_type_name = #{bookListDTO.bookType}
+        </if>
+        <if test="bookListDTO.username != null">
+            and b.upload_user_id = #{bookListDTO.username}
+        </if>
+        <if test="bookListDTO.startTime!=null and bookListDTO.endTime != null">
+            and (b.upload_time between #{bookListDTO.startTime} and #{bookListDTO.endTime})
         </if>
     </select>
 
@@ -35,7 +41,8 @@
             b.book_url AS bookUrl,
             b.upload_user_id as uploadUserId,
             b.state as state,
-            b.upload_time as uploadTime
+            b.upload_time as uploadTime,
+            b.thumbs_up thumbsUp
         from
         book b
         left join book_type bt on b.book_type_id = bt.id
@@ -44,16 +51,22 @@
             and b.state = #{bookListDTO.state}
         </if>
         <if test="bookListDTO.state == null">
-            and b.state = 1
+            and (b.state = 1 or b.state = 2)
         </if>
         <if test="bookListDTO.userId != null">
             and b.upload_user_id = #{bookListDTO.userId}
         </if>
         <if test="bookListDTO.keyword != null and bookListDTO.keyword !='' ">
-            AND (b.book_name LIKE CONCAT(#{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT(#{bookListDTO.keyword}, '%')  )
+            AND (b.book_name LIKE CONCAT('%', #{bookListDTO.keyword}, '%') or b.book_author LIKE CONCAT('%', #{bookListDTO.keyword}, '%')  )
         </if>
         <if test="bookListDTO.bookType != null">
             and bt.book_type_name = #{bookListDTO.bookType}
+        </if>
+        <if test="bookListDTO.username != null">
+            and b.upload_user_id = #{bookListDTO.username}
+        </if>
+        <if test="bookListDTO.startTime!=null and bookListDTO.endTime != null">
+            and (b.upload_time between #{bookListDTO.startTime} and #{bookListDTO.endTime})
         </if>
         order by b.upload_time desc
         LIMIT #{page}, #{rows}
@@ -71,7 +84,8 @@
             b.book_url bookUrl,
             bt.book_type_name bookTypeName,
             bt.book_content bookContent,
-            bo.quantity as quantity
+            bo.quantity as quantity,
+            b.thumbs_up thumbsUp
         from
         book b
         left join book_type bt on b.book_type_id = bt.id
@@ -115,6 +129,26 @@
     <select id="allUserCount" resultType="java.lang.Integer">
         select count(au.id)
         from auth_user au
+    </select>
+
+    <select id="bookInfo" resultType="com.lin.model.BookType">
+        select
+        bt.id
+        from book_type bt
+        where  bt.book_type_name = #{bookTypeName}
+    </select>
+
+    <select id="searchBookRecommend" resultType="com.lin.vo.BookRecommendVo">
+        select
+        b.id bookId,
+        b.book_name AS bookName,
+        b.book_author AS bookAuthor,
+        b.amount AS amount,
+        b.book_url AS bookUrl,
+        b.thumbs_up thumbsUp
+        from book b
+        order by thumbs_up desc
+        limit 6
     </select>
 
 </mapper>

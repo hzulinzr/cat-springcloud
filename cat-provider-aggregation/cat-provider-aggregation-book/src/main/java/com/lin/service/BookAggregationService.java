@@ -4,11 +4,12 @@ import com.lin.dto.*;
 import com.lin.model.Book;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
-import com.lin.vo.BookListVo;
-import com.lin.vo.CommentListVo;
-import com.lin.vo.HomeInfoVo;
+import com.lin.vo.*;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * @author lzr
@@ -26,10 +27,10 @@ public interface BookAggregationService {
 
     /**
      * 获取书籍详情
-     * @param baseBookDTO 书籍id
+     * @param bookInfoDTO 书籍id
      * @return 返回书籍详情
      */
-    Wrapper<Book> bookInfo(BaseBookDTO baseBookDTO);
+    Wrapper<BookInfoAllVo> bookInfo(BookInfoDTO bookInfoDTO);
 
     /**
      * 更改书籍状态
@@ -64,4 +65,48 @@ public interface BookAggregationService {
      * @return
      */
     Wrapper<HomeInfoVo> homeInfo();
+    /**
+     * 新增书籍
+     * @param bookAddDTO
+     * @return
+     */
+    Wrapper<Void> bookAdd(BookAddDTO bookAddDTO);
+
+    /**
+     * 上传书籍
+     * @param file
+     * @return 返回书籍路径
+     */
+    Wrapper<BookUrlVo> bookUpload(MultipartFile file);
+    /**
+     * 更新书籍
+     * @param bookUpdateDTO
+     * @return
+     */
+    Wrapper<Void> bookUpdate(BookUpdateDTO bookUpdateDTO);
+    /**
+     * 查看收藏列表
+     * @param bookCollectDTO
+     * @param rows 行数
+     * @param page 页码
+     * @return 返回收藏列表
+     */
+    Wrapper<PageData<BookCollectVo>> bookCollectList(BookCollectDTO bookCollectDTO, Integer page, Integer rows);
+    /**
+     * 更改收藏状态
+     * @param bookCollectUpdateDTO
+     * @return
+     */
+    Wrapper<Void> bookCollectUpdate(BookCollectUpdateDTO bookCollectUpdateDTO);
+    /**
+     * 更改书籍的点赞信息
+     * @param thumbsUpUpdateDTO
+     * @return
+     */
+    Wrapper<Void> thumbsUpUpdate(ThumbsUpUpdateDTO thumbsUpUpdateDTO);
+    /**
+     * 每日推荐
+     * @return 返回点赞数最高的前六本书籍
+     */
+    Wrapper<List<BookRecommendVo>> bookRecommend();
 }

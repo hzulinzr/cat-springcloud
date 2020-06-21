@@ -65,6 +65,9 @@
         from `order` o
         left join book_order bo on o.id = bo.order_id
         where bo.order_id = #{orderDTO.orderId}
+        <if test="orderDTO.commentState != null">
+            and bo.state = #{orderDTO.commentState}
+        </if>
     </select>
 
 </mapper>

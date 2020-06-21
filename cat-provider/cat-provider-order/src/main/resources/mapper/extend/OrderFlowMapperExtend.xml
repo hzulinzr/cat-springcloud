@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.OrderFlowMapper" >
+    <select id="searchOrderFlowListCount" resultType="java.lang.Integer">
+        select Count(of.id)
+        from order_flow of
+        where 1=1
+        <if test="orderFlowListDTO.userId != null">
+            and of.user_id = #{orderFlowListDTO.userId}
+        </if>
+    </select>
+
+    <select id="searchOrderFlowList" resultType="com.lin.vo.OrderFlowListVo">
+        select
+        of.id,
+        of.user_id userId,
+        of.order_id orderId,
+        of.pay_method payMethod,
+        of.create_time createTime,
+        of.amount,
+        of.pay_amount payAmount
+        from order_flow of
+        where 1=1
+        <if test="orderFlowListDTO.userId != null">
+            and of.user_id = #{orderFlowListDTO.userId}
+        </if>
+        limit #{page}, #{rows}
+    </select>
+</mapper>

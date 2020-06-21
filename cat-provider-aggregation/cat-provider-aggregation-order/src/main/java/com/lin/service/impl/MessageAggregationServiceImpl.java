@@ -84,17 +84,20 @@ public class MessageAggregationServiceImpl implements MessageAggregationService 
         MessageListDTO messageListDTO = new MessageListDTO();
         BeanUtils.copyProperties(messageAdjustDTO, messageListDTO);
         //获取消息列表
-        PageData<MessageListInfoVo> messageListVoPageData = messageServiceFeign.messageList(messageListDTO, messageAdjustDTO.getPage(), messageAdjustDTO.getRows()).getData();
+        PageData<MessageListInfoVo> messageListVoPageData = messageServiceFeign.messageList(messageListDTO,
+                messageAdjustDTO.getPage(),
+                messageAdjustDTO.getRows()).getData();
         int count = messageListVoPageData.getTotalCount();
         List<MessageListInfoVo> messageListInfoVos = messageListVoPageData.getData();
         if(0 < count){
-            List<Long> messageIdList = messageListInfoVos.stream().map(MessageListInfoVo::getId).collect(Collectors.toList());
+            List<Long> messageIdList = messageListInfoVos.stream().map(MessageListInfoVo::getId)
+                    .collect(Collectors.toList());
             MessageListDTO messageList = new MessageListDTO();
             messageList.setMessageIds(messageIdList);
             //将点击的消息类型的所有消息的状态改为已读
             messageServiceFeign.messageAdjust(messageList);
         }
-        //匠心放入
+        //放入
         List<MessageListVo> messageListVo = new ArrayList<>();
         MessageListVo messageListVoList = new MessageListVo();
         messageListVoList.setMessageList(messageListInfoVos);

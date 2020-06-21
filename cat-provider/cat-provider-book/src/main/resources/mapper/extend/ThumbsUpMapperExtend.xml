@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.ThumbsUpMapper" >
+    <select id="thumbsUpInfo" resultType="com.lin.model.ThumbsUp">
+        select
+        tu.id,
+        tu.user_id userId,
+        tu.book_id bookId,
+        tu.create_time createTime,
+        tu.state
+        from thumbs_up tu
+        where 1=1
+        <if test="thumbsUpInfoDTO.userId != null">
+            and tu.user_id = #{thumbsUpInfoDTO.userId}
+        </if>
+        <if test="thumbsUpInfoDTO.bookId != null">
+            and tu.book_id = #{thumbsUpInfoDTO.bookId}
+        </if>
+    </select>
+</mapper>

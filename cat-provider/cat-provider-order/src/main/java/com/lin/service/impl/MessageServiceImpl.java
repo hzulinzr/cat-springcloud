@@ -57,6 +57,11 @@ public class MessageServiceImpl implements MessageService {
         return messageMapper.searchMessageUnreadCount(messageListDTO);
     }
 
+    /**
+     * 调整消息列表的消息状态
+     * @param messageListDTO
+     * @return 返回消息列表
+     */
     @Override
     public Wrapper<PageData<MessageListInfoVo>> messageAdjust(MessageListDTO messageListDTO) {
         List<Long> messageIds = messageListDTO.getMessageIds();

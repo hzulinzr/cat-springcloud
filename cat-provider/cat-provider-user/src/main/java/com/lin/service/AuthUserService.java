@@ -5,9 +5,9 @@ import com.lin.model.AuthUser;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.tools.Page;
-import com.lin.vo.UserListVo;
-import com.lin.vo.UserLoginSuccessVo;
-import com.lin.vo.UserRegisterSuccessVo;
+import com.lin.vo.*;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author lzr
@@ -57,4 +57,13 @@ public interface AuthUserService {
      * @return
      */
     Wrapper<Void> userUpdate(AuthUserUpdateDTO authUserUpdateDTO);
+
+    /**
+     * 上传用户头像
+     * @param file
+     * @return
+     */
+    Wrapper<UserUrlVo> userUpload(MultipartFile file, Long userId);
+
+    MessageVo messageInfo(String username);
 }

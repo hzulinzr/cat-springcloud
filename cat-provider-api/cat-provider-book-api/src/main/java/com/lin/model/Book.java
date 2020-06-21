@@ -51,4 +51,8 @@ public class Book extends BaseModel {
      * 表字段：book.book_url 注释：书籍地址
      */
     private String bookUrl;
+    /**
+     * 表字段：book.thumbs_up 注释：点赞
+     */
+    private Integer thumbsUp;
 }

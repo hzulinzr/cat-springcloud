@@ -19,7 +19,7 @@ public interface BookOrderMapper extends BaseMapper<BookOrder, Long> {
      * @param bookOrderDTO
      * @return
      */
-    int orderBookInsert(@Param("'bookOrderInsertDTO'") BookOrderDTO bookOrderDTO);
+    void orderBookInsert(@Param("bookOrderDTO") BookOrderDTO bookOrderDTO);
 
     /**
      * 更新书籍订单关联表的数据

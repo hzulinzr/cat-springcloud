@@ -11,13 +11,12 @@ import com.lin.tools.Page;
 import com.lin.vo.UserListVo;
 import com.lin.vo.UserLoginSuccessVo;
 import com.lin.vo.UserRegisterSuccessVo;
+import com.lin.vo.UserUrlVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 
@@ -114,5 +113,15 @@ public class AuthUserController {
     @PostMapping("/user/info/update")
     public Wrapper<Void> userUpdate(@RequestBody AuthUserUpdateDTO authUserUpdateDTO){
         return authUserService.userUpdate(authUserUpdateDTO);
+    }
+
+    /**
+     * 上传用户头像
+     * @param file
+     * @return
+     */
+    @PostMapping("/user/upload")
+    public Wrapper<UserUrlVo> userUpload(@RequestPart("file") MultipartFile file, @RequestParam Long userId){
+        return authUserService.userUpload(file, userId);
     }
 }

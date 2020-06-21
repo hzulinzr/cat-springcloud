@@ -5,6 +5,7 @@ import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.OrderService;
 import com.lin.tools.Page;
+import com.lin.vo.OrderFlowListVo;
 import com.lin.vo.OrderListVo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -94,5 +95,26 @@ public class OrderController {
     @PostMapping("/order/book/update")
     public Wrapper<Void> orderBookUpdate(@RequestBody BookOrderUpdateDTO bookOrderUpdateDTO){
         return orderService.orderBookUpdate(bookOrderUpdateDTO);
+    }
+
+    /**
+     * 查看账单列表
+     * @param orderFlowListDTO
+     * @param page
+     * @return 返回账单列表
+     */
+    @GetMapping("/order/flow/list")
+    public Wrapper<PageData<OrderFlowListVo>> orderFlowList(OrderFlowListDTO orderFlowListDTO, Page page){
+        return orderService. orderFlowList(orderFlowListDTO, page);
+    }
+
+    /**
+     * 插入账单
+     * @param orderFlowInsertDTO
+     * @return
+     */
+    @PostMapping("/order/flow/insert")
+    public Wrapper<Void> orderFlowInsert(@RequestBody OrderFlowInsertDTO orderFlowInsertDTO){
+        return  orderService.orderFlowInsert(orderFlowInsertDTO);
     }
 }

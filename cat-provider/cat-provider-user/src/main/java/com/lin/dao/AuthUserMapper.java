@@ -5,6 +5,7 @@ import com.lin.dto.RegisterDTO;
 import com.lin.dto.UserListDTO;
 import com.lin.model.AuthUser;
 import com.lin.tools.Page;
+import com.lin.vo.MessageVo;
 import com.lin.vo.UserListVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -63,5 +64,12 @@ public interface AuthUserMapper extends BaseMapper<AuthUser, Long> {
      * @return 返回用户列表
      */
     List<UserListVo> searchUserList(@Param("userListDTO") UserListDTO userListDTO, @Param("page") Page page);
+
+    /**
+     * 获取用户详情信息
+     * @param username
+     * @return 返回用户详情信息
+     */
+    MessageVo userInfo(@Param("username") String username);
 
 }

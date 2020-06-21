@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.OrderFlowMapper" >
+    <resultMap id="BaseResultMap" type="com.lin.model.OrderFlow" >
+        <!--  自动生成 2020年04月05日 表与实体类字段对应 -->
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="order_id" property="orderId" jdbcType="BIGINT" />
+        <result column="amount" property="amount" jdbcType="DOUBLE" />
+        <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="pay_amount" property="payAmount" jdbcType="DOUBLE" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        <!--  自动生成 2020年04月05日 表字段名称 -->
+        id, user_id, order_id, amount, pay_method, create_time, pay_amount
+    </sql>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--  自动生成 2020年04月05日 根据ID查询 -->
+        select 
+        <include refid="Base_Column_List" />
+        from order_flow
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    
+    <update id="update" parameterType="com.lin.model.OrderFlow" >
+        <!--  自动生成 2020年04月05日 更新数据 -->
+        update order_flow
+        <set >
+            <if test="userId != null" >
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="orderId != null" >
+                order_id = #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="amount != null" >
+                amount = #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="payMethod != null" >
+                pay_method = #{payMethod,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="payAmount != null" >
+                pay_amount = #{payAmount,jdbcType=DOUBLE},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    
+    <insert id="insert" parameterType="com.lin.model.OrderFlow" >
+        <!--  自动生成 2020年04月05日 添加数据 -->
+        insert into order_flow
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="userId != null" >
+                user_id,
+            </if>
+            <if test="orderId != null" >
+                order_id,
+            </if>
+            <if test="amount != null" >
+                amount,
+            </if>
+            <if test="payMethod != null" >
+                pay_method,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="payAmount != null" >
+                pay_amount,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null" >
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="orderId != null" >
+                #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="amount != null" >
+                #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="payMethod != null" >
+                #{payMethod,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="payAmount != null" >
+                #{payAmount,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+    
+    <insert id="inserts" parameterType="java.util.List" >
+        <!-- WARNING -  自动生成 2020-04-05 添加多条数据 -->
+        insert into order_flow (id, user_id, order_id, amount, pay_method, create_time, pay_amount)
+        values
+        <foreach collection="list" item="item" separator="," >
+            (#{item.id,jdbcType=BIGINT}, #{item.userId,jdbcType=BIGINT}, #{item.orderId,jdbcType=BIGINT}, #{item.amount,jdbcType=DOUBLE}, #{item.payMethod,jdbcType=INTEGER}, #{item.createTime,jdbcType=BIGINT}, #{item.payAmount,jdbcType=DOUBLE})
+        </foreach>
+    </insert>
+    
+    <delete id="delete" parameterType="java.lang.Long" >
+        <!--  自动生成 2020年04月05日 删除数据 -->
+        delete from order_flow
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>

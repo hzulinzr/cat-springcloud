@@ -24,4 +24,8 @@ public class UserLoginSuccessVo {
      * 用户id
      */
     private Long userId;
+    /**
+     * 用户头像
+     */
+    private String userUrl;
 }

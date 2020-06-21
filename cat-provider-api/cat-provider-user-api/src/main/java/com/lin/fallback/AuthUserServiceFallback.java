@@ -6,6 +6,7 @@ import com.lin.feign.AuthUserServiceFeign;
 import com.lin.model.AuthUser;
 import com.lin.response.Wrapper;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author lzr
@@ -18,6 +19,7 @@ public class AuthUserServiceFallback implements AuthUserServiceFeign {
         return null;
     }
 
+    @GetMapping("/user/person/info")
     @Override
     public Wrapper<AuthUser> userInfo(BaseAuthUser baseAuthUser) {
         return null;

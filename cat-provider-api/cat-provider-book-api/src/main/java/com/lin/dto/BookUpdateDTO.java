@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2019-12-07 15:36:01
  */
 @Data
-public class BookUpdateDTO extends BaseBookDTO{
+public class BookUpdateDTO{
 
     @ApiModelProperty(value = "书籍名称")
     private String bookName;
@@ -24,4 +24,10 @@ public class BookUpdateDTO extends BaseBookDTO{
 
     @ApiModelProperty(value = "书籍类型名称")
     private String bookTypeName;
+
+    private Long bookId;
+    /**
+     * 点赞数
+     */
+    private Integer thumbsUp;
 }

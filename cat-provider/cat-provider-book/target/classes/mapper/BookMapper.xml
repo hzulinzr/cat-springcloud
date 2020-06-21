@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lin.dao.BookMapper" >
     <resultMap id="BaseResultMap" type="com.lin.model.Book" >
-        <!--  自动生成 2020年03月04日 表与实体类字段对应 -->
+        <!--  自动生成 2020年04月18日 表与实体类字段对应 -->
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="book_type_id" property="bookTypeId" jdbcType="BIGINT" />
         <result column="book_name" property="bookName" jdbcType="VARCHAR" />
@@ -14,16 +14,17 @@
         <result column="book_quantity" property="bookQuantity" jdbcType="INTEGER" />
         <result column="state" property="state" jdbcType="INTEGER" />
         <result column="book_url" property="bookUrl" jdbcType="VARCHAR" />
+        <result column="thumbs_up" property="thumbsUp" jdbcType="INTEGER" />
     </resultMap>
     
     <sql id="Base_Column_List" >
-        <!--  自动生成 2020年03月04日 表字段名称 -->
+        <!--  自动生成 2020年04月18日 表字段名称 -->
         id, book_type_id, book_name, book_author, amount, upload_time, upload_user_id, remove_time, 
-        book_quantity, state, book_url
+        book_quantity, state, book_url, thumbs_up
     </sql>
     
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-        <!--  自动生成 2020年03月04日 根据ID查询 -->
+        <!--  自动生成 2020年04月18日 根据ID查询 -->
         select 
         <include refid="Base_Column_List" />
         from book
@@ -31,7 +32,7 @@
     </select>
     
     <update id="update" parameterType="com.lin.model.Book" >
-        <!--  自动生成 2020年03月04日 更新数据 -->
+        <!--  自动生成 2020年04月18日 更新数据 -->
         update book
         <set >
             <if test="bookTypeId != null" >
@@ -64,12 +65,15 @@
             <if test="bookUrl != null" >
                 book_url = #{bookUrl,jdbcType=VARCHAR},
             </if>
+            <if test="thumbsUp != null" >
+                thumbs_up = #{thumbsUp,jdbcType=INTEGER},
+            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
     
     <insert id="insert" parameterType="com.lin.model.Book" >
-        <!--  自动生成 2020年03月04日 添加数据 -->
+        <!--  自动生成 2020年04月18日 添加数据 -->
         insert into book
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -104,6 +108,9 @@
             </if>
             <if test="bookUrl != null" >
                 book_url,
+            </if>
+            <if test="thumbsUp != null" >
+                thumbs_up,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -140,20 +147,23 @@
             <if test="bookUrl != null" >
                 #{bookUrl,jdbcType=VARCHAR},
             </if>
+            <if test="thumbsUp != null" >
+                #{thumbsUp,jdbcType=INTEGER},
+            </if>
         </trim>
     </insert>
     
     <insert id="inserts" parameterType="java.util.List" >
-        <!-- WARNING -  自动生成 2020-03-04 添加多条数据 -->
-        insert into book (id, book_type_id, book_name, book_author, amount, upload_time, upload_user_id, remove_time, book_quantity, state, book_url)
+        <!-- WARNING -  自动生成 2020-04-18 添加多条数据 -->
+        insert into book (id, book_type_id, book_name, book_author, amount, upload_time, upload_user_id, remove_time, book_quantity, state, book_url, thumbs_up)
         values
         <foreach collection="list" item="item" separator="," >
-            (#{item.id,jdbcType=BIGINT}, #{item.bookTypeId,jdbcType=BIGINT}, #{item.bookName,jdbcType=VARCHAR}, #{item.bookAuthor,jdbcType=VARCHAR}, #{item.amount,jdbcType=DOUBLE}, #{item.uploadTime,jdbcType=BIGINT}, #{item.uploadUserId,jdbcType=BIGINT}, #{item.removeTime,jdbcType=BIGINT}, #{item.bookQuantity,jdbcType=INTEGER}, #{item.state,jdbcType=INTEGER}, #{item.bookUrl,jdbcType=VARCHAR})
+            (#{item.id,jdbcType=BIGINT}, #{item.bookTypeId,jdbcType=BIGINT}, #{item.bookName,jdbcType=VARCHAR}, #{item.bookAuthor,jdbcType=VARCHAR}, #{item.amount,jdbcType=DOUBLE}, #{item.uploadTime,jdbcType=BIGINT}, #{item.uploadUserId,jdbcType=BIGINT}, #{item.removeTime,jdbcType=BIGINT}, #{item.bookQuantity,jdbcType=INTEGER}, #{item.state,jdbcType=INTEGER}, #{item.bookUrl,jdbcType=VARCHAR}, #{item.thumbsUp,jdbcType=INTEGER})
         </foreach>
     </insert>
     
     <delete id="delete" parameterType="java.lang.Long" >
-        <!--  自动生成 2020年03月04日 删除数据 -->
+        <!--  自动生成 2020年04月18日 删除数据 -->
         delete from book
         where id = #{id,jdbcType=BIGINT}
     </delete>

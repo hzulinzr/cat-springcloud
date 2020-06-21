@@ -4,9 +4,7 @@ import com.lin.dto.*;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.tools.Page;
-import com.lin.vo.BookInfoVo;
-import com.lin.vo.OrderAllListVo;
-import com.lin.vo.OrderListVo;
+import com.lin.vo.*;
 
 import java.util.List;
 
@@ -37,7 +35,7 @@ public interface OrderAggregationService {
      * @param orderInsertDTO
      * @return
      */
-    Wrapper<Void> orderBalanceInsert(OrderInsertDTO orderInsertDTO);
+    Wrapper<BalanceInsertVo> orderBalanceInsert(OrderInsertDTO orderInsertDTO);
 
     /**
      * 完成订单
@@ -51,7 +49,6 @@ public interface OrderAggregationService {
      * @return
      */
     Wrapper<List<BookInfoVo>> orderInfoList(OrderDTO orderDTO);
-
     /**
      * 查看用户的订单列表（包含详情）
      * @param orderAllListDTO
@@ -60,4 +57,14 @@ public interface OrderAggregationService {
      * @return 返回用户的订单列表 （包含详情）
      */
     Wrapper<PageData<OrderAllListVo>> orderAllList(OrderAllListDTO orderAllListDTO, int page, int rows);
+    /**
+     * 查看用户账单列表
+     * @param orderFlowListDTO
+     * @param page
+     * @param rows
+     * @return 返回用户账单列表
+     */
+    Wrapper<PageData<OrderFlowListVo>> orderFlowList(OrderFlowListDTO orderFlowListDTO, int page, int rows);
+
+    String test(String content);
 }

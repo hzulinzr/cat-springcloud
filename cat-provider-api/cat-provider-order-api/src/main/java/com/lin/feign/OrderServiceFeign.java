@@ -4,6 +4,7 @@ import com.lin.dto.*;
 import com.lin.fallback.OrderServiceFallback;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
+import com.lin.vo.OrderFlowListVo;
 import com.lin.vo.OrderListVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -73,4 +74,21 @@ public interface OrderServiceFeign {
      */
     @PostMapping("/order/book/update")
     Wrapper<Void> orderBookUpdate(BookOrderUpdateDTO bookOrderUpdateDTO);
+    /**
+     * 查看用户账单列表
+     * @param orderFlowListDTO
+     * @param page
+     * @param rows
+     * @return 返回用户账单列表
+     */
+    @GetMapping("/order/flow/list")
+    Wrapper<PageData<OrderFlowListVo>> orderFlowList(OrderFlowListDTO orderFlowListDTO, @RequestParam int page, @RequestParam int rows);
+
+    /**
+     * 插入账单
+     * @param orderFlowInsertDTO
+     * @return
+     */
+    @PostMapping("/order/flow/insert")
+    Wrapper<Void> orderFlowInsert(OrderFlowInsertDTO orderFlowInsertDTO);
 }

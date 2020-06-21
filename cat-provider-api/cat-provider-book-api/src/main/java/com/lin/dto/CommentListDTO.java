@@ -12,5 +12,13 @@ public class CommentListDTO {
      * 书籍id
      */
     private Long bookId;
-
+    /**
+     * 开始时间
+     */
+    private Long startTime;
+    /**
+     * 结束时间
+     */
+    private Long endTime;
+    private Long userId;
 }

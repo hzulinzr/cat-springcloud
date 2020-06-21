@@ -20,6 +20,7 @@ import javax.annotation.PreDestroy;
 @Component
 @Slf4j
 public class RocketProducer {
+
     private String namesrvAddr = "127.0.0.1:9876";
 
     private String producerGroup = "cat-producer";

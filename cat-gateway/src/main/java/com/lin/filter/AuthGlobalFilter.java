@@ -62,6 +62,9 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         urls.add("/aliPay");
         urls.add("/cat/user/list");
         urls.add("/cat/order/list");
+        urls.add("/cat/book/upload");
+        urls.add("/cat/book/recommend");
+        urls.add("/cat/comment/list");
 //        urls.add("/cat/cart/add");
 //        urls.add("/cat/cart/adjust");
 //        urls.add("/cat/cart/list");
@@ -79,17 +82,17 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             throw new RuntimeException("token不存在");
         }
 
-        //获取用户信息
-        HttpHeaders headers = new HttpHeaders();
-        headers.set(AUTHORIZATION, "Bearer" + authorization.get(0));
-        HttpEntity<MultiValueMap<String, Object>> requests = new HttpEntity(null, headers);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<AuthClient> exchange1 = restTemplate.exchange("http://localhost:8071/user/info", HttpMethod.GET, requests, AuthClient.class);
-        AuthClient body = exchange1.getBody();
-        if (null == body || null == body.getAuthorities() || 0 == body.getAuthorities().size()) {
-            log.error("获取用户信息异常");
-            throw new RuntimeException("获取用户信息异常");
-        }
+//        //获取用户信息
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.set(AUTHORIZATION, "Bearer" + authorization.get(0));
+//        HttpEntity<MultiValueMap<String, Object>> requests = new HttpEntity(null, headers);
+//        RestTemplate restTemplate = new RestTemplate();
+//        ResponseEntity<AuthClient> exchange1 = restTemplate.exchange("http://localhost:8071/user/info", HttpMethod.GET, requests, AuthClient.class);
+//        AuthClient body = exchange1.getBody();
+//        if (null == body || null == body.getAuthorities() || 0 == body.getAuthorities().size()) {
+//            log.error("获取用户信息异常");
+//            throw new RuntimeException("获取用户信息异常");
+//        }
 //        log.info("权限： {}",body.getAuthorities());
 //        if (!body.getAuthorities().contains(requestPath)) {
 //            log.error("用户权限不足");
