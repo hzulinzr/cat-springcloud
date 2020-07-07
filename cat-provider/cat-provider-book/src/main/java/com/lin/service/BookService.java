@@ -2,6 +2,7 @@ package com.lin.service;
 
 import com.lin.dto.*;
 import com.lin.model.Book;
+import com.lin.model.Record;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.tools.Page;
@@ -104,5 +105,6 @@ public interface BookService {
      * @return 返回点赞数最高的前六本书籍
      */
     Wrapper<List<BookRecommendVo>> bookRecommend();
+
 }
 

@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "rocketmq.name-server",
+      "type": "java.lang.String",
+      "description": "Description for rocketmq.name-server."
+    },
+    {
+      "name": "rocketmq.producer.group",
+      "type": "java.lang.String",
+      "description": "Description for rocketmq.producer.group."
+    }
+  ] }

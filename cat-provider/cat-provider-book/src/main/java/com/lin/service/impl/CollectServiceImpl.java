@@ -10,7 +10,7 @@ import com.lin.service.CollectService;
 import com.lin.tools.Page;
 import com.lin.tools.SnowFlake;
 import com.lin.vo.BookCollectVo;
-import com.oracle.tools.packager.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +21,7 @@ import java.util.List;
  * @author lzr
  * @date 2020-04-18 00:26:13
  */
+@Slf4j
 @Service
 public class CollectServiceImpl implements CollectService {
     private CollectMapper collectMapper;
@@ -84,7 +85,7 @@ public class CollectServiceImpl implements CollectService {
         collect.setCreateTime(System.currentTimeMillis());
         collect.setId(new SnowFlake(0, 0).nextId());
         collectMapper.insert(collect);
-        Log.info("插入收藏成功");
+        log.info("插入收藏成功");
         return Wrapper.success();
     }
 }

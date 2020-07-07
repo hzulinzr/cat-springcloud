@@ -1,9 +1,0 @@
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/BookApplication.java
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/dao/BookMapper.java
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/service/BookService.java
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/dao/BookTypeMapper.java
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/config/JacksonConfig.java
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/config/SwaggerConfig.java
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/dao/BookOrderMapper.java
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/service/impl/BookServiceImpl.java
-/Users/lzr/Project/cat-springcloud/cat-provider/cat-provider-book/src/main/java/com/lin/controller/BookController.java

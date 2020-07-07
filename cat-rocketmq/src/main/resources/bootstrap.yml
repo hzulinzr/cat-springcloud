@@ -3,9 +3,8 @@ server:
 spring:
   application:
     name: cat-rocketmq
-apache:
-  rocketmq:
-    producer:
-      producerGroup: cat-provider
-      consumerGroup: cat-consumer
-    namesrvAddr: 127.0.0.1:9876
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: thumbs-group

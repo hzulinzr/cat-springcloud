@@ -9,8 +9,7 @@ import com.lin.response.Wrapper;
 import com.lin.service.MessageService;
 import com.lin.tools.SnowFlake;
 import com.lin.vo.MessageListInfoVo;
-import com.lin.vo.MessageListVo;
-import com.oracle.tools.packager.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,7 @@ import java.util.List;
  * @author lzr
  * @date 2020-03-20 20:21:46
  */
+@Slf4j
 @Service
 public class MessageServiceImpl implements MessageService {
 
@@ -72,7 +72,7 @@ public class MessageServiceImpl implements MessageService {
                 message.setState(1);
                 messageMapper.update(message);
             });
-            Log.info("更新消息为已读！");
+            log.info("更新消息为已读！");
         }
         return Wrapper.success();
     }
@@ -91,7 +91,7 @@ public class MessageServiceImpl implements MessageService {
         message.setState(0);
         BeanUtils.copyProperties(messageInsertDTO, message);
         messageMapper.insert(message);
-        Log.info("插入消息数据成功！");
+        log.info("插入消息数据成功！");
         return Wrapper.success();
     }
 }

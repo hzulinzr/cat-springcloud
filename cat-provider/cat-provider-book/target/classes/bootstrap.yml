@@ -20,5 +20,10 @@ spring:
     multipart:
       max-file-size: 10MB # 限制文件上传的大小
 
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: thumbs-group
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml, mapper/*/*.xml

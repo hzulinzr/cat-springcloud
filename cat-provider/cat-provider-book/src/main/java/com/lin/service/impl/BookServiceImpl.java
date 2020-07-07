@@ -7,6 +7,7 @@ import com.lin.dto.*;
 import com.lin.model.Book;
 import com.lin.model.BookType;
 import com.lin.model.Comment;
+import com.lin.model.Record;
 import com.lin.response.PageData;
 import com.lin.response.Wrapper;
 import com.lin.service.BookService;
@@ -328,6 +329,7 @@ public class BookServiceImpl implements BookService {
         log.info("查询每日推荐数");
         return Wrapper.success(bookRecommendVos);
     }
+
 
     /**
      * 获取一周新增的数量

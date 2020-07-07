@@ -27,7 +27,6 @@
         </dependency>
 
 
-
         <!-- 数据消校验-->
         <dependency>
             <groupId>javax.validation</groupId>
@@ -140,6 +139,7 @@
         <!--                           end   -->
 
     </dependencies>
+
 
 
 </project>

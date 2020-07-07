@@ -1,3 +1,4 @@
+/Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/tools/JacksonConfig.java
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/response/Wrapper.java
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/tools/Page.java
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/tools/OkHttpConfig.java
@@ -10,6 +11,7 @@
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/response/PageData.java
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/tools/SnowFlake.java
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/response/WrapperSuccess.java
+/Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/model/PageModel.java
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/jwt/JwtUtil.java
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/response/WrapperFail.java
 /Users/lzr/Project/cat-springcloud/cat-common/src/main/java/com/lin/model/OkHttpProperties.java
