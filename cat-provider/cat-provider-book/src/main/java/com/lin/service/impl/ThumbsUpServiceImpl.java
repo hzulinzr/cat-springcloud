@@ -2,9 +2,7 @@ package com.lin.service.impl;
 
 import com.lin.dao.ThumbsUpMapper;
 import com.lin.dto.ThumbsUpInfoDTO;
-import com.lin.dto.ThumbsUpInsertDTO;
 import com.lin.dto.ThumbsUpUpdateDTO;
-import com.lin.model.Record;
 import com.lin.model.ThumbsUp;
 import com.lin.response.Wrapper;
 import com.lin.service.ThumbsUpService;

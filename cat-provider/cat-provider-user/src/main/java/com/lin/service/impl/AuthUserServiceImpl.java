@@ -16,6 +16,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.beans.BeanUtils;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,9 +39,12 @@ public class AuthUserServiceImpl implements AuthUserService {
 
     private OkHttpClient okHttpClient;
 
-    public AuthUserServiceImpl(AuthUserMapper authUserMapper, OkHttpClient okHttpClient) {
+    private KafkaTemplate<String,Object> kafkaTemplate;
+
+    public AuthUserServiceImpl(AuthUserMapper authUserMapper, OkHttpClient okHttpClient, KafkaTemplate<String, Object> kafkaTemplate) {
         this.authUserMapper = authUserMapper;
         this.okHttpClient = okHttpClient;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     /**
@@ -115,6 +119,10 @@ public class AuthUserServiceImpl implements AuthUserService {
         //注册用户
         authUserMapper.register(registerDTO);
         log.info("注册用户成功！");
+        UserMessageVo userMessageVo = new UserMessageVo();
+        BeanUtils.copyProperties(registerDTO, userMessageVo);
+        String userMessageStr = JSONObject.toJSONString(userMessageVo);
+        kafkaTemplate.send("register", userMessageStr);
         return Wrapper.success();
     }
 

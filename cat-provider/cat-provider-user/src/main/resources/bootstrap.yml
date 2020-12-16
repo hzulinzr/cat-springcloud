@@ -10,11 +10,22 @@ spring:
         server-addr: 127.0.0.1:8848
       config:
         server-addr: 127.0.0.1:8848
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092 #指定kafka server的地址，集群配多个，中间，逗号隔开
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: default_consumer_group #群组ID
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/cat-book?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/cat-book?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 

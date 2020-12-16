@@ -8,7 +8,7 @@
 
     <!--    用户登录-->
     <select id="login" resultType="com.lin.model.AuthUser">
-        select id, client_id clientId, state, secret, user_url userUrl from auth_user where client_id = #{username} and secret = #{password}
+        select id, client_id clientId, state, secret, user_url userUrl, create_time createTime from auth_user where client_id = #{username} and secret = #{password}
     </select>
 
     <!--    注册用户-->
